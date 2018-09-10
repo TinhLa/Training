@@ -1,8 +1,13 @@
 package com.training.tinhla.training.splashscreen
 
-class SplashPresenterImpl (var view: SplashInterface.View) : SplashInterface.Presenter{
+import javax.inject.Inject
+
+class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View) : SplashInterface.Presenter{
 
     init {
 
+    }
+
+    override fun getApi() {
     }
 }

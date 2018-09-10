@@ -1,8 +1,14 @@
 package com.training.tinhla.training.splashscreen
 
-class SplashInterface {
-    interface Presenter
+import android.content.Context
 
-    interface View
+class SplashInterface {
+    interface Presenter{
+        fun getApi()
+    }
+
+    interface View{
+        fun getAppContext() : Context
+    }
 }
 
