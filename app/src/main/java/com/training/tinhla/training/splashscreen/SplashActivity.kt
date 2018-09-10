@@ -4,22 +4,17 @@ import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-
 import com.training.tinhla.training.R
-import dagger.android.AndroidInjection
+import com.training.tinhla.training.basemodel.BaseActivity
 import javax.inject.Inject
 
-class SplashActivity : AppCompatActivity(), SplashInterface.View {
+class SplashActivity : BaseActivity(), SplashInterface.View {
     @Inject
-    lateinit var presenter : SplashInterface.Presenter
-    @Inject
-    lateinit var app: Context
+    lateinit var presenter: SplashInterface.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_splash)
