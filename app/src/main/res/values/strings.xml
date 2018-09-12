@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Training</string>
+
     <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="nested_scroll_text">
+        With millions of coastal residents either on the move or hunkering down anxiously in place, Hurricane Florence surged toward North Carolina on Tuesday,
+        tracing an unusual path that could lead to tremendous destruction — especially if the immense storm dumps enormous amounts of rain as it moves inland.
+
+    </string>
+
 </resources>
