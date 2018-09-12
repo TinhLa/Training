@@ -3,6 +3,8 @@ package com.training.tinhla.training.basemodule
 import android.app.Application
 import com.training.tinhla.training.App
 import com.training.tinhla.training.mainscreen.MainActivity
+import com.training.tinhla.training.slidingscreen.SlidingActivity
+import com.training.tinhla.training.slidingscreen.module.SlindingActivityModule
 import com.training.tinhla.training.splashscreen.SplashActivity
 import com.training.tinhla.training.splashscreen.module.SplashActivityModule
 import dagger.Binds
@@ -23,4 +25,8 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [SplashActivityModule::class])
     @PerActivity
     abstract fun bindSplashActivity(): SplashActivity
+
+    @ContributesAndroidInjector(modules = [SlindingActivityModule::class])
+    @PerActivity
+    abstract fun bindSlidingActivity() : SlidingActivity
 }
