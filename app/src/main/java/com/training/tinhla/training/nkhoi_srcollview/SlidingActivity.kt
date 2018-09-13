@@ -17,7 +17,7 @@ class SlidingActivity : AppCompatActivity() {
 //            listDS.add("Phần tử thứ : "+ i)
 //        }
 //        LvDetail.adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,listDS)
-        TvDetail.setText("aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbcccccccccccccccccccccdddddddddddddddeeeeeeeeeeeee" +
+        tvDetail.setText("aaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbcccccccccccccccccccccdddddddddddddddeeeeeeeeeeeee" +
                 "fffffffffffffffffffffffffgggggggggggggggggggggggyhhhhhhhhhhhhhhhhhhhhhhhhhhhjjjjjjjjjjjjj" +
                 "qqqqqqqqqqqqqqqqqqqqq" +
                 "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwweeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" +

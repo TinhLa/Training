@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        app:umanoDragView="@id/SvDrag"
+        app:umanoDragView="@id/svDrag"
         app:umanoScrollableView="@+id/scrollView"
         app:umanoFadeColor="@android:color/transparent"
         app:umanoOverlay="true"
@@ -24,7 +24,7 @@
             android:background="@drawable/ic_launcher_background" />
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/SvDrag"
+            android:id="@+id/svDrag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
@@ -44,7 +44,7 @@
                 android:background="#5da971">
 
                 <TextView
-                    android:id="@+id/TvDetail"
+                    android:id="@+id/tvDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="25dp" />
