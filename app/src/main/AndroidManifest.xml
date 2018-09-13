@@ -10,15 +10,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".basemodel.BaseActivity"/>
-
-        <activity android:name=".mainscreen.MainActivity"/>
-
+        <activity android:name=".basemodel.BaseActivity" />
+        <activity android:name=".mainscreen.MainActivity" />
         <activity
             android:name=".splashscreen.SplashActivity"
             android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".nkhoi_srcollview.SlidingActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
