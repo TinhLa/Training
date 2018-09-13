@@ -1,0 +1,28 @@
+{
+	"labelSet" : "Investment",
+    "labelVersion" : 1232456789,   
+	"new" : {
+		"th" : "สมัคร", 
+		"en" : "Apply"
+	},
+	"complete" : {
+		"th" : "สำเร็จ", 
+		"en" : "Complete"
+	},
+	"expire" : {
+		"th" : "หมดอายุ", 
+		"en" : "Expire"
+	},
+	"fail" : {
+		"th" : "ล้มเหลว", 
+		"en" : "Fail"
+	},
+	"cancel" : {
+		"th" : "รายการยกเลิก", 
+		"en" : "Cancel"
+	},
+	"reject" : {
+		"th" : "ปฏิเสธ", 
+		"en" : "Reject"
+	}
+}
