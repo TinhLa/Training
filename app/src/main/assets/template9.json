@@ -1,0 +1,434 @@
+{
+    "templateId": "payplus_half_standard",
+    "templateVersion": 1534534742,
+    "templateBody": {
+        "templateType": "iframe",
+        "iframeProperty": {
+            "images": [
+                "#{image/defaultPayPLUS}"
+            ],
+            "templateLines": [
+                {
+                    "lineType": "normal",
+                    "columns": [
+                        {
+                            "contentType": "image",
+                            "parameter": {
+                                "url": "#[image/iconPay]"
+                            },
+                            "percentWidth": 100,
+                            "height": 100,
+                            "alignment": "center",
+                            "verticalAlignment": "center"
+                        }
+                    ]
+                },
+                {
+                    "lineType": "normal",
+                    "columns": [
+                        {
+                            "contentType": "text",
+                            "parameter": {
+                                "text": "PAY",
+                                "fontStyle": "H1-Bold",
+                                "fontColor": "#FFFFFF"
+                            },
+                            "percentWidth": 100,
+                            "height": 0,
+                            "alignment": "left",
+                            "verticalAlignment": "center"
+                        }
+                    ]
+                },
+                {
+                    "lineType": "normal",
+                    "columns": [
+                        {
+                            "contentType": "text",
+                            "parameter": {
+                                "text": "PLUS",
+                                "fontStyle": "H1-Light",
+                                "fontColor": "#FFFFFF"
+                            },
+                            "percentWidth": 100,
+                            "height": 0,
+                            "alignment": "left",
+                            "verticalAlignment": "center"
+                        }
+                    ]
+                }
+            ]
+        },
+        "templateLines": [
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "ชำระเงินให้ 123 Service",
+                            "fontStyle": "H2-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "emptyLine"
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "titlenormal",
+                        "parameter": {
+                            "icon": "https://kbank.com/35204-logo.png",
+                            "title": "123 Service",
+                            "titleFontStyle": "H3-Bold",
+                            "titleFontColor": "#4D4D4D",
+                            "timeStamp": "1534405677127",
+                            "timeStampFontStyle": "Body-Medium",
+                            "timeStampFontColor": "#4D4D4D",
+                            "backgroundColor": "#FFFFFF"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "หมายเลขการชำระเงิน(Ref.1):",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "123456789",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "หมายเลขโทรศัพท์มือถือ(Ref.2):",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "123456789",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": " ",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": " ",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": " ",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "emptyLine"
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "จำนวนเงิน:",
+                            "fontStyle": "Body-Bold",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "15.50",
+                            "fontStyle": "H3-SemiBold",
+                            "fontColor": "#45C2B1"
+                        },
+                        "percentWidth": 0,
+                        "height": 0,
+                        "alignment": "center",
+                        "verticalAlignment": "center"
+                    },
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": " บาท",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "drawLine"
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "ชำระภายใน",
+                            "fontStyle": "Body-Medium",
+                            "fontColor": "#4D4D4D"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "15 ก.ย. 2018 23:53",
+                            "fontStyle": "Label-Medium",
+                            "fontColor": "#B3B3B3"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            },
+            {
+                "lineType": "normal",
+                "columns": [
+                    {
+                        "contentType": "text",
+                        "parameter": {
+                            "text": "",
+                            "fontStyle": "Remark-Medium",
+                            "fontColor": "#808080"
+                        },
+                        "percentWidth": 100,
+                        "height": 0,
+                        "alignment": "left",
+                        "verticalAlignment": "center"
+                    }
+                ]
+            }
+        ]
+    },
+    "templateButton": {
+        "labelSet": "pay",
+        "new": [
+            {
+                "textKey": "ยกเลิก",
+                "icon": "",
+                "state": "enable",
+                "action": "cancel"
+            },
+            {
+                "textKey": "ชำระเงิน",
+                "icon": "",
+                "state": "enable",
+                "action": "submit"
+            }
+        ],
+        "complete": [
+            {
+                "textKey": "เสร็จ",
+                "icon": "",
+                "state": "enable",
+                "action": "submit"
+            }
+        ],
+        "expire": [
+            {
+                "textKey": "หมดอายุ",
+                "icon": "",
+                "state": "disable",
+                "action": ""
+            }
+        ],
+        "fail": [
+            {
+                "textKey": "การทำรายการล้มเหลว",
+                "icon": "",
+                "state": "disable",
+                "action": ""
+            }
+        ],
+        "cancel": [
+            {
+                "textKey": "ปฏิเสธรายการ",
+                "icon": "",
+                "state": "disable",
+                "action": ""
+            }
+        ]
+    },
+    "minAppVersion": "5.0.0"
+}

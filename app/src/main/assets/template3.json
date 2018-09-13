@@ -1,0 +1,307 @@
+{
+  "templateID": "cardspending",
+  "templateVersion": 1232456789,
+  "templateBody": {
+    "templateType": "normal",
+    "templateLines": [
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "title",
+            "parameter": {
+              "icon": "$[authorIcon]",
+              "title": "$[author]",
+              "timeStamp": "$[createDate]"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.title]",
+              "fontName": "",
+              "fontStyle": "bold",
+              "fontSize": "large",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.branchTitle]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.branch]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.date]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.time]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.cardNoTitle]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.cardNo]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.approveNoTitle]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.approveNo]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "normal",
+        "columns": [
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.sumTitle]",
+              "fontName": "",
+              "fontStyle": "bold",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType": "text",
+            "parameter": {
+              "icon": "",
+              "text": "$[body.sum]",
+              "fontName": "",
+              "fontStyle": "bold",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "width": 100,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "emptyLine",
+        "columns": []
+      },
+      {
+        "lineType": "drawLine",
+        "columns": []
+      }
+    ]
+  },
+  "templateBtn" : {
+    "labelSet" : "$[labelSetKey]",
+    "new" : [
+      {
+        "textKey" : "#[label/reject]",
+        "icon" : "#[resource/ic_cancel_footer]",
+        "state" : "disable",
+        "action" : "cancel"
+      },
+      {
+        "textKey" : "#[label/new]",
+        "icon" : "#[resource/ic_next_footer_green]",
+        "state" : "disable",
+        "action" : "submit"
+      }
+    ],
+    "complete" : [
+      {
+        "textKey" : "#[label/complete]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "expire" : [
+      {
+        "textKey" : "#[label/expire]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "fail" : [
+      {
+        "textKey" : "#[label/fail]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "cancel" : [
+      {
+        "textKey" : "#[label/cancel]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ]
+  }
+}
+

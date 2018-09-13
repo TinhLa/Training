@@ -1,0 +1,41 @@
+{
+  "id": "string",
+  "createDate": "20180305100000000",
+  "labelSetKey": "Steven La",
+  "state": "new",
+  "images": [
+    "https://pm1.narvii.com/6806/baa53c8ef310f6e6f5c31f3b1a79993fce8df6f8v2_128.jpg",
+    "https://i.ebayimg.com/thumbs/images/g/MjQAAOSwKOJa9Xo-/s-l96.jpg",
+    "https://i0.wp.com/cdnh.c3dt.com/icon/3904738-com.hutiypaa.infinwall.png"
+  ],
+  "author": "Taratorn Rakthai",
+  "authorIcon": "https://image-server/authorIcon.jpg",
+  "topic": "เรียกเก็บเงินจากธราทร",
+  "body": {
+    "transferTo": "โอนให้",
+    "customerName": "นายธราธร เรืองเวชภักดี",
+    "amount": "1,500,000.00",
+    "unit": "บาท",
+    "qrcode": "Avenger Infinity War : Paragon Cineplex : Pavalai : D14",
+    "message1": "Hello",
+    "message2": "4 messages",
+    "message3": "in one column",
+    "image": "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+    "images": ["https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+      "https://wisont.files.wordpress.com/2016/09/pbm-kbtg-11fl-41.jpg"]
+  },
+  "campaignCode": "string",
+  "hashtag": "string",
+  "trackingID": "string",
+  "contentCategory": "string",
+  "command": "reqeusttopay",
+  "parameter": {
+    "billID": "abc"
+  },
+  "actionExpireDate": "20180322180951854",
+  "landingTemplateID": "reqeusttopay",
+  "imodeFlag": true,
+  "idingFlag": true,
+  "landingFlag": true,
+  "iotherType": 0
+}

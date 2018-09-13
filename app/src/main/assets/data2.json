@@ -1,0 +1,31 @@
+{
+  "id": "string",
+  "createDate": "20180305100000000",
+  "state": "new",
+  "images": [
+    "https://image-server/bgimage.jpg"
+  ],
+  "author": "Taratorn Rakthai",
+  "authorIcon": "https://lh6.googleusercontent.com/-qqXUfdlAcAc/AAAAAAAAAAI/AAAAAAAABDs/waKSypGI16w/photo.jpg",
+  "topic": "เรียกเก็บเงินจากธราทร",
+  "body": {
+    "label": "แนะนำสมัครพร้อมเพย์",
+    "customerName": "คุณธราธร เรืองเวชภักดี",
+    "image": "https://www.mangozero.com/wp-content/uploads/2018/03/kbank-non-fee-promotion-web-cover-800x420.jpg",
+    "description": "เพิ่มโอกาสในการขาย ผู้ซื้อโอนเงินฟรีค่าธรรมเนียม ทุกรายการ ทุกวงเงิน เมื่อโอนเงินพร้อมเพย์ ตั้งแต่วันนี้ - 31 มี.ค. 61 เพียงกดปุ่ม “ลงทะเบียนทันที!”"
+  },
+  "campaignCode": "string",
+  "hashtag": "string",
+  "trackingID": "string",
+  "contentCategory": "string",
+  "command": "reqeusttopay",
+  "parameter": {
+    "billID": "abc"
+  },
+  "actionExpireDate": "20180322180951854",
+  "landingTemplateID": "reqeusttopay",
+  "imodeFlag": true,
+  "idingFlag": true,
+  "landingFlag": true,
+  "iotherType": 0
+}

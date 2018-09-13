@@ -1,0 +1,35 @@
+{
+  "id": "string",
+  "createDate": "20180305100000000",
+  "state": "new",
+  "author": "Taratorn Rakthai",
+  "authorIcon": "https://lh6.googleusercontent.com/-qqXUfdlAcAc/AAAAAAAAAAI/AAAAAAAABDs/waKSypGI16w/photo.jpg",
+  "topic": "เรียกเก็บเงินจากธราทร",
+  "body": {
+    "transferTo": "โอนให้ : ",
+    "customerName": "นายธราธร เรืองเวชภักดี",
+    "accountNoTitle": "เลขบัญชี : ",
+    "accountNo": "xxx-x-xxxxx-x",
+    "remarkTitle": "ข้อความแนบ : ",
+    "remark": "จ่ายค่าหมูกระทะ",
+    "amountTitle": "จำนวนเงิน",
+    "amount": "1,500,000.00  ",
+    "unit": "บาท",
+    "transferDate": "โอนภายในวันที่ 17 ก.พ. 61",
+    "transferFee": "*ค่าธรรมเนียมเป็นไปตามเงื่อนไขที่ธนาคารกำหนด"
+  },
+  "campaignCode": "string",
+  "hashtag": "string",
+  "trackingID": "string",
+  "contentCategory": "string",
+  "command": "reqeusttopay",
+  "parameter": {
+    "billID": "abc"
+  },
+  "actionExpireDate": "20180322180951854",
+  "landingTemplateID": "reqeusttopay",
+  "imodeFlag": true,
+  "idingFlag": true,
+  "landingFlag": true,
+  "iotherType": 0
+}
