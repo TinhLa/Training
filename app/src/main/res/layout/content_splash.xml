@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,4 +9,29 @@
     tools:context=".splashscreen.SplashActivity"
     tools:showIn="@layout/activity_splash">
 
-</android.support.constraint.ConstraintLayout>
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        android:id="@+id/sliding_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        app:umanoFadeColor="@android:color/transparent"
+        app:umanoPanelHeight="128dp"
+        app:umanoShadowHeight="4dp">
+
+        <include
+            android:id="@+id/layout_main"
+            layout="@layout/layout_main_content_in_layout_sliding_up_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+
+        <include
+            android:id="@+id/layout_panel"
+            layout="@layout/layout_panel_in_layout_sliding_up_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top" />
+
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+</RelativeLayout>
