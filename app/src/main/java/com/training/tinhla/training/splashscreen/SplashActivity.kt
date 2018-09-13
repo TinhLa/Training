@@ -10,16 +10,16 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.ScrollView
+import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import com.training.tinhla.training.R
 import com.training.tinhla.training.basemodel.BaseActivity
+import kotlinx.android.synthetic.main.content_splash.*
+import kotlinx.android.synthetic.main.layout_panel_in_layout_sliding_up_panel.*
 import javax.inject.Inject
 
 class SplashActivity : BaseActivity(), SplashInterface.View {
     @Inject
     lateinit var presenter: SplashInterface.Presenter
-
-    lateinit var svParent: ScrollView
-    lateinit var svChild : NestedScrollView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,125 +28,75 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
         setSupportActionBar(toolbar)
 
-        svParent = findViewById(R.id.sv_parent)
-        svChild = findViewById(R.id.sv_child)
-
-        var childLocs = intArrayOf(0,0)
-        var oldY = -1f
-
-        var pRects = Rect()
-
-
-        svParent.viewTreeObserver.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
-            // determine location
-            svChild.getLocationInWindow(childLocs)
-
-            if(childLocs[1] <= 100){
-                svParent.isEnabled = false
-                svParent.scrollTo(0,500)
-            }
-        })
-
-        var oldY_parent = -1f
-
-        svParent.setOnTouchListener(object : View.OnTouchListener{
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-
-                if (svChild.scrollY > 0) {
-                    svParent.requestDisallowInterceptTouchEvent(true)
-                    return true
-                }
-
-                svParent.getLocalVisibleRect(pRects)
-
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> oldY_parent = event?.y
-
-                    MotionEvent.ACTION_MOVE -> {
-                        if (!oldY_parent.equals(-1f)) {
-
-                            if (pRects.top >= 500) {
-                                var deltaY = event!!.y.minus(oldY_parent)
-
-                                //scroll down
-                                if (deltaY.compareTo(0f).equals(1)) {
-
-                                    if (svChild.scrollY == 0) {
-                                        svParent.requestDisallowInterceptTouchEvent(false)
-                                        return false
-                                    }
-                                }
-
-                                svParent.requestDisallowInterceptTouchEvent(true)
-                                return true
-                            }
-                        }
-                        oldY_parent = event?.y
-                    }
-
-                    MotionEvent.ACTION_UP -> oldY_parent = -1f
-                }
-
-                svParent.requestDisallowInterceptTouchEvent(false)
-
-                return false
-            }
-        })
-
-        svChild.setOnTouchListener(object: View.OnTouchListener{
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-//                svChild.parent.requestDisallowInterceptTouchEvent(true)
-
-                svParent.getLocalVisibleRect(pRects)
-                if (pRects.top >= 500) {
-
-
-                    when (event?.action) {
-                        MotionEvent.ACTION_DOWN -> oldY = event?.y
-
-                        MotionEvent.ACTION_MOVE -> {
-                            if (!oldY.equals(-1f)) {
-
-                                var deltaY = event!!.y.minus(oldY)
-
-                                //scroll up
-                                if (deltaY.compareTo(0f).equals(1)) {
-
-                                    if (svChild.scrollY == 0) {
-                                        svParent.requestDisallowInterceptTouchEvent(false)
-                                        return true
-                                    }
-                                }
-
-                                svChild.parent.requestDisallowInterceptTouchEvent(true)
-                                return false
-                            }
-                        }
-
-                        MotionEvent.ACTION_UP -> oldY = -1f
-                    }
-                }
-
-                return false
-            }
-        })
+        setupSlidingUpPanelLayout()
     }
 
-    override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
+    private fun setupSlidingUpPanelLayout() {
 
-        Log.d("LOG", "height of action bar: " + supportActionBar?.height)
+        var oldY = -1f
+        var isScrollingUp = false
 
-        val gvMain = findViewById<View>(R.id.main_gv)
-        svChild.layoutParams.height = gvMain.height
+        // set anchor for panel when it slide up
+        sliding_layout.anchorPoint = 0.8f
 
-        var locs = intArrayOf(0,0)
-        svParent.getLocationOnScreen(locs)
-        Log.d("LOG", "locs: " + locs[1])
+        if(sliding_layout.panelState == SlidingUpPanelLayout.PanelState.COLLAPSED)
+            sv_main.setOnTouchListener(View.OnTouchListener { v, event -> true })
 
+        sv_main.viewTreeObserver.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
+            // ScrollView is scrolling up and touch the top
+            if (sv_main.scrollY == 0 && isScrollingUp) {
+                // slide down the Panel
+                sliding_layout.isTouchEnabled = true
+                sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
+            }
+        })
 
-        svParent.getLocationInWindow(locs)
-        Log.d("LOG", "locs: " + locs[1])
+        sliding_layout.addPanelSlideListener(object: SlidingUpPanelLayout.PanelSlideListener{
+            override fun onPanelSlide(panel: View?, slideOffset: Float) {
+                sv_main.setOnTouchListener(View.OnTouchListener { v, event -> false })
+            }
+
+            override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
+
+                // scroll a little when panel is sliding up
+                if (previousState == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
+                    sv_main.smoothScrollTo(0, 30)
+                }
+                // when panel expand
+                else if (previousState == SlidingUpPanelLayout.PanelState.DRAGGING
+                        && (newState == SlidingUpPanelLayout.PanelState.EXPANDED || newState == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+                    // disable slidable of Sliding Up Panel Layout
+                    sliding_layout.isTouchEnabled = false
+
+                    // set listener for ScrollView
+                    // to check if it is scrolling up
+                    sv_main.setOnTouchListener(object: View.OnTouchListener{
+                        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                            when (event?.action) {
+                                MotionEvent.ACTION_DOWN -> oldY = event!!.y
+
+                                MotionEvent.ACTION_MOVE -> {
+                                    var deltaY = event!!.y.minus((oldY))
+
+                                    // it is scrolling up
+                                    if (deltaY.compareTo(0f).equals(1)) {
+                                        isScrollingUp = true
+                                    }else{
+                                        isScrollingUp = false
+                                    }
+                                }
+                            }
+
+                            return false
+                        }
+                    })
+                }
+                // disable ScrollView if Panel start sliding down
+                else if (previousState == SlidingUpPanelLayout.PanelState.ANCHORED && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
+                    sv_main.setOnTouchListener(View.OnTouchListener { v, event -> true })
+                }
+            }
+        })
     }
 
     override fun getAppContext(): Context {
