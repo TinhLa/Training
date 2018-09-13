@@ -1,0 +1,43 @@
+{
+  "header": {
+    "status": "S",
+    "responseCode": "200",
+    "responseDesc": "Success",
+    "mobileNo": "0641825715",
+    "requestedUniqueId": "41220180510102359001",
+    "requestedDateTime": "20180510102359",
+    "responseId": "FC37AB7BB02B576A06205371B121C37FCF0189B419436AB3A4E716324E4F2C89",
+    "responseDateTime": "20180714151247",
+    "inboxSessionId": "vyHDXG32038809009677d2f5240e5660fdad9ccygdKc",
+    "errors": [],
+    "corrId": "2cda061c100d4b968662a4f2ff1d63d0"
+  },
+  "data": {
+    "labelSet": "pay",
+    "labelVersion": 1232456789,
+    "new": {
+      "th": "จ่าย",
+      "en": "Pay"
+    },
+    "complete": {
+      "th": "สำเร็จ",
+      "en": "Complete"
+    },
+    "expire": {
+      "th": "หมดอายุ",
+      "en": "Expire"
+    },
+    "fail": {
+      "th": "ล้มเหลว",
+      "en": "Fail"
+    },
+    "cancel": {
+      "th": "รายการยกเลิก",
+      "en": "Cancel"
+    },
+    "reject": {
+      "th": "ปฏิเสธ",
+      "en": "Reject"
+    }
+  }
+}

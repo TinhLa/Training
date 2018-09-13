@@ -1,0 +1,46 @@
+{
+  "header": {
+    "status": "S",
+    "responseCode": 200,
+    "responseDesc": "string",
+    "mobileNo": "string",
+    "requestedUniqueId": "string",
+    "requestedDateTime": "2018-05-22T18:09:51.854Z",
+    "responseId": "string",
+    "responseDateTime": "2018-05-22T18:09:51.854Z",
+    "inboxSessionId": "string",
+    "errors": [
+      {
+        "errorCode": "string",
+        "errorDesc": "string"
+      }
+    ],
+    "corrId": "string"
+  },
+  "data": {
+    "id": "5b1e550cc7c9c7380572d347",
+    "createDate": "20180611105512673",
+    "state": "new",
+    "images": [
+      "https://lh3.googleusercontent.com/jsXSRlBTH4DSGXMsSMPMvshR5OgCCjev2Cu9IFEiZflGUKyWmGlMJC_iWnK5KVcLsm08zt26KSTWWe6dh5YIDLAeFYAgD3za-194kwTBfJI3EZ8DhQszZIU9WgHqMm7dsvui3VTzVMaXmS4OHIqK0LGZeonySTl3TTWXCk_rpIO2x8Y7_Mb9oWaVA0c5bbIgr7RHjFjFUSPbG-6749rOI-f5vaLZR6-FS9KjasJRUja881FzHGWCez5WOh4ZMWYgtSVQ1guuKd4EVfG65pNiBjEaS1pqoG4LoQxtnK8XRSqSH2lfHrZzn4gCgKNyr49FLNoS6_csyQEGl_AUHJ3UE60RUorVD0RPNEeYu635ZExSQ2gXBtqIA9RCD9ZFRg1vHMxMMlWtHCsttoMhxWD43y1PBFJ-mnefc3UPfY7KUx3FpKUUp3uwtp6ZLaLcv8qRKlndTGMTVlpWcYEaW_QPgV-wtf_bb7s_JKcBUUfk4tq0M0mCzYF4969Kl-ggQymIgFuN5NaJZE6USawEY9TdmUkGHQ9fgzhybglY1IYJaAmpmmBQDeKt67JOkuyJMgGL9w1Gzu9LOhmhX3jMuI4r_UFE8CPCYAMPUBkF7uiCobo8cnvddckPvd4AVnrnccsDuRIYVdkZDeso52yMj7Ce23xvWmFGUFbl=w666-h497-no"
+    ],
+    "author": "ธนาคารกสิกร",
+    "authorIcon": "https://lh3.googleusercontent.com/kzohFKIP-Zv7aYW7YHy_LAQnD4jrjWt4PIJWRWJgkWac37Pwn2LrEv6e272eBUvo140cvIm4rhDq54IdDgVg5Au3mwsi4jIx_HQ2LsyI8ejWuDcS66fMso6P0K7DBBxuPlMY1F32GMHZ1SuXV445EXQUv76ODfmidk8upaQsYK6Mmbky9bfOmcoqVIp6rTDzNc_F6l4qJ77QZORPNtcAPeGN1eF-uKcTqcnV8mwe5Okw8p3IrF_sUV-WBLeE9StcFArJEVmgGvMXTag3aUVmLlPxZp--qdlCpP1cnB4X6VW25gV4ho1Jzug6dmlhKetKDFHRakkUwZ51_x4KkytJloLHWniZ0rywN4xInhUxJWWdXDwpKjrWhCgPVcgDEOf0Of9LVRwExE39oY3D1R5mF6-cVaUNNf8imk-JYtgX3SnjjzccIamKYXrd02yONfZokZ1Hfh3SOgK2DszPp-OlrJzqGwRmlffXudSGuJeq4QNCk10orQfGdKAOmSyV-JYp4Bp9L0QGnVcecwromlEM8Ykfmhw4Tv7YNelORz1HBVZLd3idJD8kL_i81LZU-H67MfTquZZQfa5E4PBZQBtJ9s9p4szjCCO57f4S6cV3li5-6g24BsA6lnvYyf5TxLyxZqEcEwYEsgR1eeQ7Zc1r2wLbf39Y12Zj=s112-no",
+    "topic": "สุขสันต์วันเกิด นาย เทส",
+    "body": {
+      "text": "สุขสันต์วันเกิด นาย เทส"
+    },
+    "campaignCode": "TEST01",
+    "hashtag": "#birthday",
+    "trackingID": "0000000000281084",
+    "contentCategory": "Conditional Trigger",
+    "command": "content",
+    "parameter": {},
+    "actionExpireDate": "20180612120000000",
+    "landingTemplateID": "Birthday",
+    "imodeFlag": true,
+    "idingFlag": false,
+    "landingFlag": true,
+    "iotherType": 0
+  }
+}

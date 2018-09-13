@@ -1,0 +1,63 @@
+{
+  "header": {
+    "status": "S",
+    "responseCode": "200",
+    "responseDesc": "Success",
+    "mobileNo": "0641825715",
+    "requestedUniqueId": "41220180510102359001",
+    "requestedDateTime": "20180510102359",
+    "responseId": "FC37AB7BB02B576A06205371B121C37FCF0189B419436AB3A4E716324E4F2C89",
+    "responseDateTime": "20180714151247",
+    "inboxSessionId": "vyHDXG32038809009677d2f5240e5660fdad9ccygdKc",
+    "errors": [],
+    "corrId": "2cda061c100d4b968662a4f2ff1d63d0"
+  },
+  "data": {
+    "id": "string",
+    "createDate": "20180305100000000",
+    "state": "new",
+    "images": [
+      "https://pm1.narvii.com/6806/baa53c8ef310f6e6f5c31f3b1a79993fce8df6f8v2_128.jpg"
+    ],
+    "author": "Taratorn Rakthai",
+    "authorIcon": "https://lh6.googleusercontent.com/-qqXUfdlAcAc/AAAAAAAAAAI/AAAAAAAABDs/waKSypGI16w/photo.jpg",
+    "topic": "เรียกเก็บเงินจากธราทร",
+    "body": {
+      "transferTo": "โอนให้",
+      "customerName": "นายธราธร เรืองเวชภักดี",
+      "amount": "1,500,000.00",
+      "unit": "บาท",
+      "qrcode": "Avenger Infinity War : Paragon Cineplex : Pavalai : D14",
+      "image": "http://cdn3-www.superherohype.com/assets/uploads/2017/10/avengers-3-infinity-war-banner-story-spoliers-clues-1022009-1-609x450.jpg",
+      "images": [
+        "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+        "https://wisont.files.wordpress.com/2016/09/pbm-kbtg-11fl-41.jpg",
+        "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+        "https://wisont.files.wordpress.com/2016/09/pbm-kbtg-11fl-41.jpg"
+      ],
+      "images2": [
+        "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+        "https://wisont.files.wordpress.com/2016/09/pbm-kbtg-11fl-41.jpg",
+        "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg"
+      ],
+      "images3": [
+        "https://brandbuffet.in.th/wp-content/uploads/2016/04/kbtg-fintech-kbank-1.jpg",
+        "https://wisont.files.wordpress.com/2016/09/pbm-kbtg-11fl-41.jpg"
+      ]
+    },
+    "campaignCode": "string",
+    "hashtag": "string",
+    "trackingID": "string",
+    "contentCategory": "string",
+    "command": "reqeusttopay",
+    "parameter": {
+      "billID": "abc"
+    },
+    "actionExpireDate": "20180322180951854",
+    "landingTemplateID": "reqeusttopay",
+    "imodeFlag": true,
+    "idingFlag": true,
+    "landingFlag": true,
+    "iotherType": 0
+  }
+}
