@@ -1,0 +1,30 @@
+{
+  "id": "string",
+  "createDate": "20180305100000000",
+  "state": "new",
+  "author": "K PLUS RECOMMEND",
+  "authorIcon": "https://lh6.googleusercontent.com/-qqXUfdlAcAc/AAAAAAAAAAI/AAAAAAAABDs/waKSypGI16w/photo.jpg",
+  "topic": "รับส่วนลด 25 บาท ที่บีทีเอส\nทุกวันเสาร์ และอาทิตย์",
+  "images": [
+    "https://thumbs.dreamstime.com/b/bts-train-bangkok-thailand-people-wait-phayathai-station-january-service-carried-average-more-passengers-36532764.jpg"
+  ],
+  "body": {
+    "detail": "รับส่วนลด 25 บาท ที่บีทีเอส ทุกวันเสาร์ และอาทิตย์ เมืื่อซื้อ / เติมเงิน / เติมเที่ยวเดินทาง เพื่อโดยสาร รถไฟฟ้า บีทีเอส ตั้งแต่ 300 บาทขึ้นไป",
+    "conditionTitle": "เงื่อนไขการใช้สิทธิ์",
+    "condition": "จำกัด 20,000 สิทธิ์/เดือน และสงวนสิทธิ์ ไลน์ 20 1 หมายเลข/สิทธิ์/เดือน ไม่สามารถใช้ร่วมกับโปรโมชั่นอื่นๆได้ กรุณาแสดงสิทธิ์ก่อนการใช้บริการ โดยกดรับสิทธิ์และแสดง ข้อความในโทรศัพท์ต่อหน้าพนักงาน ณ ห้องจำหน่ายตั๋ว ขอสงวนสิทธิ์ในการรับสิทธิ์จากการถ่ายภาพหน้าจอโทรศัพท์ หรือการทุจริตใดใด"
+  },
+  "campaignCode": "string",
+  "hashtag": "string",
+  "trackingID": "string",
+  "contentCategory": "string",
+  "command": "reqeusttopay",
+  "parameter": {
+    "billID": "abc"
+  },
+  "actionExpireDate": "20180322180951854",
+  "landingTemplateID": "reqeusttopay",
+  "imodeFlag": true,
+  "idingFlag": true,
+  "landingFlag": true,
+  "iotherType": 0
+}

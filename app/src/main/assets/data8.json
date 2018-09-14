@@ -1,0 +1,48 @@
+{
+  "header": {
+    "status": "S",
+    "responseCode": 200,
+    "responseDesc": "string",
+    "mobileNo": "string",
+    "requestedUniqueId": "string",
+    "requestedDateTime": "2018-05-22T18:09:51.854Z",
+    "responseId": "string",
+    "responseDateTime": "2018-05-22T18:09:51.854Z",
+    "inboxSessionId": "string",
+    "errors": [
+      {
+        "errorCode": "string",
+        "errorDesc": "string"
+      }
+    ],
+    "corrId": "string"
+  },
+  "data": {
+    "id": "5b1e6296c7c9c764bc7c91ce",
+    "createDate": "20180611115254885",
+    "state": "new",
+    "images" : [ 
+        "https://lh3.googleusercontent.com/JUD2DkH_gOFc51XrAJMXJaV9tVOGb0VmnAc7Cc7ghWnsj1QXZvGSjb5we29Mu41TzT31uGjNSTaIE3e8HLMyKs8u_sUrl_waNwTTF4LlB5Iwt6MtCrT3wIEylYWZ6xdX5-DDpFHHVWlk_spnCMchpJ617w-xKMtMGgHjYIQ_6ZKb4ZhOMJfujJ4fiHIDjSyz1s4QAzwiod3pPZ3qJS2H4FYFxa47ryqt3Y1S8VShuBwA_NIGj7psyGAMr38t5a-hRESLCJS2Ou57sPd_KqpC-RK6VT7BGZFex6tCCab00XdNi_mr4M7GDyN21C4u2cQ_gEjCmPLKSDEvz0ZVYlK4YtuRDeLmRShb077kECrWq8bTpnaqPsmxWf4d3Bp-2ERbO_UY5fwS6DydnbVLPnd9Ydp3bEU3zgng0WocjCYVaVGjO7oYXzbhFda7uGc9QAmYnAzEKM0U0guVU_-0XuZVrJ8gm-UDOee7xG97mEFI2-XOKbxQJomudRTLCjlvUTMBkgSWaFSEaXNBn4rUx9-dXTgJDvDoMG53HPrAhtlxnCV9XuN1ef3WusWimqpe2eCn_Wttb9CLMW_TnyJOVZwwX21oigp0vgyqCwyO46efqvvwIqVqDi1b97qm46JUf45pfG03JIzAGpEma-3gNrv6OyQKLFpTMuPb=w666-h497-no"
+    ],
+    "author" : "Kasikorn Bank",
+    "authorIcon" : "https://lh3.googleusercontent.com/0-IIszw5MtIeIEDnNXQcR1QBAVhvORLu8xPEv0gKS0dZaILAkDQ5TyYeqMBaiSvnE0If9YFbWE5ZgR3rbFR_2m_DyGuRTdm0R0Q3HwYbhETcVnyYUyZ3spyqrhJtJJsyv9DWV4I4Oh7WKDNIQRty9xjEGCPCzqFmy9-RBD14XH_KvMtwvB9wPf7H3A7bqmAnYGK5lwxRc1CYA6YR1f2jlaHi1rR-0KZY_6n5-OzsmNT2UJytvOCpzB1BUW5wC1xWFmpC15TSOV0vtHKqsiwGTEcQZp-0YO_8LyxGPTi4aAA4IdcBYaU0wBmI4eB5j9PNxrIb8kYbCeT0w9IVXyuJmscqWrqQC0JZ2tm0uPSqVUEuurGdb-rLccWmm8Rdf4ueXlANxUCOMcYi4QFzdkJO_kkl6GFUd1QG3PN7rC534DEuadFnm-i0DeKEseBTIYYtwthsT-lGdGAIXV8ytG4TbXFqzeagQ0CWGXMNOhGKIwUWsQpofWk_qAW4emwjmBnsnd8Mtf4Em4ssz3ftGf0tM-toDWfoZPZCMnlRwJAleIRUAypoSkYQH_g19qM-7CIkDkcNCx4Ogu0rDwJnw9H8SidhgpLHxa169WzLDnNEOSOQ1XgR3rdGqAXB-DZn7KRiNIIx2zdmvqtMOa7UU6ye67yn6sZsfFxp=s112-no",
+    "topic" : "[EN] เปิดบัญชีกองทุน LTF/RMF via K PLUS",
+    "body" : {
+        "text" : "[ENGLISH]​​​​​​ เพียงมี K PLUS ก็สามารถเปิดบัญชีกองทุน พร้อมลงทุนใน LTF หรือ RMF บนมือถือได้เลย​​​​​​\n\n\n​สำหรับลูกค้าใหม่ที่ยังไม่เคยเปิดบัญชีกองทุนรวมกับธนาคารมาก่อน \n​​1. หลังจากเข้าระบบ ให้เลือกเมนู \\“กองทุนรวม\\” อ่านข้อตกลงและเลือก \\“ยอมรับ\\” เพื่อดำเนินการต่อ\n​(เฉพาะลูกค้าที่ยังไม่ได้ Verify e-mail จะพบขั้นตอน Verify e-mail)\n\n2. กรอกข้อมูลผู้ขอเปิดบัญชีกองทุนข้อมูลการลงทุน ของผู้ขอเปิดบัญชีกองทุน ให้ครบถ้วน และเลือกบัญชี เพื่อรับเงินค่าขายคืน และเงินปันผล \n(บัญชีกองทุนที่เปิดผ่าน K PLUS จะเป็นบัญชีภายใต้สาขาเดียวกับ บัญชีออมทรัพย์ที่ลูกค้าเลือกเพื่อรับเงินค่าขายคืน และเงินปันผล) \n\n3. ลงทะเบียนสำเร็จ พร้อมทำรายการซื้อกองทุน\n\n​ตรวจสอบข้อมูลหลังลงทะเบียนสำเร็จ\n\"เลขที่บัญชีกองทุนบัญชีเงินฝากรับเงินค่าขายคืน/เงินปันผล ที่เลือก\"\n\nแจ้งบริการเสริมที่จะได้รับ (ไม่มีค่าใช้จ่าย)\n\"SMS Fund Alert และหมายเลขโทรศัพท์รับ SMS ที่ผูกกับ K PLUS ​K-Mutual Fund Reports ส่งไปยังอีเมล์ที่ลูกค้าสมัครไว้บนบริการ K PLUS\"\n\nหมายเหตุ\nผู้ลงทุนโปรดทำความเข้าใจลักษณะสินค้า เงื่อนไขผลตอบแทน ความเสี่ยง และศึกษาข้อมูลภาษีในคู่มือการลงทุนก่อนตัดสินใจลงทุน\nขอรับหนังสือชี้ชวนและสอบถามรายละเอียดเพิ่มเติม ได้ที่ www.kasikornasset.com​"
+    },
+    "campaignCode": "TEST09",
+    "hashtag" : "#investment#openaccount",
+    "trackingID": "0000000000055944",
+    "contentCategory": "Investment",
+    "command": "fundOpenAccount",
+    "parameter" : {
+        "fundName" : "LTF"
+    },
+    "actionExpireDate": "20180612120000000",
+    "landingTemplateID" : "Investment",
+    "imodeFlag" : true,
+    "idingFlag" : false,
+    "landingFlag" : true,
+    "iotherType" : 2
+  }
+}

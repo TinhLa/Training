@@ -1,0 +1,281 @@
+{
+  "templateID" : "requesttopay",
+  "templateVersion" : 1232456789,
+  "templateBody" : {
+    "templateType": "iframe",
+    "iframeProperty": {
+      "images" : ["$[images]"],
+      "templateLines" : [
+        {
+          "lineType": "normal",
+          "columns":[
+            {
+              "contentType" : "image",
+              "parameter" : {
+                "url" : "#[resource/gear]"
+              },
+              "percentWidth": 100,
+              "height": 0,
+              "alignment": "left",
+              "verticalAlignment": "center"
+            }
+          ]
+        },
+        {
+          "lineType": "normal",
+          "columns":[
+            {
+              "contentType" : "text",
+              "parameter" : {
+                "text":"REQUEST",
+                "fontName": "",
+                "fontStyle": "bold",
+                "fontSize": "verylarge",
+                "fontColor": "#FFFFFF"
+              },
+              "percentWidth": 100,
+              "height": 0,
+              "alignment": "left",
+              "verticalAlignment": "center"
+            }
+          ]
+        },
+        {
+          "lineType": "normal",
+          "columns":[
+            {
+              "contentType" : "text",
+              "parameter" : {
+                "text":"TO PAY",
+                "fontName": "",
+                "fontStyle": "normal",
+                "fontSize": "verylarge",
+                "fontColor": "#FFFFFF"
+              },
+              "percentWidth": 100,
+              "height": 0,
+              "alignment": "left",
+              "verticalAlignment": "center"
+            }
+          ]
+        }
+      ]
+    },
+    "templateLines" : [
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "text",
+            "parameter" : {
+              "text":"$[topic] $[author] $[command] $[state]",
+              "fontName": "",
+              "fontStyle": "bold",
+              "fontSize": "large",
+              "fontColor": "#000000"
+            },
+            "percentWidth": 100,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "title",
+            "parameter" : {
+              "icon" : "$[authorIcon]",
+              "title" : "$[author]",
+              "timeStamp" : "$[createDate]"
+            },
+            "percentWidth": 100,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "text",
+            "parameter" : {
+              "text":"$[body.transferTo]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#333333"
+            },
+            "percentWidth": 0,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType" : "text",
+            "parameter" : {
+              "text":"$[body.customerName]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "percentWidth": 100,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "text",
+            "parameter" : {
+              "text":"$[body.amount]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "large",
+              "fontColor": "#000000"
+            },
+            "percentWidth": 70,
+            "height": 0,
+            "alignment": "left",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType" : "text",
+            "parameter" : {
+              "text":"$[body.unit]",
+              "fontName": "",
+              "fontStyle": "normal",
+              "fontSize": "medium",
+              "fontColor": "#000000"
+            },
+            "percentWidth": 30,
+            "height": 0,
+            "alignment": "right",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "emptyLine",
+        "columns":[]
+      },
+      {
+        "lineType": "drawLine",
+        "columns":[]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "qrcode",
+            "parameter" : {
+              "text" : "$[body.qrcode]"
+            },
+            "percentWidth": 50,
+            "height": 100,
+            "alignment": "center",
+            "verticalAlignment": "center"
+          },
+          {
+            "contentType" : "image",
+            "parameter" : {
+              "url" : "$[body.image]"
+            },
+            "percentWidth": 50,
+            "height": 100,
+            "alignment": "center",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "image",
+            "parameter" : {
+              "url" : "#[resource/gear]"
+            },
+            "percentWidth": 50,
+            "height": 100,
+            "alignment": "center",
+            "verticalAlignment": "center"
+          }
+        ]
+      },
+      {
+        "lineType": "normal",
+        "columns":[
+          {
+            "contentType" : "imagelist",
+            "parameter" : {
+              "images" : ["$[body.images]"]
+            },
+            "percentWidth": 100,
+            "height": 100,
+            "alignment": "center",
+            "verticalAlignment": "center"
+          }
+        ]
+      }
+    ]
+  },
+  "templateBtn" : {
+    "labelSet" : "$[labelSetKey]",
+    "new" : [
+      {
+        "textKey" : "#[label/reject]",
+        "icon" : "#[resource/ic_cancel_footer]",
+        "state" : "enable",
+        "action" : "cancel"
+      },
+      {
+        "textKey" : "#[label/new]",
+        "icon" : "#[resource/ic_next_footer_green]",
+        "state" : "enable",
+        "action" : "submit"
+      }
+    ],
+    "complete" : [
+      {
+        "textKey" : "#[label/complete]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "expire" : [
+      {
+        "textKey" : "#[label/expire]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "fail" : [
+      {
+        "textKey" : "#[label/fail]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ],
+    "cancel" : [
+      {
+        "textKey" : "#[label/cancel]",
+        "icon" : "",
+        "state" : "disable",
+        "action" : ""
+      }
+    ]
+  }
+}

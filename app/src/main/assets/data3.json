@@ -1,0 +1,34 @@
+{
+  "id": "string",
+  "createDate": "20180305100000000",
+  "state": "new",
+  "author": "CARD SPENDING",
+  "authorIcon": "https://www.kasikornbank.com/SiteCollectionDocuments/about/img/logo/logo.png",
+  "body": {
+    "title": "รายการอนุมัติ",
+    "branchTitle": "จ่ายที่ :",
+    "branch": "USA Sastura Bangkok TH",
+    "date": "วันที่ : 05 มี.ค. 61",
+    "time": "08.56 น.",
+    "cardNoTitle": "เลขที่บัตร",
+    "cardNo": "xxxx-xxxx-xxxx-8888",
+    "approveNoTitle": "รหัสอนุมัติ :",
+    "approveNo": "570870",
+    "sumTitle": "รวม",
+    "sum": "30 บาท"
+  },
+  "campaignCode": "string",
+  "hashtag": "string",
+  "trackingID": "string",
+  "contentCategory": "string",
+  "command": "reqeusttopay",
+  "parameter": {
+    "billID": "abc"
+  },
+  "actionExpireDate": "20180322180951854",
+  "landingTemplateID": "reqeusttopay",
+  "imodeFlag": true,
+  "idingFlag": true,
+  "landingFlag": true,
+  "iotherType": 0
+}
