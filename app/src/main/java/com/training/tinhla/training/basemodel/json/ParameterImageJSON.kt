@@ -1,4 +1,5 @@
 package com.training.tinhla.training.basemodel.json
 
-interface ITypeParameter {
+class ParameterImageJSON {
+    var url:String ?= null
 }

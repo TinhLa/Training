@@ -9,13 +9,19 @@
     tools:context=".splashscreen.SplashActivity"
     tools:showIn="@layout/activity_splash">
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <com.sothree.slidinguppanel.SlidingUpPanelLayout
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
-        app:umanoFadeColor="@android:color/transparent"
-        app:umanoPanelHeight="128dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:umanoPanelHeight="320dp"
         app:umanoShadowHeight="4dp">
 
         <include
@@ -30,7 +36,7 @@
             layout="@layout/layout_panel_in_layout_sliding_up_panel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|top" />
+            android:gravity="center|bottom" />
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 

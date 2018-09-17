@@ -1,4 +1,6 @@
 package com.training.tinhla.training.basemodel.json
 
-class ColumnsJSON {
+class TemplateLineJSON {
+    var lineType:String ?= null
+    var columns:ArrayList<ColumnJSON> ?= null
 }

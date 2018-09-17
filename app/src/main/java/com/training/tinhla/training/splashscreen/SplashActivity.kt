@@ -13,6 +13,7 @@ import android.widget.ScrollView
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 import com.training.tinhla.training.R
 import com.training.tinhla.training.basemodel.BaseActivity
+import com.training.tinhla.training.splashscreen.background_image.BackgroundImageFragment
 import kotlinx.android.synthetic.main.content_splash.*
 import kotlinx.android.synthetic.main.layout_panel_in_layout_sliding_up_panel.*
 import javax.inject.Inject
@@ -29,18 +30,25 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         setSupportActionBar(toolbar)
 
         setupSlidingUpPanelLayout()
+
+        setupBackgroundImagesSlider()
+    }
+
+    private fun setupBackgroundImagesSlider() {
+        var adapter = FragmentsViewPager(supportFragmentManager)
+        adapter.add(BackgroundImageFragment.newInstance("https://data.whicdn.com/images/143082918/large.jpg"))
+        adapter.add(BackgroundImageFragment.newInstance("https://locationbase.info/wp-content/uploads/2018/09/autumn-powerpoint-background-of-fancy-powerpoint-backgrounds-fancy-backgrounds-cool-wallpaper-loveable-autumn-powerpoint-background.jpg"))
+        vp_images.adapter = adapter
     }
 
     private fun setupSlidingUpPanelLayout() {
-
         var oldY = -1f
         var isScrollingUp = false
 
-        // set anchor for panel when it slide up
-        sliding_layout.anchorPoint = 0.8f
-
-        if(sliding_layout.panelState == SlidingUpPanelLayout.PanelState.COLLAPSED)
-            sv_main.setOnTouchListener(View.OnTouchListener { v, event -> true })
+        if (sliding_layout.panelState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
+            sv_main.requestDisallowInterceptTouchEvent(true)
+            sv_main.setOnTouchListener(View.OnTouchListener { v, event -> false })
+        }
 
         sv_main.viewTreeObserver.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
             // ScrollView is scrolling up and touch the top
@@ -58,12 +66,8 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
 
             override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
 
-                // scroll a little when panel is sliding up
-                if (previousState == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
-                    sv_main.smoothScrollTo(0, 30)
-                }
                 // when panel expand
-                else if (previousState == SlidingUpPanelLayout.PanelState.DRAGGING
+                if (previousState == SlidingUpPanelLayout.PanelState.DRAGGING
                         && (newState == SlidingUpPanelLayout.PanelState.EXPANDED || newState == SlidingUpPanelLayout.PanelState.ANCHORED)) {
                     // disable slidable of Sliding Up Panel Layout
                     sliding_layout.isTouchEnabled = false
@@ -83,6 +87,11 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
                                         isScrollingUp = true
                                     }else{
                                         isScrollingUp = false
+                                    }
+
+                                    if (isScrollingUp && sv_main.scrollY == 0) {
+                                        sliding_layout.isTouchEnabled = true
+                                        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
                                     }
                                 }
                             }
