@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
 import com.training.tinhla.training.R
+import com.training.tinhla.training.R.id.sv_parent
 import com.training.tinhla.training.basemodel.BaseActivity
 import com.training.tinhla.training.slidingscreen.adapter.SlidingAdapter
 import com.training.tinhla.training.slidingscreen.model.Post
@@ -49,25 +50,25 @@ class SlidingActivity : BaseActivity(), SlidingInterface.view {
     @TargetApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility")
     private fun initScroll(layoutManager: LinearLayoutManager) {
-        val sv_parent = findViewById<View>(R.id.sv_parent) as NestedScrollView
-        sv_parent.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        val svParent = findViewById<View>(R.id.sv_parent) as NestedScrollView
+        svParent.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
             if (scrollY == (v.getChildAt(0).measuredHeight - v.measuredHeight)) {
                 Log.d("scroll", "sroll bottom," + scrollY)
                 recycle.isNestedScrollingEnabled = true
-                sv_parent.setOnTouchListener { _, _ -> true }
+                svParent.setOnTouchListener { _, _ -> true }
             } else {
                 recycle.isNestedScrollingEnabled = false
-                sv_parent.setOnTouchListener { _, _ -> false }
+                svParent.setOnTouchListener { _, _ -> false }
             }
         })
         recycle.addOnScrollListener(object : RecyclerView.OnScrollListener() {
             override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
                 if (layoutManager.findFirstCompletelyVisibleItemPosition() == 0) {
-                    sv_parent.setOnTouchListener { _, _ -> false }
+                    svParent.setOnTouchListener { _, _ -> false }
                     recycle.isNestedScrollingEnabled = false
                 } else {
-                    sv_parent.setOnTouchListener { _, _ -> true }
+                    svParent.setOnTouchListener { _, _ -> true }
                     recycle.isNestedScrollingEnabled = true
                 }
             }
