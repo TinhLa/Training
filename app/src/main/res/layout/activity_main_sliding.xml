@@ -14,17 +14,18 @@
             android:layout_width="match_parent"
             android:layout_height="200dp">
         </android.support.v7.widget.RecyclerView>
-
+        <include
+            layout="@layout/include_ifarme_property"   />
             <com.sothree.slidinguppanel.SlidingUpPanelLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="50dp"
                 android:gravity="bottom"
                 app:umanoDragView="@id/svDrag"
                 app:umanoScrollableView="@+id/scrollView"
                 app:umanoFadeColor="@android:color/transparent"
                 app:umanoOverlay="false"
-                app:umanoPanelHeight="350dp"
+                app:umanoPanelHeight="400dp"
                 app:umanoParallaxOffset="50dp"
                 app:umanoShadowHeight="0dp">
 
@@ -32,8 +33,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="#00000000">
-                   <include
-                    layout="@layout/include_ifarme_property"   />
                 </android.support.constraint.ConstraintLayout>
 
                 <FrameLayout
@@ -70,14 +69,14 @@
             android:orientation="horizontal"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="75dp"
             android:background="#ffffff">
             <LinearLayout
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageButton
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@mipmap/ic_launcher"/>
@@ -117,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageButton
-                    android:layout_margin="5dp"
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@mipmap/ic_launcher"/>

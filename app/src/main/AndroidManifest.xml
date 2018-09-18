@@ -17,7 +17,8 @@
             android:label="@string/title_activity_splash"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".nkhoi_srcollview.SlidingActivity">
+        <activity android:name=".nkhoi_srcollview.SlidingActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
