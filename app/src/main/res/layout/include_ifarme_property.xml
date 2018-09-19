@@ -14,7 +14,7 @@
             android:layout_height="match_parent">
             <ImageView
                 android:background="@mipmap/ic_launcher"
-                android:id="@+id/img_ifarme_property"
+                android:id="@+id/img_icon_property"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_gravity="left|center" />
@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/test1_ifarme_property"
+                android:id="@+id/text1_ifarme_property"
                 android:layout_gravity="left|center"
                 android:textStyle="bold"
                 android:text="Nguyen"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
-                android:id="@+id/test2_ifarme_property"
+                android:id="@+id/text2_ifarme_property"
                 android:layout_gravity="left|center"
                 android:textStyle="bold"
                 android:text="Nguyen"

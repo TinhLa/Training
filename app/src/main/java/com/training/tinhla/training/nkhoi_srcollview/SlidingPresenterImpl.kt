@@ -2,30 +2,48 @@ package com.training.tinhla.training.nkhoi_srcollview
 
 
 import android.content.Context
+import android.graphics.Color
 import android.support.v7.widget.RecyclerView
+import android.text.Html
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.training.tinhla.training.R
-import com.training.tinhla.training.nkhoi_srcollview.adapter.recyclerAdapter
+import com.training.tinhla.training.nkhoi_srcollview.adapter.ViewPagerAdapter
+import kotlinx.android.synthetic.main.include_viewpager.*
 import java.util.*
 import kotlin.collections.ArrayList
 
 class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
-    private lateinit var dbListText : DBListText
+    override fun creatdotsOfViewpager(context : Context ,view: LinearLayout , number :Int) {
+            for(i in 1..number step 1) {
+                var txt: TextView = TextView(context)
+                txt.text = Html.fromHtml("&#8226;")
+                txt.setTextSize(30F)
+                txt.setTextColor(Color.rgb(180, 180, 180)) // gray color
+                view.addView(txt)
+            }
+    }
+
+    private var dbListText : DBListText
 
     init {
           dbListText = DBListText()
     }
     override fun getDBlistText() {
-       LoadTextOnView(dbListText.CreatListText())
+       loadTextOnView(dbListText.creatListText())
     }
 
-    override fun LoadTextOnView(arrayListString: ArrayList<String>) {
-       view.LoadTextSuccess(RanDomText(arrayListString))
+    override fun getListImageViewPager() : ArrayList<Int> {
+       return dbListText.creatLístImageViewPager()
     }
 
-    override fun RanDomText(arraylist: ArrayList<String>): String {
+    override fun loadTextOnView(arrayListString: ArrayList<String>) {
+       view.loadTextSuccess(ranDomText(arrayListString))
+    }
+
+    override fun ranDomText(arraylist: ArrayList<String>): String {
        var text : String  =""
         while (arraylist.size>0){
             val i:Int = Random().nextInt(arraylist.size)
@@ -33,15 +51,6 @@ class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInter
             arraylist.removeAt(i)
         }
         return text
-    }
-    override fun loadRecycler(recycler : RecyclerView , context : Context) {
-        var array : ArrayList<Int> = ArrayList()
-        array.add(R.drawable.ntkh_image7)
-        array.add(R.drawable.ntkn_image4)
-        array.add(R.drawable.ntkn_image5)
-        array.add(R.drawable.ntkn_image6)
-        val adpter : recyclerAdapter = recyclerAdapter(context , array)
-        recycler.adapter = adpter
     }
     override fun setImageIfarmeProperty(img: ImageView, url: String) {
 
