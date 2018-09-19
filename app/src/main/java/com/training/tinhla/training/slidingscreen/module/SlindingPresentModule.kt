@@ -1,5 +1,7 @@
 package com.training.tinhla.training.slidingscreen.module
 
+import com.training.tinhla.training.App
+import com.training.tinhla.training.basemodel.BaseActivity
 import com.training.tinhla.training.basemodule.PerActivity
 import com.training.tinhla.training.slidingscreen.SlidingInterface
 import com.training.tinhla.training.slidingscreen.SlidingPresenterImpl

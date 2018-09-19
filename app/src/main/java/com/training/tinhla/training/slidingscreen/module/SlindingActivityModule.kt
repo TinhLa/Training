@@ -1,6 +1,8 @@
 package com.training.tinhla.training.slidingscreen.module
 
 import android.app.Activity
+import android.app.Application
+import com.training.tinhla.training.basemodel.BaseActivity
 import com.training.tinhla.training.basemodule.PerActivity
 import com.training.tinhla.training.slidingscreen.SlidingActivity
 import com.training.tinhla.training.slidingscreen.SlidingInterface
@@ -8,7 +10,7 @@ import dagger.Binds
 import dagger.Module
 
 @Module(includes = [SlindingPresentModule::class])
-abstract class SlindingActivityModule{
+abstract class SlindingActivityModule {
 
     @Binds
     @PerActivity
@@ -16,5 +18,5 @@ abstract class SlindingActivityModule{
 
     @Binds
     @PerActivity
-    abstract fun view(activity: SlidingActivity) : SlidingInterface.view
+    abstract fun view(activity: SlidingActivity): SlidingInterface.view
 }

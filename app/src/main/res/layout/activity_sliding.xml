@@ -1,74 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/sv_parent"
-    android:isScrollContainer="true"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="iFrameProperty"
+            type="com.training.tinhla.training.slidingscreen.viewmodel.IframeViewModel"/>
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<android.support.design.widget.AppBarLayout
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_keyboard_arrow_left_24px"
+        android:translationZ="0.5dp"
+        android:layout_margin="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute,VectorDrawableCompat" />
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/sv_parent"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
-        <android.support.design.widget.CollapsingToolbarLayout
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/frame_button"
+        android:isScrollContainer="true">
 
-            <android.support.v7.widget.Toolbar
-                app:layout_collapseMode="pin"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize" />
-            <ImageView
-                android:src="@mipmap/ic_launcher_round"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </android.support.design.widget.AppBarLayout>-->
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:id="@+id/rel_top"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/ctl_top"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name" />
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/img10"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_margin="65dp"
-                android:background="@color/colorPrimary" />
-
-            <ImageView
-                android:id="@+id/img11"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_below="@id/img10"
-                android:layout_margin="55dp"
-                android:background="@color/colorPrimary" />
-
-            <ImageView
-                android:id="@+id/img12"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_below="@id/img11"
-                android:background="@color/colorPrimary" />
-
-        </RelativeLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_200"
+                    android:background="@color/colorPrimary" />
+                <com.training.tinhla.training.slidingscreen.view.IframePropertyView
+                    android:id="@+id/frame_header"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"/>
 
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/lv_list"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:layout_constraintTop_toBottomOf="@+id/rel_top" />
-    </android.support.constraint.ConstraintLayout>
-</android.support.v4.widget.NestedScrollView>
+            </android.support.constraint.ConstraintLayout>
+
+
+            <android.support.v4.widget.NestedScrollView
+                android:id="@+id/sv_list"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_top">
+                <com.training.tinhla.training.slidingscreen.view.IFrameLinesView
+                    android:paddingBottom="20dp"
+                    android:id="@+id/frame_body"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+
+                </com.training.tinhla.training.slidingscreen.view.IFrameLinesView>
+            </android.support.v4.widget.NestedScrollView>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <com.training.tinhla.training.slidingscreen.view.IFrameButtonBottom
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@android:color/white"
+        android:id="@+id/frame_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+</android.support.constraint.ConstraintLayout>
+</layout>
