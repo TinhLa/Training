@@ -13,6 +13,8 @@
             layout="@layout/include_viewpager"/>
         <include
             layout="@layout/include_ifarme_property"   />
+
+
             <com.sothree.slidinguppanel.SlidingUpPanelLayout
                 android:layout_width="match_parent"
                 android:layout_height="500dp"
@@ -62,62 +64,16 @@
                     </ScrollView>
                 </FrameLayout>
             </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
         <LinearLayout
             android:orientation="horizontal"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:background="#ffffff">
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:layout_margin="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/ic_launcher"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:gravity="left|center"
-                    android:text="Cancel"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </LinearLayout>
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:gravity="left|center"
-                    android:text="Submit"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageButton
-                    android:layout_margin="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@mipmap/ic_launcher"/>
-            </LinearLayout>
+            <include
+                layout="@layout/template_two_button"/>
         </LinearLayout>
+
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

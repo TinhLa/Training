@@ -1,6 +1,5 @@
-package com.training.tinhla.training.nkhoi_srcollview
+package com.training.tinhla.training.nkhoi_srcollview.model
 
-import android.util.Log
 import com.training.tinhla.training.R
 
 class DBListText  {
