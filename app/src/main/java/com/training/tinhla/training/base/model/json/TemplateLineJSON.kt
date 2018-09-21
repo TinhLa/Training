@@ -1,4 +1,4 @@
-package com.training.tinhla.training.basemodel.json
+package com.training.tinhla.training.base.model.json
 
 class TemplateLineJSON {
     var lineType:String ?= null

@@ -3,10 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splashscreen.background_image.BackgroundImageFragment">
+    tools:context=".splashscreen.header_images.BackgroundImageFragment">
 
     <ImageView
         android:id="@+id/img_view_background"
+        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

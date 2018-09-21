@@ -1,6 +1,6 @@
-package com.training.tinhla.training.basemodel.json
+package com.training.tinhla.training.base.model.json
 
-class TemplateButton {
+class TemplateButtonModel {
     var labelSet:String ?= null
     var new:ArrayList<ButtonJSON> ?= null
     var complete:ArrayList<ButtonJSON> ?= null

@@ -11,6 +11,27 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_images"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"/>
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:src="@drawable/bg_btn_back"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/gv_header_iframe"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -19,25 +40,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btn_back"
+        android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        app:umanoPanelHeight="320dp"
-        app:umanoShadowHeight="4dp">
+        app:umanoFadeColor="@android:color/transparent"
+        app:umanoPanelHeight="380dp">
 
         <include
-            android:id="@+id/layout_main"
-            layout="@layout/layout_main_content_in_layout_sliding_up_panel"
+            layout="@layout/layout_header_iframe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center" />
 
         <include
             android:id="@+id/layout_panel"
-            layout="@layout/layout_panel_in_layout_sliding_up_panel"
+            layout="@layout/layout_panel_body"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:gravity="center|bottom" />
 
     </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+
+    <RelativeLayout
+        android:id="@+id/line_template_buttons"
+        android:background="@android:color/white"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginLeft="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>

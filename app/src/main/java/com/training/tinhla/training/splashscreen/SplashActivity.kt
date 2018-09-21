@@ -1,22 +1,21 @@
 package com.training.tinhla.training.splashscreen
 
 import android.content.Context
-import android.graphics.Rect
 import android.os.Bundle
-import android.support.v4.widget.NestedScrollView
-import android.support.v7.widget.Toolbar
-import android.util.Log
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewTreeObserver
-import android.widget.ScrollView
-import com.sothree.slidinguppanel.SlidingUpPanelLayout
+import android.widget.ImageView
+import android.widget.RelativeLayout
 import com.training.tinhla.training.R
+import com.training.tinhla.training.base.model.constant.CONTENT
+import com.training.tinhla.training.base.model.json.ButtonJSON
+import com.training.tinhla.training.base.model.json.ColumnJSON
+import com.training.tinhla.training.base.model.json.TemplateLineJSON
 import com.training.tinhla.training.basemodel.BaseActivity
-import com.training.tinhla.training.splashscreen.background_image.BackgroundImageFragment
+import com.training.tinhla.training.splashscreen.setup_sliding_up_panel.ScrollInstaller
 import kotlinx.android.synthetic.main.content_splash.*
-import kotlinx.android.synthetic.main.layout_panel_in_layout_sliding_up_panel.*
+import kotlinx.android.synthetic.main.layout_header_iframe.*
+import kotlinx.android.synthetic.main.layout_panel_body.*
 import javax.inject.Inject
+
 
 class SplashActivity : BaseActivity(), SplashInterface.View {
     @Inject
@@ -26,89 +25,79 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_splash)
-        val toolbar = findViewById<View>(R.id.toolbar) as Toolbar
-        setSupportActionBar(toolbar)
 
-        setupSlidingUpPanelLayout()
+        presenter.onCreate()
 
-        setupBackgroundImagesSlider()
+        // setup processes of views for scroll action
+        ScrollInstaller(sliding_layout, gv_header_iframe, view_main_content, sv_main).installScrollProcess(vp_images)
     }
 
-    private fun setupBackgroundImagesSlider() {
-        var adapter = FragmentsViewPager(supportFragmentManager)
-        adapter.add(BackgroundImageFragment.newInstance("https://data.whicdn.com/images/143082918/large.jpg"))
-        adapter.add(BackgroundImageFragment.newInstance("https://locationbase.info/wp-content/uploads/2018/09/autumn-powerpoint-background-of-fancy-powerpoint-backgrounds-fancy-backgrounds-cool-wallpaper-loveable-autumn-powerpoint-background.jpg"))
+    override fun setupBgHeaderViewPager(adapter: FragmentsViewPager) {
         vp_images.adapter = adapter
     }
 
-    private fun setupSlidingUpPanelLayout() {
-        var oldY = -1f
-        var isScrollingUp = false
-
-        if (sliding_layout.panelState == SlidingUpPanelLayout.PanelState.COLLAPSED) {
-            sv_main.requestDisallowInterceptTouchEvent(true)
-            sv_main.setOnTouchListener(View.OnTouchListener { v, event -> false })
-        }
-
-        sv_main.viewTreeObserver.addOnScrollChangedListener(ViewTreeObserver.OnScrollChangedListener {
-            // ScrollView is scrolling up and touch the top
-            if (sv_main.scrollY == 0 && isScrollingUp) {
-                // slide down the Panel
-                sliding_layout.isTouchEnabled = true
-                sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
-            }
-        })
-
-        sliding_layout.addPanelSlideListener(object: SlidingUpPanelLayout.PanelSlideListener{
-            override fun onPanelSlide(panel: View?, slideOffset: Float) {
-                sv_main.setOnTouchListener(View.OnTouchListener { v, event -> false })
-            }
-
-            override fun onPanelStateChanged(panel: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
-
-                // when panel expand
-                if (previousState == SlidingUpPanelLayout.PanelState.DRAGGING
-                        && (newState == SlidingUpPanelLayout.PanelState.EXPANDED || newState == SlidingUpPanelLayout.PanelState.ANCHORED)) {
-                    // disable slidable of Sliding Up Panel Layout
-                    sliding_layout.isTouchEnabled = false
-
-                    // set listener for ScrollView
-                    // to check if it is scrolling up
-                    sv_main.setOnTouchListener(object: View.OnTouchListener{
-                        override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                            when (event?.action) {
-                                MotionEvent.ACTION_DOWN -> oldY = event!!.y
-
-                                MotionEvent.ACTION_MOVE -> {
-                                    var deltaY = event!!.y.minus((oldY))
-
-                                    // it is scrolling up
-                                    if (deltaY.compareTo(0f).equals(1)) {
-                                        isScrollingUp = true
-                                    }else{
-                                        isScrollingUp = false
-                                    }
-
-                                    if (isScrollingUp && sv_main.scrollY == 0) {
-                                        sliding_layout.isTouchEnabled = true
-                                        sliding_layout.panelState = SlidingUpPanelLayout.PanelState.COLLAPSED
-                                    }
-                                }
-                            }
-
-                            return false
-                        }
-                    })
-                }
-                // disable ScrollView if Panel start sliding down
-                else if (previousState == SlidingUpPanelLayout.PanelState.ANCHORED && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
-                    sv_main.setOnTouchListener(View.OnTouchListener { v, event -> true })
-                }
-            }
-        })
+    // add an ImageView to IFrame header
+    override fun addImageViewToHeaderIFrame(data: ColumnJSON) {
+        CreateViewHelper.addImageViewToHeader(gv_header_iframe, data)
     }
 
-    override fun getAppContext(): Context {
+    override fun addTextViewToHeaderIFrame(data: ColumnJSON) {
+        CreateViewHelper.addTextViewToHeader(gv_header_iframe, data)
+    }
+
+    override fun addNormalLineToBody(data: ColumnJSON) {
+
+        if (data.contentType?.equals(CONTENT.TITLE_NORMAL.value)?:false) {
+            CreateViewHelper.addTitleViewToBody(gv_panel, data)
+        }else{
+            CreateViewHelper.addTextViewToHeader(gv_panel, data)
+        }
+    }
+
+    override fun addLineTwoColumnsInBodyLine(line: TemplateLineJSON) {
+        CreateViewHelper.addTwoColumnsInBodyLine(gv_panel, line)
+    }
+
+    override fun addDrawLineInBody() {
+        CreateViewHelper.addDrawLine(gv_panel)
+    }
+
+    override fun addEmptyLineInBody() {
+        CreateViewHelper.addEmptyLine(gv_panel)
+    }
+
+    override fun createNewButtons(buttons: ArrayList<ButtonJSON>) {
+        CreateViewHelper.createNewButtons(line_template_buttons, buttons)
+    }
+
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+
+        // align SlidingUpPanel below icon of IFrameHeader
+        positionSlidingUpPanelBelowIconHeader()
+    }
+
+    // position SlidingUpPanel below header icon of IFrame Header
+    private fun positionSlidingUpPanelBelowIconHeader() {
+        if (gv_header_iframe.childCount > 0) {
+            var topView = gv_header_iframe.getChildAt(0)
+            if (topView is ImageView) {
+
+                var locs1 = intArrayOf(0,0)
+                var locs2 = intArrayOf(0,0)
+
+                btn_back.getLocationInWindow(locs1)
+                topView.getLocationInWindow(locs2)
+
+                var lp = sliding_layout.layoutParams as RelativeLayout.LayoutParams
+
+                lp.topMargin = gv_header_iframe.getChildAt(1).top + gv_header_iframe.top - btn_back.bottom
+                sliding_layout.layoutParams = lp
+            }
+        }
+    }
+
+    override fun getContext(): Context {
         return app
     }
 }

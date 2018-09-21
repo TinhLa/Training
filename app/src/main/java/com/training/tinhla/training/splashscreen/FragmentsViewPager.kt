@@ -21,4 +21,8 @@ class FragmentsViewPager @Inject constructor(fm:FragmentManager) : FragmentPager
     override fun getCount(): Int {
         return fragments.size
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return "FRAG"
+    }
 }

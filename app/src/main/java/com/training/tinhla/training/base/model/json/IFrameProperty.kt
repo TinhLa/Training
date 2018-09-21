@@ -1,4 +1,4 @@
-package com.training.tinhla.training.basemodel.json
+package com.training.tinhla.training.base.model.json
 
 class IFrameProperty {
     var images:ArrayList<String> ?= null
