@@ -9,14 +9,8 @@ import android.widget.TextView
 open class SlidingInterface {
 
     interface presenterSliding {
-        fun getDBlistText()
-        fun getListImageViewPager() : ArrayList<Int>
-        fun creatDotsOfViewPager(context: Context, view: LinearLayout , number : Int)
+        fun creatDotsOfViewPager(context: Context, view: LinearLayout, number : Int)
         fun onPageChangeViewPager(context: Context, numberDots: Int, position: Int, view: LinearLayout)
-        fun loadTextOnView(arrayListString : ArrayList<String>)
-        fun ranDomText(arraylist : ArrayList<String>): String
-        fun setImageIfarmeProperty (img : ImageView, url : String)
-        fun setTextIfarmeProperty (textView : TextView ,text : String, color : Int , style : Int)
     }
 
     interface viewSliding {

@@ -10,13 +10,4 @@ class DBListText  {
         }
         return listText
     }
-
-    fun creatLístImageViewPager():ArrayList<Int>{
-        val listImage : ArrayList<Int> = ArrayList<Int>()
-        listImage.add(R.drawable.ntkn_image4)
-        listImage.add(R.drawable.ntkn_image5)
-        listImage.add(R.drawable.ntkn_image6)
-        listImage.add(R.drawable.ntkh_image7)
-        return  listImage
-    }
 }

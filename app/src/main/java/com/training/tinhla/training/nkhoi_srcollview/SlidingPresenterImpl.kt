@@ -12,25 +12,7 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
-
-    private var dbListText : DBListText
-
-    init {
-          dbListText = DBListText()
-    }
-    override fun getDBlistText() {
-       loadTextOnView(dbListText.creatListText())
-    }
-
-    override fun getListImageViewPager() : ArrayList<Int> {
-       return dbListText.creatLístImageViewPager()
-    }
-
-    override fun loadTextOnView(arrayListString: ArrayList<String>) {
-       view.loadTextSuccess(ranDomText(arrayListString))
-    }
-
-    override fun creatDotsOfViewPager(context : Context ,view: LinearLayout , number :Int) {
+    override fun creatDotsOfViewPager(context : Context, view: LinearLayout, number :Int) {
         for(i in 0..(number-1) step 1) {
             var txt: TextView = TextView(context)
             txt.text = Html.fromHtml("&#8226;")
@@ -51,24 +33,6 @@ class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInter
             else txt.setTextColor(Color.rgb(180, 180, 180)) // gray color
             view.addView(txt)
         }
-    }
-
-
-    override fun ranDomText(arraylist: ArrayList<String>): String {
-       var text : String  =""
-        while (arraylist.size>0){
-            val i:Int = Random().nextInt(arraylist.size)
-            text = text + arraylist.get(i) +"\n"
-            arraylist.removeAt(i)
-        }
-        return text
-    }
-    override fun setImageIfarmeProperty(img: ImageView, url: String) {
-
-    }
-
-    override fun setTextIfarmeProperty(textView: TextView, text: String, color: Int, style: Int) {
-
     }
 
 }
