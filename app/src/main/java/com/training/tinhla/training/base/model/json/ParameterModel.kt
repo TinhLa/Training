@@ -1,6 +1,6 @@
 package com.training.tinhla.training.base.model.json
 
-open class ParameterJSON{
+open class ParameterModel{
     // image
     var url:String ?= null
 

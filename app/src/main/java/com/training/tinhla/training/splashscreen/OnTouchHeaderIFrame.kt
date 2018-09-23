@@ -47,31 +47,7 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
             }
 
             MotionEvent.ACTION_MOVE -> {
-                var deltaX = event.x.minus(oldX)
-                var deltaY = event.y.minus(oldY)
-
-
-                var absDeltaX = Math.abs(deltaX)
-                var absDeltaY = Math.abs(deltaY)
-
-                if (absDeltaX > absDeltaY) {
-                    verticalSwipe = false
-                    // swipe background images
-                    swipeBgImages(deltaX)
-                } else {
-                    if (deltaY.compareTo(0).equals(-1)) {
-                        var anchorPoint = slidingUpPanel.anchorPoint
-                        if (anchorPoint.equals(1f)) {
-                            anchorPoint = 0.1f
-                        }else{
-                            anchorPoint += 0.1f
-                        }
-
-                        slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
-                        needExpandPanelOnTouchUp = true
-                        return false
-                    }
-                }
+                return onSwiping(event)
             }
 
             MotionEvent.ACTION_UP -> {
@@ -85,6 +61,36 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
         return true
     }
 
+    private fun onSwiping(event: MotionEvent) : Boolean {
+        var deltaX = event.x.minus(oldX)
+        var deltaY = event.y.minus(oldY)
+
+
+        var absDeltaX = Math.abs(deltaX)
+        var absDeltaY = Math.abs(deltaY)
+
+        if (absDeltaX > absDeltaY) {
+            verticalSwipe = false
+            // swipe background images
+            swipeBgImages(deltaX)
+        } else {
+            if (deltaY.compareTo(0).equals(-1)) {
+                var anchorPoint = slidingUpPanel.anchorPoint
+                if (anchorPoint.equals(1f)) {
+                    anchorPoint = 0.1f
+                }else{
+                    anchorPoint += 0.1f
+                }
+
+                slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
+                needExpandPanelOnTouchUp = true
+                return false
+            }
+        }
+        return true
+    }
+
+    // swipe background images of header IFrame
     private fun swipeBgImages(deltaX: Float) {
         var pager:Int = viewPager.currentItem
 

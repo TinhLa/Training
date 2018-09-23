@@ -10,15 +10,15 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.training.tinhla.training.R
 import com.training.tinhla.training.base.ViewIdGenerator
-import com.training.tinhla.training.base.model.json.ButtonJSON
+import com.training.tinhla.training.base.model.json.ButtonModel
 
 class TemplateButton : ConstraintLayout {
-    lateinit var data: ButtonJSON
+    lateinit var data: ButtonModel
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
-    constructor(context: Context, data: ButtonJSON) : super(context, null){
+    constructor(context: Context, data: ButtonModel) : super(context, null){
         this.data = data
 
         createViews()

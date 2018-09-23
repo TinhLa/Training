@@ -1,6 +1,6 @@
 package com.training.tinhla.training.base.model.json
 
-class IFrameProperty {
+class IFramePropertyModel {
     var images:ArrayList<String> ?= null
-    var templateLines: ArrayList<TemplateLineJSON> ?= null
+    var templateLines: ArrayList<TemplateLineModel> ?= null
 }

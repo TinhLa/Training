@@ -3,15 +3,15 @@ package com.training.tinhla.training.base.custom_view
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
-import com.training.tinhla.training.base.model.json.ButtonJSON
+import com.training.tinhla.training.base.model.json.ButtonModel
 
 class TemplateButtonsLine : RelativeLayout {
-    lateinit var data: ArrayList<ButtonJSON>
+    lateinit var data: ArrayList<ButtonModel>
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
-    constructor(context: Context, data: ArrayList<ButtonJSON>) : super(context, null){
+    constructor(context: Context, data: ArrayList<ButtonModel>) : super(context, null){
         this.data = data
 
         createViews()

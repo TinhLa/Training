@@ -1,6 +1,6 @@
 package com.training.tinhla.training.base.model.json
 
-class ParameterTitleNormalJSON{
+class ParameterTitleNormalModel{
     var icon:String?=null
     var title:String?=null
     var titleFontStyle:String?=null

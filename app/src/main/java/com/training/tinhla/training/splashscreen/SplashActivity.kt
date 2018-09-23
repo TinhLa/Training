@@ -6,9 +6,9 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.training.tinhla.training.R
 import com.training.tinhla.training.base.model.constant.CONTENT
-import com.training.tinhla.training.base.model.json.ButtonJSON
-import com.training.tinhla.training.base.model.json.ColumnJSON
-import com.training.tinhla.training.base.model.json.TemplateLineJSON
+import com.training.tinhla.training.base.model.json.ButtonModel
+import com.training.tinhla.training.base.model.json.ColumnModel
+import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.basemodel.BaseActivity
 import com.training.tinhla.training.splashscreen.setup_sliding_up_panel.ScrollInstaller
 import kotlinx.android.synthetic.main.content_splash.*
@@ -37,15 +37,15 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
     }
 
     // add an ImageView to IFrame header
-    override fun addImageViewToHeaderIFrame(data: ColumnJSON) {
+    override fun addImageViewToHeaderIFrame(data: ColumnModel) {
         CreateViewHelper.addImageViewToHeader(gv_header_iframe, data)
     }
 
-    override fun addTextViewToHeaderIFrame(data: ColumnJSON) {
+    override fun addTextViewToHeaderIFrame(data: ColumnModel) {
         CreateViewHelper.addTextViewToHeader(gv_header_iframe, data)
     }
 
-    override fun addNormalLineToBody(data: ColumnJSON) {
+    override fun addNormalLineToBody(data: ColumnModel) {
 
         if (data.contentType?.equals(CONTENT.TITLE_NORMAL.value)?:false) {
             CreateViewHelper.addTitleViewToBody(gv_panel, data)
@@ -54,7 +54,7 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         }
     }
 
-    override fun addLineTwoColumnsInBodyLine(line: TemplateLineJSON) {
+    override fun addLineTwoColumnsInBodyLine(line: TemplateLineModel) {
         CreateViewHelper.addTwoColumnsInBodyLine(gv_panel, line)
     }
 
@@ -66,7 +66,7 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         CreateViewHelper.addEmptyLine(gv_panel)
     }
 
-    override fun createNewButtons(buttons: ArrayList<ButtonJSON>) {
+    override fun createNewButtons(buttons: ArrayList<ButtonModel>) {
         CreateViewHelper.createNewButtons(line_template_buttons, buttons)
     }
 

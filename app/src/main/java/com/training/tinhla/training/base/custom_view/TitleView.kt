@@ -2,24 +2,19 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.graphics.Color
-import android.graphics.Typeface
 import android.support.constraint.ConstraintLayout
 import android.support.constraint.ConstraintSet
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
-import android.view.LayoutInflater
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
-import com.training.tinhla.training.R
 import com.training.tinhla.training.base.Ulti
 import com.training.tinhla.training.base.ViewIdGenerator
-import com.training.tinhla.training.base.model.json.ColumnJSON
+import com.training.tinhla.training.base.model.json.ColumnModel
 
 class TitleView : ConstraintLayout {
-    lateinit var data: ColumnJSON
+    lateinit var data: ColumnModel
 
     lateinit var iconView:ImageView
     lateinit var titleView: TextView
@@ -29,7 +24,7 @@ class TitleView : ConstraintLayout {
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
-    constructor(context: Context, data: ColumnJSON) : super(context, null){
+    constructor(context: Context, data: ColumnModel) : super(context, null){
         this.data = data
 
         if(data.parameter?.backgroundColor != null){

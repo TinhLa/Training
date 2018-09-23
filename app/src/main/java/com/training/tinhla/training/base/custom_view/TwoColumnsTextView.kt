@@ -7,20 +7,20 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.training.tinhla.training.base.model.constant.CONTENT
-import com.training.tinhla.training.base.model.json.ColumnJSON
-import com.training.tinhla.training.base.model.json.TemplateLineJSON
+import com.training.tinhla.training.base.model.json.ColumnModel
+import com.training.tinhla.training.base.model.json.TemplateLineModel
 
 class TwoColumnsTextView : LinearLayout {
     lateinit var tv1 : TextView
     lateinit var tv2 : TextView
 
-    lateinit var line: TemplateLineJSON
+    lateinit var line: TemplateLineModel
     var parentWidth : Int = 0
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
-    constructor(context: Context, line: TemplateLineJSON, parentWidth:Int) : super(context, null){
+    constructor(context: Context, line: TemplateLineModel, parentWidth:Int) : super(context, null){
         this.line = line
 
         orientation = LinearLayout.HORIZONTAL
@@ -43,7 +43,7 @@ class TwoColumnsTextView : LinearLayout {
         }
     }
 
-    private fun addImageView(column: ColumnJSON) {
+    private fun addImageView(column: ColumnModel) {
         var imgv = NormalImageView(context, column, width)
         var lp = imgv.layoutParams as LinearLayout.LayoutParams
         lp.gravity = Gravity.CENTER_VERTICAL
@@ -51,7 +51,7 @@ class TwoColumnsTextView : LinearLayout {
         addView(imgv)
     }
 
-    private fun addTextView(position: Int, column: ColumnJSON) {
+    private fun addTextView(position: Int, column: ColumnModel) {
         var tv = NormalTextView(context, column, width)
 
         var lp = tv.layoutParams as LinearLayout.LayoutParams

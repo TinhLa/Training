@@ -2,25 +2,22 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.graphics.Color
-import android.support.v4.widget.TextViewCompat
 import android.util.AttributeSet
 import android.view.Gravity
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.training.tinhla.training.base.Ulti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
-import com.training.tinhla.training.base.model.json.ColumnJSON
-import java.time.format.TextStyle
+import com.training.tinhla.training.base.model.json.ColumnModel
 
 class NormalTextView : TextView {
-    lateinit var data: ColumnJSON
+    lateinit var data: ColumnModel
     var parentWidth : Int = 0
 
     constructor(context:Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
-    constructor(context: Context, data: ColumnJSON, parentWidth:Int) : super(context, null){
+    constructor(context: Context, data: ColumnModel, parentWidth:Int) : super(context, null){
         this.data = data
         this.parentWidth = parentWidth
 

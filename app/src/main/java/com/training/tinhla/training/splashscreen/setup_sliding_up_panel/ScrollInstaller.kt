@@ -84,12 +84,15 @@ class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFr
 
             override fun onPanelStateChanged(view: View?, previousState: SlidingUpPanelLayout.PanelState?, newState: SlidingUpPanelLayout.PanelState?) {
 
-                if (previousState == SlidingUpPanelLayout.PanelState.COLLAPSED && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
+                if (previousState == SlidingUpPanelLayout.PanelState.COLLAPSED
+                        && newState == SlidingUpPanelLayout.PanelState.DRAGGING) {
                     expanding = true
                     timeStart = System.currentTimeMillis()
                 }
                 else if (newState == SlidingUpPanelLayout.PanelState.DRAGGING
-                        && (previousState == SlidingUpPanelLayout.PanelState.EXPANDED || previousState == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+                        && (previousState == SlidingUpPanelLayout.PanelState.EXPANDED
+                                || previousState == SlidingUpPanelLayout.PanelState.ANCHORED)) {
+
                     childScrollView.smoothScrollTo(0,0)
                 }
                 // when panel expand

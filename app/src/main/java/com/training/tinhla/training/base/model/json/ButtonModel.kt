@@ -1,6 +1,6 @@
 package com.training.tinhla.training.base.model.json
 
-class ButtonJSON {
+class ButtonModel {
     var textKey : String ?= null
     var icon: String ?= null
     var state: String ?= null

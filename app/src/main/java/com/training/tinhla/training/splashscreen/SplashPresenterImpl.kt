@@ -18,62 +18,83 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
     }
 
     override fun onCreate() {
-        var jsonStr = jsonHelper.readJSONFromAsset("template10.json")
-        var json = JSONObject(jsonStr)
+        val jsonStr = jsonHelper.readJSONFromAsset("template10.json")
+        val json = JSONObject(jsonStr)
 
-        var gson = Gson()
-        var templateBodyJSON = json.getJSONObject("templateBody")
+        val gson = Gson()
+        val templateBodyJSON = json.getJSONObject("templateBody")
 
-        var templateBody = gson.fromJson<TemplateBodyJSON>(templateBodyJSON.toString(), TemplateBodyJSON::class.java)
+        val templateBody = gson.fromJson<TemplateBodyModel>(templateBodyJSON.toString(), TemplateBodyModel::class.java)
 
         // read images for background header IFrame
-        var bgImages = templateBody.iframeProperty?.images
-        if (bgImages != null && bgImages.size > 0) {
-            var size = bgImages.size
-            for (i in 0..(size - 1)) {
-                imagesSliderAdapter.add(BackgroundImageFragment.newInstance(bgImages.get(i)))
+        processBackgroundImagesHeaderIFrame(templateBody)
+
+        processForegroundHeaderIFrame(templateBody)
+
+        val body = templateBody.templateLines
+        processBody(body)
+
+        val templateButtonsJSON = json.getJSONObject("templateButton")
+        val templateButtons = gson.fromJson<TemplateButtonModel>(templateButtonsJSON.toString(), TemplateButtonModel::class.java)
+        processTemplateButtonsLine(templateButtons)
+    }
+
+    private fun processBackgroundImagesHeaderIFrame(templateBody: TemplateBodyModel?) {
+        if (templateBody != null && templateBody.iframeProperty != null) {
+            val bgImages = templateBody.iframeProperty?.images
+
+            if (bgImages != null && bgImages.size > 0) {
+                val size = bgImages.size
+                for (i in 0..(size - 1)) {
+                    imagesSliderAdapter.add(BackgroundImageFragment.newInstance(bgImages.get(i)))
+                }
+
+                view.setupBgHeaderViewPager(imagesSliderAdapter)
             }
-            view.setupBgHeaderViewPager(imagesSliderAdapter)
         }
+    }
 
-        var count = templateBody.iframeProperty?.templateLines?.size?:0
-        for (i in 0..(count - 1)) {
-            var item:TemplateLineJSON = templateBody?.iframeProperty?.templateLines!!.get(i)
-            var columns = item.columns
-            var _count = columns?.size?:0
+    private fun processForegroundHeaderIFrame(templateBody: TemplateBodyModel?) {
+        var iFrame = templateBody?.iframeProperty
 
-            if (_count == 1) {
-                when (item.columns?.get(0)?.contentType) {
-                    CONTENT.TEXT.value -> readTextHeader(item.columns?.get(0))
+        if (iFrame != null) {
+            var templateLines = iFrame.templateLines
 
-                    CONTENT.IMAGE.value -> readImageHeader(item.columns?.get(0))
+            if (templateLines != null) {
+                var count = templateLines.size
+                for (i in 0..(count - 1)) {
+                    var item:TemplateLineModel = templateLines.get(i)
+                    var columns = item.columns
+                    var _count = columns?.size?:0
+
+                    // normal type
+                    if (_count == 1) {
+                        when (item.columns?.get(0)?.contentType) {
+                            CONTENT.TEXT.value -> readTextHeader(item.columns?.get(0))
+
+                            CONTENT.IMAGE.value -> readImageHeader(item.columns?.get(0))
+                        }
+                    }
                 }
             }
         }
-
-        var body = templateBody.templateLines
-        readBody(body)
-
-        var templateButtonsJSON = json.getJSONObject("templateButton")
-        var templateButtons = gson.fromJson<TemplateButtonModel>(templateButtonsJSON.toString(), TemplateButtonModel::class.java)
-        readTemplateButtons(templateButtons)
     }
 
-    private fun readTemplateButtons(templateButtons: TemplateButtonModel?) {
+    private fun processTemplateButtonsLine(templateButtons: TemplateButtonModel?) {
         if (templateButtons != null && templateButtons.new != null) {
             view.createNewButtons(templateButtons.new!!)
         }
     }
 
-    private fun readBody(body: ArrayList<TemplateLineJSON>?) {
-        var count = body?.size?:0
-        for (i in 0..(count-1)) {
-            var line = body?.get(i)
-            if (line != null) {
-                var lineType = line.lineType
+    private fun processBody(body: ArrayList<TemplateLineModel>?) {
+        if (body != null) {
+            val count = body.size?:0
+            for (i in 0..(count-1)) {
+                val line = body.get(i)
+                val lineType = line.lineType
                 when (lineType) {
                     LINE.NORMAL.value -> {
-                        var columnsCount = line.columns?.size?:0
+                        val columnsCount = line.columns?.size?:0
 
                         if(columnsCount == 1)
                             readBodyLineNormal(line)
@@ -97,29 +118,29 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         }
     }
 
-    private fun addTwoColumnsInBodyLine(line: TemplateLineJSON) {
+    private fun addTwoColumnsInBodyLine(line: TemplateLineModel) {
         view.addLineTwoColumnsInBodyLine(line)
     }
 
-    private fun readBodyLineNormal(normalLineJSON: TemplateLineJSON?) {
+    private fun readBodyLineNormal(normalLineJSON: TemplateLineModel?) {
         if (normalLineJSON == null || normalLineJSON.columns == null) {
             return
         }
         view.addNormalLineToBody(normalLineJSON.columns?.get(0)!!)
     }
 
-    private fun readImageHeader(columnJSON: ColumnJSON?) {
-        if (columnJSON == null) {
+    private fun readImageHeader(columnModel: ColumnModel?) {
+        if (columnModel == null) {
             return
         }
-        view.addImageViewToHeaderIFrame(columnJSON)
+        view.addImageViewToHeaderIFrame(columnModel)
     }
 
-    private fun readTextHeader(columnJSON: ColumnJSON?) {
-        if (columnJSON == null) {
+    private fun readTextHeader(columnModel: ColumnModel?) {
+        if (columnModel == null) {
             return
         }
-        view.addTextViewToHeaderIFrame(columnJSON)
+        view.addTextViewToHeaderIFrame(columnModel)
     }
 
 }

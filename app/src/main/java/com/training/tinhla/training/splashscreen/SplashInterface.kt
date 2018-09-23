@@ -1,10 +1,8 @@
 package com.training.tinhla.training.splashscreen
 
-import android.content.Context
-import com.training.tinhla.training.base.model.json.ButtonJSON
-import com.training.tinhla.training.base.model.json.ColumnJSON
-import com.training.tinhla.training.base.model.json.ParameterImageJSON
-import com.training.tinhla.training.base.model.json.TemplateLineJSON
+import com.training.tinhla.training.base.model.json.ButtonModel
+import com.training.tinhla.training.base.model.json.ColumnModel
+import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.base.mvp.BasePresenter
 import com.training.tinhla.training.base.mvp.BaseView
 
@@ -13,19 +11,19 @@ interface SplashInterface {
     interface View : BaseView{
         fun setupBgHeaderViewPager(adapter:FragmentsViewPager)
 
-        fun addImageViewToHeaderIFrame(data:ColumnJSON)
+        fun addImageViewToHeaderIFrame(data:ColumnModel)
 
-        fun addTextViewToHeaderIFrame(data:ColumnJSON)
+        fun addTextViewToHeaderIFrame(data:ColumnModel)
 
-        fun addNormalLineToBody(normalLineJSON: ColumnJSON)
+        fun addNormalLineToBody(normalLineModel: ColumnModel)
 
-        fun addLineTwoColumnsInBodyLine(line: TemplateLineJSON)
+        fun addLineTwoColumnsInBodyLine(line: TemplateLineModel)
 
         fun addDrawLineInBody()
 
         fun addEmptyLineInBody()
 
-        fun createNewButtons(buttons: ArrayList<ButtonJSON>)
+        fun createNewButtons(buttons: ArrayList<ButtonModel>)
     }
 
     interface Presenter : BasePresenter{

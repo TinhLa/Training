@@ -1,23 +1,19 @@
 package com.training.tinhla.training.splashscreen
 
 import android.graphics.Color
-import android.support.constraint.ConstraintLayout
-import android.support.constraint.ConstraintSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import com.training.tinhla.training.base.ViewIdGenerator
 import com.training.tinhla.training.base.custom_view.*
-import com.training.tinhla.training.base.model.json.ButtonJSON
-import com.training.tinhla.training.base.model.json.ColumnJSON
-import com.training.tinhla.training.base.model.json.TemplateLineJSON
+import com.training.tinhla.training.base.model.json.ButtonModel
+import com.training.tinhla.training.base.model.json.ColumnModel
+import com.training.tinhla.training.base.model.json.TemplateLineModel
 
 class CreateViewHelper {
     companion object {
-        fun addImageViewToHeader(parent: ViewGroup, data: ColumnJSON) {
+        fun addImageViewToHeader(parent: ViewGroup, data: ColumnModel) {
             var imageView = NormalImageView(parent.context, data, parent.width)
 
             var lp = imageView.layoutParams as LinearLayout.LayoutParams
@@ -27,7 +23,7 @@ class CreateViewHelper {
             parent.addView(imageView)
         }
 
-        fun addTextViewToHeader(parent: ViewGroup, data: ColumnJSON) {
+        fun addTextViewToHeader(parent: ViewGroup, data: ColumnModel) {
             var textView = NormalTextView(parent.context, data, parent.width)
 
             var margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, parent.resources.displayMetrics).toInt()
@@ -37,8 +33,8 @@ class CreateViewHelper {
             parent.addView(textView)
         }
 
-        fun addTitleViewToBody(parent: LinearLayout?, columnJSON: ColumnJSON) {
-            var titleView = TitleView(parent!!.context, columnJSON)
+        fun addTitleViewToBody(parent: LinearLayout?, columnModel: ColumnModel) {
+            var titleView = TitleView(parent!!.context, columnModel)
 
             var lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
             var margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, parent.resources.displayMetrics).toInt()
@@ -50,7 +46,7 @@ class CreateViewHelper {
             parent.addView(titleView)
         }
 
-        fun addTwoColumnsInBodyLine(parent: LinearLayout, lineData: TemplateLineJSON) {
+        fun addTwoColumnsInBodyLine(parent: LinearLayout, lineData: TemplateLineModel) {
             var view = TwoColumnsTextView(parent.context, lineData, parent.width)
 
             var margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, parent.resources.displayMetrics).toInt()
@@ -90,7 +86,7 @@ class CreateViewHelper {
             parent.addView(emptyLine)
         }
 
-        fun createNewButtons(parent: RelativeLayout, buttons: ArrayList<ButtonJSON>) {
+        fun createNewButtons(parent: RelativeLayout, buttons: ArrayList<ButtonModel>) {
             var count = buttons.size
 
             when (count) {
@@ -104,7 +100,7 @@ class CreateViewHelper {
             }
         }
 
-        private fun createOnTemplateButton(parent: RelativeLayout, data: ButtonJSON) {
+        private fun createOnTemplateButton(parent: RelativeLayout, data: ButtonModel) {
             var button = TemplateButton(parent.context, data)
 
             var lp = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
@@ -115,7 +111,7 @@ class CreateViewHelper {
             parent.addView(button)
         }
 
-        private fun createTwoTemplateButtons(parent: RelativeLayout, buttons: ArrayList<ButtonJSON>) {
+        private fun createTwoTemplateButtons(parent: RelativeLayout, buttons: ArrayList<ButtonModel>) {
             for (i in 0..1) {
                 var data = buttons.get(i)
                 var button = TemplateButton(parent.context, data)
