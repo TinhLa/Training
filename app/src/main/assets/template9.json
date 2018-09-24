@@ -120,7 +120,7 @@
                     {
                         "contentType": "text",
                         "parameter": {
-                            "text": "123456789",
+                            "text": "12",
                             "fontStyle": "Body-Medium",
                             "fontColor": "#4D4D4D"
                         },
@@ -149,7 +149,7 @@
                     {
                         "contentType": "text",
                         "parameter": {
-                            "text": "123456789",
+                            "text": "123456789 Don't create a mobile app and then force its implementation on different form factors; create your app exp",
                             "fontStyle": "Body-Medium",
                             "fontColor": "#4D4D4D"
                         },

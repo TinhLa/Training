@@ -19,7 +19,9 @@ import com.training.tinhla.training.slidingscreen.viewmodel.IframeViewModel
 import javax.inject.Inject
 
 class SlidingActivity : BaseActivity(), SlidingInterface.view {
-    lateinit var bind: ActivitySlidingBinding
+    private var emulator : Int = 250
+    private var device : Int = 150
+    private lateinit var bind: ActivitySlidingBinding
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreateFrameHeader(template: Template) {
         IframeViewModel(bind, template)
@@ -29,8 +31,8 @@ class SlidingActivity : BaseActivity(), SlidingInterface.view {
     lateinit var presenter: SlidingInterface.presenter
     @Inject
     lateinit var adapter: SlidingAdapter
-    lateinit var svChild: NestedScrollView
-    lateinit var svParent: NestedScrollView
+    private lateinit var svChild: NestedScrollView
+    private lateinit var svParent: NestedScrollView
     override fun success(posts: List<Post>) {
         Log.d("thanh cong", posts.toString())
         adapter.setListPost(posts)
@@ -52,7 +54,7 @@ class SlidingActivity : BaseActivity(), SlidingInterface.view {
 
         val metrics = resources.displayMetrics
         val params = svChild.layoutParams
-        params.height = (metrics.heightPixels) - 300
+        params.height = (metrics.heightPixels) - emulator
         svChild.layoutParams = params
         initScroll()
 
@@ -89,7 +91,9 @@ class SlidingActivity : BaseActivity(), SlidingInterface.view {
     @TargetApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility")
     private fun initScroll() {
-        svParent.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+        svChild.setOnTouchListener { _, _ -> true }
+        svParent.setOnTouchListener { _, _ -> false }
+        svParent.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, _, scrollY, _, _ ->
             if (scrollY == (v.getChildAt(0).measuredHeight - v.measuredHeight)) {
                 svChild.setOnTouchListener { _, _ -> false }
                 svParent.setOnTouchListener { _, _ -> true }
@@ -98,7 +102,7 @@ class SlidingActivity : BaseActivity(), SlidingInterface.view {
                 svParent.setOnTouchListener { _, _ -> false }
             }
         })
-        svChild.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, X, Y, OX, OY ->
+        svChild.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { _, _, Y, _, _ ->
             if (Y == 0) {
                 svChild.setOnTouchListener { _, _ -> true }
                 svParent.setOnTouchListener { _, _ -> false }

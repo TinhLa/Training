@@ -74,19 +74,20 @@ class IFrameLinesView @JvmOverloads constructor(context: Context, att: Attribute
         val metrics = this.context.resources.displayMetrics
         val paramsFrame = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT)
         paramsFrame.setMargins(0, 20, 0, 20)
+        paramsFrame.width = (metrics.widthPixels*0.9).toInt()
         val lineFrame = LinearLayout(this.context)
         lineFrame.layoutParams = paramsFrame
         lineFrame.orientation = LinearLayout.HORIZONTAL
         for(i in 0 until columns.size){
-            val paramText = LinearLayout.LayoutParams(metrics.widthPixels/2,LinearLayout.LayoutParams.WRAP_CONTENT )
+            val paramText = LinearLayout.LayoutParams(metrics.widthPixels*4/10,LinearLayout.LayoutParams.WRAP_CONTENT )
             val text = TextView(this.context)
             paramText.setMargins(10,10,10,10)
             text.setTextColor(Color.parseColor(columns[i].parameter.fontColor))
             paramText.weight = columns[i].height.toFloat()
             when (columns[i].alignment) {
-                "center" -> paramText.gravity = Gravity.CENTER_HORIZONTAL
-                "left" -> paramText.gravity = Gravity.START
-                "right" -> paramText.gravity = Gravity.END
+                "center" -> text.gravity = Gravity.CENTER_HORIZONTAL
+                "left" -> text.gravity = Gravity.START
+                "right" -> text.gravity = Gravity.END
             }
             text.layoutParams = paramText
             text.text = columns[i].parameter.text
