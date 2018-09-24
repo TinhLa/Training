@@ -15,9 +15,7 @@ interface SplashInterface {
 
         fun addTextViewToHeaderIFrame(data:ColumnModel)
 
-        fun addNormalLineToBody(normalLineModel: ColumnModel)
-
-        fun addLineTwoColumnsInBodyLine(line: TemplateLineModel)
+        fun addBodyLine(line: TemplateLineModel)
 
         fun addDrawLineInBody()
 

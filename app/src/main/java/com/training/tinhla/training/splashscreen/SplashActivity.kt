@@ -45,17 +45,8 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         CreateViewHelper.addTextViewToHeader(gv_header_iframe, data)
     }
 
-    override fun addNormalLineToBody(data: ColumnModel) {
-
-        if (data.contentType?.equals(CONTENT.TITLE_NORMAL.value)?:false) {
-            CreateViewHelper.addTitleViewToBody(gv_panel, data)
-        }else{
-            CreateViewHelper.addTextViewToHeader(gv_panel, data)
-        }
-    }
-
-    override fun addLineTwoColumnsInBodyLine(line: TemplateLineModel) {
-        CreateViewHelper.addTwoColumnsInBodyLine(gv_panel, line)
+    override fun addBodyLine(line: TemplateLineModel) {
+        CreateViewHelper.addBodyLine(this, gv_panel, line)
     }
 
     override fun addDrawLineInBody() {

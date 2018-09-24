@@ -214,7 +214,7 @@
             },
             "percentWidth": 100,
             "height": 0,
-            "alignment": "left",
+            "alignment": "right",
             "verticalAlignment": "center"
           }
         ]
@@ -254,27 +254,26 @@
           {
             "contentType": "text",
             "parameter": {
-              "text": "Địa chỉ:",
-              "fontStyle": "Body-Bold",
-              "fontColor": "#4D4D4D"
-            },
-            "percentWidth": 0,
-            "height": 0,
-            "alignment": "left",
-            "verticalAlignment": "center"
-          },
-          {
-            "contentType": "text",
-            "parameter": {
               "text": "12/2 Đường số 5, quận Thủ Đức, Tp Hồ Chí Minh",
               "fontStyle": "Body-Medium",
               "fontColor": "#000000"
             },
-            "percentWidth": 100,
+            "percentWidth": 95,
             "height": 0,
             "alignment": "left",
             "verticalAlignment": "center"
-          }
+          },{
+        "contentType": "text",
+        "parameter": {
+          "text": "Địa chỉ:",
+          "fontStyle": "Body-Bold",
+          "fontColor": "#4D4D4D"
+        },
+        "percentWidth": 5,
+        "height": 0,
+        "alignment": "left",
+        "verticalAlignment": "center"
+      }
         ]
       },
       {

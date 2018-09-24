@@ -3,10 +3,11 @@ package com.training.tinhla.training.base.custom_view
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.training.tinhla.training.base.Ulti
+import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 
@@ -21,6 +22,8 @@ class NormalTextView : TextView {
         this.data = data
         this.parentWidth = parentWidth
 
+        maxWidth = (parentWidth * 0.9f).toInt()
+
         setText(data.parameter?.text?:"")
         setTextColor(Color.parseColor(data.parameter?.fontColor?:"#ffffff"))
 
@@ -34,30 +37,11 @@ class NormalTextView : TextView {
             ALIGNMENT.RIGHT.value -> gravity = Gravity.END
         }
 
-        var lp = LinearLayout.LayoutParams(getLayoutParamWidth(data.percentWidth), getLayoutParamHeight(data.height))
-
-        layoutParams = lp
     }
 
-    fun getLayoutParamWidth(percentWidth:Int): Int {
-        when (percentWidth) {
-            100 -> {
-                return LinearLayout.LayoutParams.MATCH_PARENT
-            }
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        var width = MeasureSpec.getSize(widthMeasureSpec)
 
-            0 -> {
-                return LinearLayout.LayoutParams.WRAP_CONTENT
-            }
-
-            else -> return (percentWidth * parentWidth)
-        }
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
-
-    fun getLayoutParamHeight(height:Int): Int {
-        when (height) {
-            0 -> return LinearLayout.LayoutParams.WRAP_CONTENT
-            else -> return Ulti.dpToPx(context, height)
-        }
-    }
-
 }

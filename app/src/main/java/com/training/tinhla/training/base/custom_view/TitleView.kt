@@ -10,11 +10,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import com.training.tinhla.training.base.Ulti
+import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.ViewIdGenerator
 import com.training.tinhla.training.base.model.json.ColumnModel
 
 class TitleView : ConstraintLayout {
     lateinit var data: ColumnModel
+    var parentWidth = 0
 
     lateinit var iconView:ImageView
     lateinit var titleView: TextView
@@ -24,8 +26,11 @@ class TitleView : ConstraintLayout {
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
 
-    constructor(context: Context, data: ColumnModel) : super(context, null){
+    constructor(context: Context, data: ColumnModel, parentWidth:Int) : super(context, null){
         this.data = data
+        this.parentWidth = parentWidth
+
+        maxWidth = (parentWidth * 0.9f).toInt()
 
         if(data.parameter?.backgroundColor != null){
             setBackgroundColor(Color.parseColor(data.parameter?.backgroundColor))
@@ -86,7 +91,7 @@ class TitleView : ConstraintLayout {
             set.clone(this)
 
             var parentID = ConstraintSet.PARENT_ID
-            var marginStart = Ulti.dpToPx(context, 8)
+            var marginStart = ViewUlti.dpToPx(context, 8)
 
             set.connect(iconView.id, ConstraintSet.START, parentID, ConstraintSet.START)
             set.connect(iconView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)

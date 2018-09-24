@@ -21,22 +21,33 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         val jsonStr = jsonHelper.readJSONFromAsset("template10.json")
         val json = JSONObject(jsonStr)
 
+        if (json.has("templateBody")) {
+            processData(json)
+        }else if (json.has("data")){
+            val dataObject = json.getJSONObject("data")
+            if (dataObject.has("templateBody")) {
+                processData(dataObject)
+            }
+        }
+    }
+
+    private fun processData(json: JSONObject) {
         val gson = Gson()
-        val templateBodyJSON = json.getJSONObject("templateBody")
 
-        val templateBody = gson.fromJson<TemplateBodyModel>(templateBodyJSON.toString(), TemplateBodyModel::class.java)
+        val data = gson.fromJson<DataModel>(json.toString(), DataModel::class.java)
 
-        // read images for background header IFrame
-        processBackgroundImagesHeaderIFrame(templateBody)
+        if (data != null && data.templateBody != null) {
 
-        processForegroundHeaderIFrame(templateBody)
+            // read images for background header IFrame
+            processBackgroundImagesHeaderIFrame(data.templateBody)
 
-        val body = templateBody.templateLines
-        processBody(body)
+            processForegroundHeaderIFrame(data.templateBody)
 
-        val templateButtonsJSON = json.getJSONObject("templateButton")
-        val templateButtons = gson.fromJson<TemplateButtonModel>(templateButtonsJSON.toString(), TemplateButtonModel::class.java)
-        processTemplateButtonsLine(templateButtons)
+            val body = data.templateBody?.templateLines
+            processBody(body)
+        }
+
+        processTemplateButtonsLine(data.templateButton)
     }
 
     private fun processBackgroundImagesHeaderIFrame(templateBody: TemplateBodyModel?) {
@@ -94,12 +105,7 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
                 val lineType = line.lineType
                 when (lineType) {
                     LINE.NORMAL.value -> {
-                        val columnsCount = line.columns?.size?:0
-
-                        if(columnsCount == 1)
-                            readBodyLineNormal(line)
-                        else if(columnsCount == 2)
-                            addTwoColumnsInBodyLine(line)
+                        addBodyLine(line)
                     }
 
                     LINE.DRAW_LINE.value -> {
@@ -118,15 +124,8 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         }
     }
 
-    private fun addTwoColumnsInBodyLine(line: TemplateLineModel) {
-        view.addLineTwoColumnsInBodyLine(line)
-    }
-
-    private fun readBodyLineNormal(normalLineJSON: TemplateLineModel?) {
-        if (normalLineJSON == null || normalLineJSON.columns == null) {
-            return
-        }
-        view.addNormalLineToBody(normalLineJSON.columns?.get(0)!!)
+    private fun addBodyLine(line: TemplateLineModel) {
+        view.addBodyLine(line)
     }
 
     private fun readImageHeader(columnModel: ColumnModel?) {

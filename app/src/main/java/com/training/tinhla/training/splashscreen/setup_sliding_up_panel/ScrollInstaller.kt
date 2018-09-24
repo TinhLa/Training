@@ -39,7 +39,7 @@ class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFr
     var pOldY = -1f
 
     // velocity of scroll child ScrollView
-    val SLIDE_VELOCITY = 12
+    val SLIDE_VELOCITY = 15
 
     // main install function
     fun installScrollProcess(imagesViewPager:ViewPager) {
@@ -146,14 +146,15 @@ class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFr
 
                 MotionEvent.ACTION_MOVE -> {
                     if (needScrollDownChildBeforeSlidePanel) {
-                        Log.d("LOG", "collapsing: " + collapsing)
+
                         if (!collapsing) {
                             var deltaY = (event?.y?:-1f) - pOldY
                             pOldY = event?.y?:-1f
 
                             // scroll up child ScrollView
                             if (deltaY.compareTo(0f).equals(1)) {
-                                childScrollView.smoothScrollBy(0,-1 * SLIDE_VELOCITY)
+
+                                childScrollView.smoothScrollBy(0, -1 * SLIDE_VELOCITY - 5)
                             }
                             // scroll down child ScrollView
                             else{
@@ -161,9 +162,6 @@ class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFr
                             }
                         }
 
-//                        if (childScrollView.scrollY == 0) {
-//                            slidingPanelLayout.isTouchEnabled = true
-//                        }
                     }else{
                         childScrollView.getLocationOnScreen(childLocs)
                         slidingPanelLayout.getLocationOnScreen(parentLocs)

@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.squareup.picasso.Picasso
-import com.training.tinhla.training.base.Ulti
+import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 
@@ -20,10 +20,13 @@ class NormalImageView : ImageView {
         this.data = data
         this.parentWidth = parentWidth
 
-        var lpWidth:Int= getLayoutParamWidth(data.percentWidth)
-        var lpHeight:Int = getLayoutParamHeight(data.height) // in dp
+        maxWidth = (parentWidth * 0.8f).toInt()
 
-        var lp = LinearLayout.LayoutParams(lpWidth, lpHeight)
+        var widthLP = getLayoutParamWidth(data.percentWidth)
+        var lp = LinearLayout.LayoutParams(widthLP, getLayoutParamHeight(data.height))
+        if (widthLP == 0) {
+            lp.weight = data.percentWidth / 100f
+        }
 
         when (data.alignment) {
             ALIGNMENT.LEFT.value -> {
@@ -36,7 +39,9 @@ class NormalImageView : ImageView {
         }
         layoutParams = lp
 
-        Picasso.get().load(data.parameter?.url).into(this)
+        if (data.parameter != null) {
+            Picasso.get().load(data.parameter?.url).into(this)
+        }
     }
 
     fun getLayoutParamWidth(percentWidth:Int): Int {
@@ -56,7 +61,7 @@ class NormalImageView : ImageView {
     fun getLayoutParamHeight(height:Int): Int {
         when (height) {
             0 -> return LinearLayout.LayoutParams.WRAP_CONTENT
-            else -> return Ulti.dpToPx(context, height)
+            else -> return ViewUlti.dpToPx(context, height)
         }
     }
 
