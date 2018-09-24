@@ -9,19 +9,20 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.training.tinhla.training.R
 
-class ViewPagerAdapter(var context : Context , arrayImage : List<String>) : PagerAdapter() {
+class ViewPagerAdapter(var context: Context, arrayImage: List<String>?) : PagerAdapter() {
 
     lateinit var inflater: LayoutInflater
-    var array :List<String>
+             var array : List<String>
+
     init {
-         array = arrayImage
+        array = if(arrayImage===null) listOf("null") else arrayImage
     }
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
 
     override fun getCount(): Int {
-     return  array.size
+     return array.size
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {

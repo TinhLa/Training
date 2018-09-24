@@ -15,55 +15,63 @@
             layout="@layout/include_ifarme_property"   />
 
 
-            <com.sothree.slidinguppanel.SlidingUpPanelLayout
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:layout_marginTop="50dp"
-                android:gravity="bottom"
-                app:umanoDragView="@id/svDrag"
-                app:umanoScrollableView="@+id/scrollView"
-                app:umanoFadeColor="@android:color/transparent"
-                app:umanoOverlay="false"
-                app:umanoPanelHeight="400dp"
-                app:umanoParallaxOffset="50dp"
-                app:umanoShadowHeight="0dp">
+        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="50dp"
+            android:gravity="bottom"
+            app:umanoDragView="@id/svDrag"
+            app:umanoFadeColor="@android:color/transparent"
+            app:umanoOverlay="false"
+            app:umanoPanelHeight="400dp"
+            app:umanoParallaxOffset="50dp"
+            app:umanoScrollableView="@+id/scrollView"
+            app:umanoShadowHeight="0dp">
 
-                <android.support.constraint.ConstraintLayout
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"></android.support.constraint.ConstraintLayout>
+
+            <FrameLayout
+                android:id="@+id/svDrag"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#00ffff00"
+                android:clickable="false"
+                android:focusable="true">
+
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent">
-                </android.support.constraint.ConstraintLayout>
+                    android:layout_marginTop="35dp"
+                    android:background="#ffffff"></ImageView>
 
-                <FrameLayout
-                    android:id="@+id/svDrag"
+                <ScrollView
+                    android:id="@+id/scrollView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#00ffff00"
-                    android:clickable="false"
-                    android:focusable="true">
-                    <ImageView
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#b6e678"
+                    app:layout_constraintTop_toTopOf="@id/svDrag">
+                    <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="35dp"
-                        android:background="#ffffff">
-                    </ImageView>
-                    <ScrollView
-                        android:id="@+id/scrollView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:layout_marginTop="0dp"
-                        app:layout_constraintTop_toTopOf="@id/svDrag"
-                        android:background="#b6e678">
-                        <TextView
-                            android:id="@+id/tvDetail"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:id="@+id/template_lines"
+                            android:layout_weight="1"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="25dp" />
-                    </ScrollView>
-                </FrameLayout>
-            </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </ScrollView>
+            </FrameLayout>
+        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
         <LinearLayout
             android:orientation="horizontal"

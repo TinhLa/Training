@@ -10,37 +10,9 @@
         android:layout_marginBottom="10dp">
         <LinearLayout
             android:layout_weight="1"
+            android:orientation="vertical"
+            android:id="@+id/column_iframe_one"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <ImageView
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/img_icon_property"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter" />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text1_ifarme_property"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="txt"
-                android:textSize="20dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/text2_ifarme_property"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:text="txt"
-                android:textSize="20dp" />
         </LinearLayout>
     </LinearLayout>

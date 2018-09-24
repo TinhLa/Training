@@ -4,15 +4,11 @@ package com.training.tinhla.training.nkhoi_srcollview
 import android.content.Context
 import android.graphics.Color
 import android.text.Html
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.training.tinhla.training.nkhoi_srcollview.model.DBListText
-import java.util.*
-import kotlin.collections.ArrayList
 
 class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
-    override fun creatDotsOfViewPager(context : Context, view: LinearLayout, number :Int) {
+    override fun creatDotsOfViewPager(context: Context, view: LinearLayout, number: Int) {
         for(i in 0..(number-1) step 1) {
             var txt: TextView = TextView(context)
             txt.text = Html.fromHtml("&#8226;")
