@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.training.tinhla.training.R
+import com.bumptech.glide.request.RequestOptions
+
+
 
 class ViewPagerAdapter(var context: Context, arrayImage: List<String>?) : PagerAdapter() {
 
@@ -15,21 +18,25 @@ class ViewPagerAdapter(var context: Context, arrayImage: List<String>?) : PagerA
              var array : List<String>
 
     init {
-        array = if(arrayImage===null) listOf("null") else arrayImage
+        array = if(arrayImage===null) listOf("") else arrayImage
     }
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
 
     override fun getCount(): Int {
-     return array.size
+    return array.size
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val view: View = inflater.inflate(R.layout.item_image_property,container,false)
         val img : ImageView = view.findViewById(R.id.img_iframe_property)
-        Glide.with(context).load(array[position]).into(img)
+        val requestOptions = RequestOptions()
+        requestOptions.placeholder(R.drawable.bg_default)
+        Glide.with(context)
+                .setDefaultRequestOptions(requestOptions)
+                .load(R.drawable.bg_default).into(img);
         container.addView(view)
         return view
     }

@@ -11,7 +11,7 @@ open  class JsonInterfaceIframe {
     interface presenterJson{
         // Iframme
         fun getListImageViewPager() : List<String>?
-        fun getPropertyForColumnIframe(view : ViewGroup,position :Int)
+        fun getPropertyForColumnIframe(view : ViewGroup)
 
         // templateLine Body
         fun getPropertyForColumnTemplateLines(viewGroup: ViewGroup)
@@ -22,9 +22,13 @@ open  class JsonInterfaceIframe {
         fun setTypeLineEmptyLine(view: ViewGroup)
 
         // public
-        fun getParameterImage(viewGroup: ViewGroup,position: Int,percentWidth : Int?,height : Int?,
+        fun getParameterIcon(viewGroup: ViewGroup,positionTemplateLine: Int,percentWidth : Int?,height : Int?,
                               alignment : String?,verticalAlignment : String?)
-        fun getParameterText(viewGroup: ViewGroup,position: Int,percentWidth : Int?,height : Int?,
+        fun getParameterImage(viewGroup: ViewGroup,positionTeamplate: Int,positionColumn: Int,percentWidth : Int?,height : Int?,
+                              alignment : String?,verticalAlignment : String?)
+        fun getParameterListImage(viewGroup: ViewGroup,positionTeamplate: Int,positionColumn: Int,percentWidth : Int?,height : Int?,
+                              alignment : String?,verticalAlignment : String?)
+        fun getParameterText(viewGroup: ViewGroup,positionTemplate: Int,positionColumn: Int,percentWidth : Int?,height : Int?,
                              alignment : String?,verticalAlignment : String?)
         fun getParameterTitle(viewGroup: ViewGroup,position: Int,percentWidth : Int?,height : Int?,
                              alignment : String?,verticalAlignment : String?)

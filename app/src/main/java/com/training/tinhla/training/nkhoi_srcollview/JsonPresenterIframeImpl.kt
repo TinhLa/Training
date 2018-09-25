@@ -1,6 +1,7 @@
 package com.training.tinhla.training.nkhoi_srcollview
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
@@ -30,7 +31,7 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    override fun getPropertyForColumnIframe(view: ViewGroup, position: Int) {
+    override fun getPropertyForColumnIframe(view: ViewGroup) {
         for (i in 0..(dta.templateBody?.iframeProperty?.templateLines?.size!! - 1) step 1) {
             val percentWidth: Int? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.percentWidth
             val height: Int? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.height
@@ -38,45 +39,47 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
             val verticalAlignment: String? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.verticalAlignment
             val contentType: String? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.contentType
             when (contentType) {
-                "image" -> getParameterImage(view, i, percentWidth, height, alignment, verticalAlignment)
-                "text" -> getParameterText(view, i, percentWidth, height, alignment, verticalAlignment)
+                "image" -> getParameterIcon(view, i, percentWidth, height, alignment, verticalAlignment)
+                "text" -> getParameterText(view, i,0, percentWidth, height, alignment, verticalAlignment)
             }
         }
     }
 
     ///////////////////////////////////////////////////////////// public
 
-    override fun getParameterImage(viewGroup: ViewGroup,position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+    override fun getParameterIcon(viewGroup: ViewGroup, position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
         val image :ImageView = ImageView(context)
-        val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(setPercenwidth(percentWidth) , 100) // temp
+        val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(150, setHeight(height)) // temp
         image.layoutParams = param
         setAlignment(image,alignment)
-      //  val url : String?  = dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.parameter?.url
-     //   Glide.with(context).load(url).into(image)
+        //  val url : String?  = dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.parameter?.url
+        //   Glide.with(context).load(url).into(image)
         Glide.with(context).load(R.mipmap.ic_launcher_round ).into(image)
         viewGroup.addView(image)
     }
 
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    override fun getParameterText(viewGroup: ViewGroup, position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+    override fun getParameterText(viewGroup: ViewGroup, positionTempalteLine: Int,positionColumn: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
         var text :TextView = TextView(context)
         val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(setPercenwidth(percentWidth) ,setHeight(height))
         text.layoutParams = param
-        setAlignment(text,dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.alignment)
-        text.text = dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.parameter?.text
-        text.setTextColor(Color.parseColor(dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.parameter?.fontColor))
-        setFontStyle(text,dta.templateBody?.iframeProperty?.templateLines?.get(position)?.columns?.get(0)?.parameter?.fontStyle)
-        text.setBackgroundColor(Color.parseColor("#000000"))
+        setAlignment(text,dta.templateBody?.iframeProperty?.templateLines?.get(positionTempalteLine)?.columns?.get(0)?.alignment)
+        text.text = dta.templateBody?.iframeProperty?.templateLines?.get(positionTempalteLine)?.columns?.get(0)?.parameter?.text
+        text.setTextColor(Color.parseColor(dta.templateBody?.iframeProperty?.templateLines?.get(positionTempalteLine)?.columns?.get(0)?.parameter?.fontColor))
+        setFontStyle(text,dta.templateBody?.iframeProperty?.templateLines?.get(positionTempalteLine)?.columns?.get(0)?.parameter?.fontStyle)
         text.setTextSize(20F)
         viewGroup.addView(text)
     }
 
 
    override fun setPercenwidth(percen: Int?) :Int {
+       if (percen!!<10)percen ==10
+       if (percen>90) percen ==90
        val i: Int = when(percen){
             100 -> ViewGroup.LayoutParams.MATCH_PARENT
-            else ->ViewGroup.LayoutParams.WRAP_CONTENT
+            0 ->ViewGroup.LayoutParams.WRAP_CONTENT
+           else ->  (Resources.getSystem().getDisplayMetrics().widthPixels -150)* percen /100 // except margin left right 50 , get size screen
         }
         return i
     }
@@ -84,8 +87,7 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
     override fun setHeight(height: Int?) :Int {
       val i : Int = when(height){
             0 -> ViewGroup.LayoutParams.WRAP_CONTENT
-            null -> ViewGroup.LayoutParams.WRAP_CONTENT
-            else -> height
+            else -> height!!
         }
         return i
     }
@@ -119,6 +121,10 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
 
     ////////////////////////////////////////////////////// for Template Lines Body
 
+    override fun getParameterImage(viewGroup: ViewGroup,positionTempalteLine: Int,positionColumn: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun getPropertyForColumnTemplateLines(viewGroup: ViewGroup) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
@@ -145,5 +151,8 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun getParameterListImage(viewGroup: ViewGroup, positionTeamplate: Int, positionColumn: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
 }

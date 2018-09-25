@@ -9,7 +9,8 @@ class Parameters  {
      var fontStyle :String?=null
      var fontColor :String?=null
      var backgroundColor : String?=null
-     var images : ArrayList<String>?=null
+     var images : List<String>?=null
+
 //
 //    constructor(icon: String, url: String, text: String, fontName: String, fontStyle: String, fontColor: String, backgroundColor: String, images: ArrayList<String>) {
 //        this.icon = icon
