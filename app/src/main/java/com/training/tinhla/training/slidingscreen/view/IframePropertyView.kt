@@ -27,7 +27,7 @@ class IframePropertyView @JvmOverloads constructor(context: Context, att: Attrib
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun addImage(alignment: String) {
         val image = ImageView(this.context)
-        image.background = this.context.getDrawable(R.drawable.ic_baseline_favorite_border_24px)
+        image.background = this.context.getDrawable(R.drawable.ic_title_default)
         val params = LinearLayout.LayoutParams(android.widget.LinearLayout.LayoutParams.WRAP_CONTENT, android.widget.LinearLayout.LayoutParams.WRAP_CONTENT)
         when (alignment) {
             "center" -> params.gravity = Gravity.CENTER_HORIZONTAL

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
+import com.training.tinhla.training.R
 import com.training.tinhla.training.commonmodel.templatebutton.NewTemplate
 import com.training.tinhla.training.commonmodel.templatebutton.TemplateButton
 
@@ -27,10 +28,14 @@ class IFrameButtonBottom @JvmOverloads constructor(context: Context, att: Attrib
             lineFrame.layoutParams = paramsFrame
             lineFrame.orientation = LinearLayout.HORIZONTAL
 
-            val paramImg = LinearLayout.LayoutParams(90, 90)
+            val paramImg = LinearLayout.LayoutParams(60, 60)
             val icon = ImageView(this.context)
             paramImg.gravity = Gravity.CENTER_VERTICAL
-            Glide.with(this.context).load(news[i].icon).into(icon)
+            when(news[i].action){
+                "cancel" -> Glide.with(this.context).load(this.context.resources.getIdentifier("btn_cancel","drawable",this.context.packageName)).into(icon)
+                "submit" -> Glide.with(this.context).load(this.context.resources.getIdentifier("btn_confirm","drawable",this.context.packageName)).into(icon)
+            }
+
             icon.layoutParams = paramImg
             lineFrame.addView(icon)
 
