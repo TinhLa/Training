@@ -2,6 +2,7 @@ package com.training.tinhla.training.nkhoi_srcollview.model
 
 class Parameters  {
      var icon : String?=null
+     var title : String?=null
      var url :String?=null
      var text :String?=null
      var fontName :String?=null

@@ -13,8 +13,7 @@ import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.model.Data
 import com.training.tinhla.training.nkhoi_srcollview.model.ReadJson
 
-class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presenterJson {
-
+open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presenterJson {
 
     private val dta : Data
     private val readJson : ReadJson
@@ -39,14 +38,16 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
             val verticalAlignment: String? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.verticalAlignment
             val contentType: String? = dta.templateBody?.iframeProperty?.templateLines?.get(i)?.columns?.get(0)?.contentType
             when (contentType) {
-                "image" -> getParameterImageIframe(view, i, percentWidth, height, alignment, verticalAlignment)
-                "text" -> getParameterTextIframe(view, i, percentWidth, height, alignment, verticalAlignment)
+                "image" -> getParameterImage(view, i, percentWidth, height, alignment, verticalAlignment)
+                "text" -> getParameterText(view, i, percentWidth, height, alignment, verticalAlignment)
             }
         }
     }
 
-    override fun getParameterImageIframe(viewGroup: ViewGroup,position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
-        var image :ImageView = ImageView(context)
+    ///////////////////////////////////////////////////////////// public
+
+    override fun getParameterImage(viewGroup: ViewGroup,position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+        val image :ImageView = ImageView(context)
         val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(setPercenwidth(percentWidth) , 100) // temp
         image.layoutParams = param
         setAlignment(image,alignment)
@@ -58,7 +59,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
 
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    override fun getParameterTextIframe(viewGroup: ViewGroup, position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+    override fun getParameterText(viewGroup: ViewGroup, position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
         var text :TextView = TextView(context)
         val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(setPercenwidth(percentWidth) ,setHeight(height))
         text.layoutParams = param
@@ -72,7 +73,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
     }
 
 
-    fun setPercenwidth(percen: Int?) :Int {
+   override fun setPercenwidth(percen: Int?) :Int {
        val i: Int = when(percen){
             100 -> ViewGroup.LayoutParams.MATCH_PARENT
             else ->ViewGroup.LayoutParams.WRAP_CONTENT
@@ -80,7 +81,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
         return i
     }
 
-    fun setHeight(height: Int?) :Int {
+    override fun setHeight(height: Int?) :Int {
       val i : Int = when(height){
             0 -> ViewGroup.LayoutParams.WRAP_CONTENT
             null -> ViewGroup.LayoutParams.WRAP_CONTENT
@@ -89,7 +90,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
         return i
     }
 
-    fun setAlignment(imageView: ImageView,alignment: String?){
+    override fun setAlignment(imageView: ImageView, alignment: String?){
         when(alignment){
             "left" ->   imageView.scaleType = ImageView.ScaleType.FIT_START
             "center" -> imageView.scaleType = ImageView.ScaleType.FIT_CENTER
@@ -98,7 +99,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
-    fun setAlignment(textView: TextView, alignment: String?){
+    override fun setAlignment(textView: TextView, alignment: String?){
         when(alignment){
             "left" ->   textView.textAlignment =TextView.TEXT_ALIGNMENT_TEXT_START
             "center" -> textView.textAlignment =TextView.TEXT_ALIGNMENT_TEXT_END
@@ -106,7 +107,7 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
         }
     }
 
-    fun setFontStyle(textView: TextView, fontStyle: String?){
+    override fun setFontStyle(textView: TextView, fontStyle: String?){
         when (fontStyle){
             "bold"->textView.setTypeface(null,Typeface.BOLD)
             "bold_italic"->textView.setTypeface(null,Typeface.BOLD_ITALIC)
@@ -115,4 +116,34 @@ class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presen
         }
 
     }
+
+    ////////////////////////////////////////////////////// for Template Lines Body
+
+    override fun getPropertyForColumnTemplateLines(viewGroup: ViewGroup) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    override fun setTypeLine(view: ViewGroup, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setTypeLineOneColumn(view: ViewGroup, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setTypeLineTwoColum(view: ViewGroup, position: Int) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setTypeLineDrawLine(view: ViewGroup) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setTypeLineEmptyLine(view: ViewGroup) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+    override fun getParameterTitle(viewGroup: ViewGroup, position: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
 }

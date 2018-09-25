@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewPager
+import android.util.Log
 import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.adapter.ViewPagerAdapter
 import com.training.tinhla.training.nkhoi_srcollview.model.TemplateButton
@@ -17,7 +18,6 @@ class SlidingActivity : AppCompatActivity(),SlidingInterface.viewSliding {
     private lateinit var presenterSliding : SlidingPresenterImpl
     private lateinit var presenterIframe : JsonPresenterIframeImpl
     private lateinit var presenterTemplateLines: JsonPresenterTemplateLinesImpl
-    private lateinit var arrayList: ArrayList<TemplateButton>
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +25,8 @@ class SlidingActivity : AppCompatActivity(),SlidingInterface.viewSliding {
         presenterSliding = SlidingPresenterImpl(this)
         presenterIframe = JsonPresenterIframeImpl(this)
         presenterTemplateLines = JsonPresenterTemplateLinesImpl(this)
-        presenterTemplateLines.getPropertyForColumn(template_lines)
+        presenterTemplateLines.getPropertyForColumnTemplateLines(template_lines)
         presenterIframe.getPropertyForColumnIframe(column_iframe_one,0)
-
     }
 
     override fun loadTextSuccess(text : String) {
