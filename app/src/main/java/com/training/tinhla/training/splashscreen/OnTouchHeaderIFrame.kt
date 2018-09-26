@@ -9,7 +9,6 @@ import android.view.MotionEvent
 import android.view.VelocityTracker
 import android.view.View
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
-import com.training.tinhla.training.base.custom_view.LockableScrollView
 
 /**
  * Listener switch page of Background Images ViewPager when user swipe horizontally on HeaderIFrame ViewGroup
@@ -25,11 +24,7 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
 
-        var index = event?.actionIndex
-        var pointerID:Int = 0
-        if (index != null) {
-            pointerID = event?.getPointerId(index)?:0
-        }
+        val index = event?.actionIndex
 
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -62,12 +57,12 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
     }
 
     private fun onSwiping(event: MotionEvent) : Boolean {
-        var deltaX = event.x.minus(oldX)
-        var deltaY = event.y.minus(oldY)
+        val deltaX = event.x.minus(oldX)
+        val deltaY = event.y.minus(oldY)
 
 
-        var absDeltaX = Math.abs(deltaX)
-        var absDeltaY = Math.abs(deltaY)
+        val absDeltaX = Math.abs(deltaX)
+        val absDeltaY = Math.abs(deltaY)
 
         if (absDeltaX > absDeltaY) {
             verticalSwipe = false
@@ -75,12 +70,6 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
             swipeBgImages(deltaX)
         } else {
             if (deltaY.compareTo(0).equals(-1)) {
-                var anchorPoint = slidingUpPanel.anchorPoint
-                if (anchorPoint.equals(1f)) {
-                    anchorPoint = 0.1f
-                }else{
-                    anchorPoint += 0.1f
-                }
 
                 slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
                 needExpandPanelOnTouchUp = true
@@ -114,9 +103,5 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
         }
 
         viewPager.setCurrentItem(pager)
-    }
-
-    private fun scrollViews() {
-        slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
     }
 }

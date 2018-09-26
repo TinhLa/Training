@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
@@ -40,7 +40,7 @@ class NormalImageView : ImageView {
         layoutParams = lp
 
         if (data.parameter != null) {
-            Picasso.get().load(data.parameter?.url).into(this)
+            Glide.with(this).load(data.parameter?.url).into(this)
         }
     }
 

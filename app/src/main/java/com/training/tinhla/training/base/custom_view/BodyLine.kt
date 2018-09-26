@@ -2,6 +2,7 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -12,14 +13,22 @@ import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.splashscreen.CreateViewHelper
 
+/**
+ * An BodyLine can contain either 1 column or 2 columns
+ * It create ImageView or TextView depend on JSON data passed
+ */
 class BodyLine : LinearLayout {
 
+    // JSONObject data determine UI
     lateinit var line: TemplateLineModel
+
+    // width of ViewGroup parent contain BodyLine
     var parentWidth: Int = 10
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
+
     constructor(context: Context, line: TemplateLineModel, parentWidth:Int) : super(context, null){
         this.line = line
         this.parentWidth = parentWidth
@@ -32,6 +41,13 @@ class BodyLine : LinearLayout {
                 val column = columns.get(i)
 
                 _addView(i, column)
+            }
+
+            if (columns.size == 1) {
+                val view = View(context)
+                val lp = LinearLayout.LayoutParams((parentWidth*.1f).toInt(), 1)
+                view.layoutParams = lp
+                addView(view)
             }
         }
     }
@@ -52,16 +68,12 @@ class BodyLine : LinearLayout {
                 addImageView(column)
             }
         }
-        var view = View(context)
-        var lp = LinearLayout.LayoutParams((parentWidth*.1f).toInt(), 1)
-        view.layoutParams = lp
-        addView(view)
     }
 
     private fun addTitle(position: Int, column: ColumnModel) {
         val titleView = TitleView(context, column, CreateViewHelper.panelWidth)
 
-        var width = ViewUlti.getLayoutParamWidth(column.percentWidth)
+        val width = ViewUlti.getLayoutParamWidth(column.percentWidth)
         val lp = LinearLayout.LayoutParams(width, LinearLayout.LayoutParams.WRAP_CONTENT)
         if (width == 0) {
             lp.width = CreateViewHelper.panelWidth * column.percentWidth
@@ -69,10 +81,10 @@ class BodyLine : LinearLayout {
 
         titleView.maxWidth = (CreateViewHelper.panelWidth * 0.9f).toInt()
 
-        val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt()
-
+        /*val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt()
         lp.topMargin = margin
-        lp.bottomMargin = margin
+        lp.bottomMargin = margin*/
+
         titleView.layoutParams = lp
 
         addView(titleView)
@@ -97,10 +109,11 @@ class BodyLine : LinearLayout {
         tv.maxWidth = (parentWidth * 0.9f).toInt()
         tv.minWidth = (parentWidth * 0.1f).toInt()
 
-        if (position > 0) {
+        /*if (position > 0) {
             val distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt()
             tv.setPadding(distance,0,0,0)
-        }
+        }*/
+
 
         addView(tv)
     }
@@ -108,14 +121,18 @@ class BodyLine : LinearLayout {
     private fun initLayoutParams(column:ColumnModel): LayoutParams {
         val width = ViewUlti.getLayoutParamWidth(column.percentWidth)
         val lp = LinearLayout.LayoutParams(width, ViewUlti.getLayoutParamHeight(context, column.height))
+
         if (width == 0) {
-            var percent = 10f
-            if (column.percentWidth > 90f) {
+            var percent = column.percentWidth * 1f
+
+            if (percent > 90f) {
                 percent = 90f
-            }else if (column.percentWidth < 10f) {
-                percent = 10f
             }
-            lp.weight = percent / 100f
+            else if (percent < 10f) {
+                percent = 10f
+                Log.d("LOG", "min width")
+            }
+            lp.weight = percent/100f
         }
         return lp
     }

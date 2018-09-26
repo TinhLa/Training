@@ -12,6 +12,11 @@ class FragmentsViewPager @Inject constructor(fm:FragmentManager) : FragmentPager
         fragments.add(fragment)
     }
 
+    fun addAll(fragments:List<Fragment>) {
+        this.fragments.clear()
+        this.fragments.addAll(fragments)
+    }
+
     override fun getItem(position: Int): Fragment? {
         if(position < 0 || position >= fragments.size)
             return null

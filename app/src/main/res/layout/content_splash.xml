@@ -45,6 +45,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        app:umanoScrollableView="@id/sv_main"
         app:umanoFadeColor="@android:color/transparent"
         app:umanoPanelHeight="380dp">
 

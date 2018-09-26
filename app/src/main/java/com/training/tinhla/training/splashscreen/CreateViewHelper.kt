@@ -19,54 +19,6 @@ class CreateViewHelper {
     companion object {
         var panelWidth:Int = 0
 
-        fun addImageViewToHeader(parent: ViewGroup, data: ColumnModel) {
-            val imageView = NormalImageView(parent.context, data, parent.width)
-
-            val lp = imageView.layoutParams as LinearLayout.LayoutParams
-            lp.topMargin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, parent.resources.displayMetrics).toInt()
-            imageView.layoutParams = lp
-
-            parent.addView(imageView)
-        }
-
-        fun addTextViewToHeader(parent: ViewGroup, data: ColumnModel) {
-            val context = parent.context
-            val textView = NormalTextView(context, data, panelWidth)
-
-            val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, parent.resources.displayMetrics).toInt()
-
-            val lp = LinearLayout.LayoutParams(convertChildWidth(data.percentWidth), ViewUlti.getLayoutParamHeight(context, data.height))
-
-            lp.topMargin = margin
-            textView.layoutParams = lp
-
-            parent.addView(textView)
-        }
-
-        fun convertChildWidth(percentWidth: Int): Int {
-            when (percentWidth) {
-                0 -> return LinearLayout.LayoutParams.WRAP_CONTENT
-                100 -> return LinearLayout.LayoutParams.MATCH_PARENT
-                else -> return panelWidth * percentWidth
-            }
-        }
-
-        fun addBodyLine(activity: Activity, parent: LinearLayout, line: TemplateLineModel) {
-
-            if (panelWidth == 0) {
-                panelWidth = measurePanelWidth(activity, parent)
-            }
-
-            val view = BodyLine(parent.context, line, panelWidth)
-
-            val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, parent.resources.displayMetrics).toInt()
-            val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-            lp.setMargins(0, margin, 0, margin)
-            view.layoutParams = lp
-
-            parent.addView(view)
-        }
-
         private fun measurePanelWidth(activity: Activity, panel: LinearLayout): Int {
             val point = Point()
             val display = activity.windowManager.defaultDisplay
@@ -81,7 +33,7 @@ class CreateViewHelper {
                 val padDelta = view.paddingLeft + view.paddingRight
                 val lp = view.layoutParams as ViewGroup.MarginLayoutParams
                 val marginDelta = lp.leftMargin + lp.rightMargin
-                var _delta = padDelta + marginDelta
+                val _delta = padDelta + marginDelta
 
                 delta += _delta
 
@@ -92,6 +44,23 @@ class CreateViewHelper {
             }
 
             return screenWidth - delta
+        }
+
+        fun addBodyLine(activity: Activity, parent: LinearLayout, line: TemplateLineModel) {
+
+            if (panelWidth == 0) {
+                panelWidth = measurePanelWidth(activity, parent)
+            }
+
+            val view = BodyLine(parent.context, line, panelWidth)
+
+            // add margin top and bottom for new BodyLine
+            val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, parent.resources.displayMetrics).toInt()
+            val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+            lp.setMargins(0, margin, 0, margin)
+            view.layoutParams = lp
+
+            parent.addView(view)
         }
 
         fun addDrawLine(parent: LinearLayout) {

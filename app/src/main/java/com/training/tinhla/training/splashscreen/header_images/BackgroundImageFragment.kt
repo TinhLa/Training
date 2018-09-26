@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 
 import com.training.tinhla.training.R
 import kotlinx.android.synthetic.main.fragment_background_image.view.*
@@ -19,8 +19,8 @@ class BackgroundImageFragment : Fragment() {
     companion object {
 
         fun newInstance(url: String) : BackgroundImageFragment {
-            var fragment = BackgroundImageFragment()
-            var args = Bundle()
+            val fragment = BackgroundImageFragment()
+            val args = Bundle()
             args.putString("url", url)
             fragment.arguments = args
 
@@ -29,17 +29,17 @@ class BackgroundImageFragment : Fragment() {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        var v = inflater.inflate(R.layout.fragment_background_image, container, false)
-        var url = arguments?.getString("url")
-//        Log.d("LOG", "url: " + url)
-        Picasso.get().load(url).into(v.img_view_background)
+        val v = inflater.inflate(R.layout.fragment_background_image, container, false)
+        val url = arguments?.getString("url")
+
+        if (url.equals("")) {
+            Glide.with(this).load(R.drawable.bg_default).into(v.img_view_background)
+        }else{
+            Glide.with(this).load(url).into(v.img_view_background)
+        }
 
         return v
     }

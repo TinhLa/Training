@@ -8,7 +8,8 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.widget.ImageView
 import android.widget.TextView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
+import com.training.tinhla.training.R
 import com.training.tinhla.training.base.Ulti
 import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.ViewIdGenerator
@@ -38,19 +39,26 @@ class TitleView : ConstraintLayout {
 
         if (data.parameter != null) {
 
-            var parameter = data.parameter
+            val parameter = data.parameter
 
-            var matchConstrain = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-            var wrapContent = ConstraintLayout.LayoutParams.WRAP_CONTENT
+            val matchConstrain = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+            val wrapContent = ConstraintLayout.LayoutParams.WRAP_CONTENT
 
             iconView = ImageView(context)
             iconView.id = ViewIdGenerator.generate()
 
+            val iconSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24f, resources.displayMetrics).toInt()
+
             iconView.layoutParams =
-                    ConstraintLayout.LayoutParams(wrapContent, wrapContent)
+                    ConstraintLayout.LayoutParams(iconSize, iconSize)
 
             addView(iconView)
-            Picasso.get().load(parameter?.icon).into(iconView)
+
+            if (parameter?.icon == null || parameter.icon.equals("")) {
+                Glide.with(this).load(R.drawable.ic_title_default).into(iconView)
+            }else{
+                Glide.with(this).load(parameter.icon).into(iconView)
+            }
 
             if (parameter?.title != null) {
 
@@ -60,15 +68,18 @@ class TitleView : ConstraintLayout {
                 titleView.layoutParams =
                         ConstraintLayout.LayoutParams(matchConstrain, wrapContent)
 
-                titleView.setText(parameter!!.title)
+                titleView.setText(parameter.title)
                 titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-                titleView.setTextColor(Color.parseColor(parameter?.titleFontColor))
+
+                if (parameter.titleFontColor != null) {
+                    titleView.setTextColor(Color.parseColor(parameter.titleFontColor))
+                }
 
                 // TODO : set font (missing)
 
                 addView(titleView)
 
-                if (parameter?.timeStamp != null) {
+                if (parameter.timeStamp != null) {
 
                     timeStampView = TextView(context)
                     timeStampView.id = ViewIdGenerator.generate()
@@ -76,10 +87,13 @@ class TitleView : ConstraintLayout {
                     timeStampView.layoutParams =
                             ConstraintLayout.LayoutParams(matchConstrain, wrapContent)
 
-                    var time = Ulti.timeStampToDate(parameter!!.timeStamp!!.toLong())
-                    timeStampView.setText(time.toString())
+                    val time = Ulti.timeStampToDate((parameter.timeStamp?:"0").toLong())
+                    timeStampView.setText(time)
                     timeStampView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-                    timeStampView.setTextColor(Color.parseColor(parameter?.timeStampFontColor))
+
+                    if (!Ulti.isEmptyStr(parameter.timeStampFontColor)) {
+                        timeStampView.setTextColor(Color.parseColor(parameter.timeStampFontColor))
+                    }
 
                     // TODO : set font (missing)
 
@@ -87,11 +101,11 @@ class TitleView : ConstraintLayout {
                 }
             }
 
-            var set = ConstraintSet()
+            val set = ConstraintSet()
             set.clone(this)
 
-            var parentID = ConstraintSet.PARENT_ID
-            var marginStart = ViewUlti.dpToPx(context, 8)
+            val parentID = ConstraintSet.PARENT_ID
+            val marginStart = ViewUlti.dpToPx(context, 8)
 
             set.connect(iconView.id, ConstraintSet.START, parentID, ConstraintSet.START)
             set.connect(iconView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)

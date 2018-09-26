@@ -1,5 +1,6 @@
 package com.training.tinhla.training.splashscreen
 
+import android.util.Log
 import com.google.gson.Gson
 import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.constant.LINE
@@ -50,56 +51,30 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         processTemplateButtonsLine(data.templateButton)
     }
 
+    // Read and show background images of header IFrame
     private fun processBackgroundImagesHeaderIFrame(templateBody: TemplateBodyModel?) {
-        if (templateBody != null && templateBody.iframeProperty != null) {
-            val bgImages = templateBody.iframeProperty?.images
+        val images = jsonHelper.readBackgroundImages(templateBody)
+        val size = images.size
 
-            if (bgImages != null && bgImages.size > 0) {
-                val size = bgImages.size
-                for (i in 0..(size - 1)) {
-                    imagesSliderAdapter.add(BackgroundImageFragment.newInstance(bgImages.get(i)))
-                }
-
-                view.setupBgHeaderViewPager(imagesSliderAdapter)
-            }
+        for (i in 0..(size - 1)) {
+            val image = images.get(i)
+            imagesSliderAdapter.add(BackgroundImageFragment.newInstance(image))
         }
+        view.setupBgHeaderViewPager(imagesSliderAdapter)
     }
 
     private fun processForegroundHeaderIFrame(templateBody: TemplateBodyModel?) {
-        var iFrame = templateBody?.iframeProperty
-
-        if (iFrame != null) {
-            var templateLines = iFrame.templateLines
-
-            if (templateLines != null) {
-                var count = templateLines.size
-                for (i in 0..(count - 1)) {
-                    var item:TemplateLineModel = templateLines.get(i)
-                    var columns = item.columns
-                    var _count = columns?.size?:0
-
-                    // normal type
-                    if (_count == 1) {
-                        when (item.columns?.get(0)?.contentType) {
-                            CONTENT.TEXT.value -> readTextHeader(item.columns?.get(0))
-
-                            CONTENT.IMAGE.value -> readImageHeader(item.columns?.get(0))
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun processTemplateButtonsLine(templateButtons: TemplateButtonModel?) {
-        if (templateButtons != null && templateButtons.new != null) {
-            view.createNewButtons(templateButtons.new!!)
+        val lines = jsonHelper.readForegroundHeaderIFrame(templateBody)
+        val count = lines.size
+        for (i in 0..(count - 1)) {
+            val line = lines.get(i)
+            view.addHeaderLine(line)
         }
     }
 
     private fun processBody(body: ArrayList<TemplateLineModel>?) {
         if (body != null) {
-            val count = body.size?:0
+            val count = body.size
             for (i in 0..(count-1)) {
                 val line = body.get(i)
                 val lineType = line.lineType
@@ -109,11 +84,11 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
                     }
 
                     LINE.DRAW_LINE.value -> {
-                        view.addDrawLineInBody()
+                        addBodyDrawLine()
                     }
 
                     LINE.EMPTY_LINE.value -> {
-                        view.addEmptyLineInBody()
+                        addBodyEmptyLine()
                     }
 
                     else -> {
@@ -124,22 +99,22 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         }
     }
 
+    private fun addBodyDrawLine() {
+        view.addDrawLineInBody()
+    }
+
+    private fun addBodyEmptyLine() {
+        view.addEmptyLineInBody()
+    }
+
     private fun addBodyLine(line: TemplateLineModel) {
         view.addBodyLine(line)
     }
 
-    private fun readImageHeader(columnModel: ColumnModel?) {
-        if (columnModel == null) {
-            return
+    private fun processTemplateButtonsLine(templateButtons: TemplateButtonModel?) {
+        if (templateButtons != null && templateButtons.new != null) {
+            view.createNewButtons(templateButtons.new!!)
         }
-        view.addImageViewToHeaderIFrame(columnModel)
+//        jsonHelper.readTemplateButtonsLine(templateButtons)
     }
-
-    private fun readTextHeader(columnModel: ColumnModel?) {
-        if (columnModel == null) {
-            return
-        }
-        view.addTextViewToHeaderIFrame(columnModel)
-    }
-
 }

@@ -2,6 +2,8 @@ package com.training.tinhla.training.splashscreen
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.training.tinhla.training.R
@@ -36,13 +38,8 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         vp_images.adapter = adapter
     }
 
-    // add an ImageView to IFrame header
-    override fun addImageViewToHeaderIFrame(data: ColumnModel) {
-        CreateViewHelper.addImageViewToHeader(gv_header_iframe, data)
-    }
-
-    override fun addTextViewToHeaderIFrame(data: ColumnModel) {
-        CreateViewHelper.addTextViewToHeader(gv_header_iframe, data)
+    override fun addHeaderLine(line: TemplateLineModel) {
+        CreateViewHelper.addBodyLine(this, gv_header_iframe, line)
     }
 
     override fun addBodyLine(line: TemplateLineModel) {
@@ -68,19 +65,20 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         positionSlidingUpPanelBelowIconHeader()
     }
 
-    // position SlidingUpPanel below header icon of IFrame Header
+    // position SlidingUpPanel below icon of IFrame Header
     private fun positionSlidingUpPanelBelowIconHeader() {
         if (gv_header_iframe.childCount > 0) {
-            var topView = gv_header_iframe.getChildAt(0)
-            if (topView is ImageView) {
+            val topView = gv_header_iframe.getChildAt(0)
 
-                var locs1 = intArrayOf(0,0)
-                var locs2 = intArrayOf(0,0)
+            // check if the first line of header is image (icon)
+            if ((topView as ViewGroup).getChildAt(0) is ImageView) {
+                val locs1 = intArrayOf(0,0)
+                val locs2 = intArrayOf(0,0)
 
                 btn_back.getLocationInWindow(locs1)
                 topView.getLocationInWindow(locs2)
 
-                var lp = sliding_layout.layoutParams as RelativeLayout.LayoutParams
+                val lp = sliding_layout.layoutParams as RelativeLayout.LayoutParams
 
                 lp.topMargin = gv_header_iframe.getChildAt(1).top + gv_header_iframe.top - btn_back.bottom
                 sliding_layout.layoutParams = lp

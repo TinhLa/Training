@@ -18,5 +18,9 @@ class Ulti {
             return date
         }
 
+        fun isEmptyStr(str : String?) : Boolean{
+            return str == null || str.equals("")
+        }
+
     }
 }

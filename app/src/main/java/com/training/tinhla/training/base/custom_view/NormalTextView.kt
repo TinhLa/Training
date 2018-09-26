@@ -2,6 +2,7 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -23,25 +24,34 @@ class NormalTextView : TextView {
         this.parentWidth = parentWidth
 
         maxWidth = (parentWidth * 0.9f).toInt()
+        minWidth = (parentWidth * 0.1f).toInt()
 
         setText(data.parameter?.text?:"")
         setTextColor(Color.parseColor(data.parameter?.fontColor?:"#ffffff"))
 
+        var hAlign = Gravity.LEFT
+        var vAlign = Gravity.CENTER_VERTICAL
+
         when (data.alignment) {
-            ALIGNMENT.LEFT.value -> {
-                gravity = Gravity.LEFT
+            ALIGNMENT.CENTER.value -> hAlign = Gravity.CENTER_HORIZONTAL
+
+            ALIGNMENT.RIGHT.value -> hAlign = if(android.os.Build.VERSION.SDK_INT >= 17 ) Gravity.END else Gravity.RIGHT
+
+            else -> {
+                hAlign = if(android.os.Build.VERSION.SDK_INT >= 17 ) Gravity.START else Gravity.LEFT
             }
-
-            ALIGNMENT.CENTER.value -> gravity = Gravity.CENTER_HORIZONTAL
-
-            ALIGNMENT.RIGHT.value -> gravity = Gravity.END
         }
 
-    }
+        when (data.verticalAlignment) {
+            ALIGNMENT.CENTER.value -> vAlign = Gravity.CENTER_VERTICAL
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        var width = MeasureSpec.getSize(widthMeasureSpec)
+            ALIGNMENT.TOP.value -> vAlign = Gravity.TOP
 
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+            else -> {
+                vAlign = Gravity.BOTTOM
+            }
+        }
+
+        gravity = hAlign or vAlign
     }
 }

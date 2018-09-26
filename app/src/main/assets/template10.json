@@ -5,8 +5,7 @@
     "templateType": "iframe",
     "iframeProperty": {
       "images": [
-        "https://ae01.alicdn.com/kf/HTB1DPL9SXXXXXaLaFXXq6xXFXXXR/10x10FT-Parede-de-A-o-S-lido-Cor-Azul-Traje-de-Casamento-Retrato-Fotografia-Backdrops-Est.jpg_640x640.jpg",
-        "http://sgc.edu.bd/wp-content/uploads/2016/11/Retro-Background-Floral-Blue-Pattern.jpg"
+
       ],
       "templateLines": [
         {
@@ -87,7 +86,7 @@
           {
             "contentType": "titlenormal",
             "parameter": {
-              "icon": "https://s3.ap-south-1.amazonaws.com/crypto-exchange/coins-sm/icon.png",
+              "icon": "",
               "title": "123 Service",
               "titleFontStyle": "H3-Bold",
               "titleFontColor": "#000000",
@@ -125,7 +124,7 @@
               "fontStyle": "Body-Medium",
               "fontColor": "#000000"
             },
-            "percentWidth": 100,
+            "percentWidth": 9,
             "height": 0,
             "alignment": "left",
             "verticalAlignment": "center"

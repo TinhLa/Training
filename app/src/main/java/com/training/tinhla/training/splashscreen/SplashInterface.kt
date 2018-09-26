@@ -11,9 +11,7 @@ interface SplashInterface {
     interface View : BaseView{
         fun setupBgHeaderViewPager(adapter:FragmentsViewPager)
 
-        fun addImageViewToHeaderIFrame(data:ColumnModel)
-
-        fun addTextViewToHeaderIFrame(data:ColumnModel)
+        fun addHeaderLine(line: TemplateLineModel)
 
         fun addBodyLine(line: TemplateLineModel)
 
