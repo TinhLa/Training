@@ -9,10 +9,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import com.training.tinhla.training.R
-import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.custom_view.*
 import com.training.tinhla.training.base.model.json.ButtonModel
-import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
 
 class CreateViewHelper {
@@ -46,15 +44,15 @@ class CreateViewHelper {
             return screenWidth - delta
         }
 
-        fun addBodyLine(activity: Activity, parent: LinearLayout, line: TemplateLineModel) {
+        fun addLine(activity: Activity, parent: LinearLayout, line: TemplateLineModel) {
 
             if (panelWidth == 0) {
                 panelWidth = measurePanelWidth(activity, parent)
             }
 
-            val view = BodyLine(parent.context, line, panelWidth)
+            val view = NormalLine(parent.context, line, panelWidth)
 
-            // add margin top and bottom for new BodyLine
+            // add margin top and bottom for new NormalLine
             val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, parent.resources.displayMetrics).toInt()
             val lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)
             lp.setMargins(0, margin, 0, margin)
@@ -92,20 +90,6 @@ class CreateViewHelper {
             parent.addView(emptyLine)
         }
 
-        fun createNewButtons(parent: RelativeLayout, buttons: ArrayList<ButtonModel>) {
-            val count = buttons.size
-
-            when (count) {
-                1 -> {
-                    createOnTemplateButton(parent, buttons.get(0))
-                }
-
-                2 -> {
-                    createTwoTemplateButtons(parent, buttons)
-                }
-            }
-        }
-
         private fun createOnTemplateButton(parent: RelativeLayout, data: ButtonModel) {
             val button = TemplateButton(parent.context, data)
 
@@ -139,5 +123,18 @@ class CreateViewHelper {
             }
         }
 
+        fun addTemplateButtons(parent:RelativeLayout, buttons: ArrayList<ButtonModel>) {
+            val count = buttons.size
+
+            when (count) {
+                1 -> {
+                    createOnTemplateButton(parent, buttons.get(0))
+                }
+
+                2 -> {
+                    createTwoTemplateButtons(parent, buttons)
+                }
+            }
+        }
     }
 }

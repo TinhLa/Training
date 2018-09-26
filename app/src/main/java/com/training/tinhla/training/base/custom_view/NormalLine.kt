@@ -14,15 +14,15 @@ import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.splashscreen.CreateViewHelper
 
 /**
- * An BodyLine can contain either 1 column or 2 columns
+ * An NormalLine can contain either 1 column or 2 columns
  * It create ImageView or TextView depend on JSON data passed
  */
-class BodyLine : LinearLayout {
+class NormalLine : LinearLayout {
 
     // JSONObject data determine UI
     lateinit var line: TemplateLineModel
 
-    // width of ViewGroup parent contain BodyLine
+    // width of ViewGroup parent contain NormalLine
     var parentWidth: Int = 10
 
     constructor(context: Context) : super(context)
@@ -57,20 +57,26 @@ class BodyLine : LinearLayout {
 
         when (contentType) {
             CONTENT.TEXT.value -> {
-                addTextView(position, column)
+                addTextView(column)
             }
 
             CONTENT.TITLE_NORMAL.value -> {
-                addTitle(position, column)
+                addTitle(column)
             }
 
             else -> {
                 addImageView(column)
             }
         }
+
+        if (position > 0) {
+            val distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, resources.displayMetrics).toInt()
+            val newView = getChildAt(position)
+            newView.setPadding(distance,0,0,0)
+        }
     }
 
-    private fun addTitle(position: Int, column: ColumnModel) {
+    private fun addTitle(column: ColumnModel) {
         val titleView = TitleView(context, column, CreateViewHelper.panelWidth)
 
         val width = ViewUlti.getLayoutParamWidth(column.percentWidth)
@@ -80,10 +86,6 @@ class BodyLine : LinearLayout {
         }
 
         titleView.maxWidth = (CreateViewHelper.panelWidth * 0.9f).toInt()
-
-        /*val margin = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt()
-        lp.topMargin = margin
-        lp.bottomMargin = margin*/
 
         titleView.layoutParams = lp
 
@@ -100,7 +102,7 @@ class BodyLine : LinearLayout {
         addView(imgv)
     }
 
-    private fun addTextView(position: Int, column: ColumnModel){
+    private fun addTextView(column: ColumnModel){
         val tv = NormalTextView(context, column, parentWidth)
 
         val lp = initLayoutParams(column)
@@ -108,12 +110,6 @@ class BodyLine : LinearLayout {
         tv.layoutParams = lp
         tv.maxWidth = (parentWidth * 0.9f).toInt()
         tv.minWidth = (parentWidth * 0.1f).toInt()
-
-        /*if (position > 0) {
-            val distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, resources.displayMetrics).toInt()
-            tv.setPadding(distance,0,0,0)
-        }*/
-
 
         addView(tv)
     }
@@ -130,7 +126,6 @@ class BodyLine : LinearLayout {
             }
             else if (percent < 10f) {
                 percent = 10f
-                Log.d("LOG", "min width")
             }
             lp.weight = percent/100f
         }

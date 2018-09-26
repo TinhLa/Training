@@ -19,7 +19,7 @@ interface SplashInterface {
 
         fun addEmptyLineInBody()
 
-        fun createNewButtons(buttons: ArrayList<ButtonModel>)
+        fun addTemplateButtons(templateButtons: ArrayList<ButtonModel>?)
     }
 
     interface Presenter : BasePresenter{

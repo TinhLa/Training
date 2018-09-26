@@ -2,14 +2,11 @@ package com.training.tinhla.training.splashscreen
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import com.training.tinhla.training.R
-import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.json.ButtonModel
-import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.basemodel.BaseActivity
 import com.training.tinhla.training.splashscreen.setup_sliding_up_panel.ScrollInstaller
@@ -39,11 +36,11 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
     }
 
     override fun addHeaderLine(line: TemplateLineModel) {
-        CreateViewHelper.addBodyLine(this, gv_header_iframe, line)
+        CreateViewHelper.addLine(this, gv_header_iframe, line)
     }
 
     override fun addBodyLine(line: TemplateLineModel) {
-        CreateViewHelper.addBodyLine(this, gv_panel, line)
+        CreateViewHelper.addLine(this, gv_panel, line)
     }
 
     override fun addDrawLineInBody() {
@@ -54,8 +51,10 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         CreateViewHelper.addEmptyLine(gv_panel)
     }
 
-    override fun createNewButtons(buttons: ArrayList<ButtonModel>) {
-        CreateViewHelper.createNewButtons(line_template_buttons, buttons)
+    override fun addTemplateButtons(templateButtons: ArrayList<ButtonModel>?) {
+        if (templateButtons != null) {
+            CreateViewHelper.addTemplateButtons(line_template_buttons, templateButtons)
+        }
     }
 
     override fun onWindowFocusChanged(hasFocus: Boolean) {

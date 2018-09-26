@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
+import com.training.tinhla.training.R
+import com.training.tinhla.training.base.Ulti
 import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
@@ -39,8 +41,10 @@ class NormalImageView : ImageView {
         }
         layoutParams = lp
 
-        if (data.parameter != null) {
+        if (!Ulti.isEmptyStr(data.parameter?.url)) {
             Glide.with(this).load(data.parameter?.url).into(this)
+        }else{
+            Glide.with(this).load(R.drawable.ic_iframe).into(this)
         }
     }
 

@@ -1,7 +1,10 @@
 package com.training.tinhla.training.splashscreen
 
+import android.content.Context
 import android.util.Log
 import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.training.tinhla.training.App
 import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.constant.LINE
 import com.training.tinhla.training.base.model.json.*
@@ -33,9 +36,7 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
     }
 
     private fun processData(json: JSONObject) {
-        val gson = Gson()
-
-        val data = gson.fromJson<DataModel>(json.toString(), DataModel::class.java)
+        val data = Gson().fromJson<DataModel>(json.toString(), DataModel::class.java)
 
         if (data != null && data.templateBody != null) {
 
@@ -48,7 +49,10 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
             processBody(body)
         }
 
-        processTemplateButtonsLine(data.templateButton)
+        if (json.has("templateButton")) {
+            val templateButonJSON = json.get("templateButton") as JSONObject
+            processTemplateButtonsLine(templateButonJSON)
+        }
     }
 
     // Read and show background images of header IFrame
@@ -111,10 +115,8 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         view.addBodyLine(line)
     }
 
-    private fun processTemplateButtonsLine(templateButtons: TemplateButtonModel?) {
-        if (templateButtons != null && templateButtons.new != null) {
-            view.createNewButtons(templateButtons.new!!)
-        }
-//        jsonHelper.readTemplateButtonsLine(templateButtons)
+    private fun processTemplateButtonsLine(templateButtonsJSON: JSONObject) {
+        val templateButtons = jsonHelper.readTemplateButtonsLines(templateButtonsJSON)
+        view.addTemplateButtons(templateButtons)
     }
 }

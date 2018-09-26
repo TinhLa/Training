@@ -14,7 +14,7 @@
             {
               "contentType": "image",
               "parameter": {
-                "url": "https://images.all-free-download.com/images/graphiclarge/round_key_icon_6813581.jpg"
+                "url": ""
               },
               "percentWidth": 100,
               "height": 40,
@@ -745,7 +745,7 @@
       {
         "textKey": "CANCEL",
         "icon": "",
-        "state": "enable",
+        "state": "disable",
         "action": "cancel"
       },
       {
@@ -757,7 +757,7 @@
     ],
     "complete": [
       {
-        "textKey": "เสร็จ",
+        "textKey": "SUBMITED",
         "icon": "",
         "state": "enable",
         "action": "submit"

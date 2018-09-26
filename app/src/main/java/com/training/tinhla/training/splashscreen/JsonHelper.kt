@@ -2,7 +2,8 @@ package com.training.tinhla.training.splashscreen
 
 import android.content.Context
 import android.util.Log
-import com.training.tinhla.training.base.model.constant.CONTENT
+import com.google.gson.Gson
+import com.training.tinhla.training.base.model.json.ButtonModel
 import com.training.tinhla.training.base.model.json.TemplateBodyModel
 import com.training.tinhla.training.base.model.json.TemplateButtonModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
@@ -23,6 +24,7 @@ class JsonHelper @Inject constructor(var context:Context) {
             e.printStackTrace()
             Log.d("LOG", "read json from assets count error: " + e.toString())
         }
+
         return json
     }
 
@@ -74,7 +76,50 @@ class JsonHelper @Inject constructor(var context:Context) {
         return lines
     }
 
-    fun readTemplateButtonsLine(templateButtons: TemplateButtonModel?) {
+    fun readTemplateButtonsLines(templateButtons: JSONObject) : ArrayList<ButtonModel>? {
+        var buttons:ArrayList<ButtonModel> ?= null
 
+        // add keys in specific order
+        val keys = ArrayList<String>()
+        keys.add("new")
+        keys.add("complete")
+        keys.add("expire")
+        keys.add("fail")
+        keys.add("cancel")
+
+        val gson = Gson()
+        val count = keys.size
+        for (i in 0..(count - 1)) {
+            val key = keys.get(i)
+            if (templateButtons.has(key)) {
+                val line = templateButtons.get(key) as JSONArray
+                buttons = readTemplateButtonsLine(gson, line)
+                if (buttons != null && buttons.size > 0) {
+                    break
+                }
+            }
+        }
+
+        return buttons
+    }
+
+    private fun readTemplateButtonsLine(gson: Gson, templateButtonsLineJSON: JSONArray): ArrayList<ButtonModel>? {
+        val buttons = ArrayList<ButtonModel>()
+
+        val count = templateButtonsLineJSON.length()
+
+        for (i in 0..(count - 1)) {
+            val buttonJSON = templateButtonsLineJSON.get(i) as JSONObject
+            val templateButton:ButtonModel = gson.fromJson(buttonJSON.toString(), ButtonModel::class.java)
+            Log.d("LOG", "template button " + templateButton.textKey + " : " +templateButton.state)
+
+            if (templateButton.state.equals("disable")) {
+                return null
+            }else{
+                buttons.add(templateButton)
+            }
+        }
+
+        return buttons
     }
 }
