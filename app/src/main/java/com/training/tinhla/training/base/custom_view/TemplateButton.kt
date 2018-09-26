@@ -8,7 +8,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.widget.ImageView
-import android.widget.Space
 import android.widget.TextView
 import com.training.tinhla.training.R
 import com.training.tinhla.training.base.ViewIdGenerator

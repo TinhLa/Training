@@ -2,7 +2,6 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
@@ -11,7 +10,7 @@ import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
-import com.training.tinhla.training.splashscreen.CreateViewHelper
+import com.training.tinhla.training.splashscreen.helper.CreateViewHelper
 
 /**
  * An NormalLine can contain either 1 column or 2 columns
@@ -43,6 +42,7 @@ class NormalLine : LinearLayout {
                 _addView(i, column)
             }
 
+            // if there is only one column, add more 1 view width 10% width of parent
             if (columns.size == 1) {
                 val view = View(context)
                 val lp = LinearLayout.LayoutParams((parentWidth*.1f).toInt(), 1)
@@ -69,6 +69,7 @@ class NormalLine : LinearLayout {
             }
         }
 
+        // set left margin if new child view is not the first
         if (position > 0) {
             val distance = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 8f, resources.displayMetrics).toInt()
             val newView = getChildAt(position)
@@ -76,6 +77,7 @@ class NormalLine : LinearLayout {
         }
     }
 
+    // Add a title view
     private fun addTitle(column: ColumnModel) {
         val titleView = TitleView(context, column, CreateViewHelper.panelWidth)
 
@@ -92,6 +94,7 @@ class NormalLine : LinearLayout {
         addView(titleView)
     }
 
+    // Add an image view
     private fun addImageView(column: ColumnModel){
         val imgv = NormalImageView(context, column, parentWidth)
 
@@ -102,6 +105,7 @@ class NormalLine : LinearLayout {
         addView(imgv)
     }
 
+    // Add a text view
     private fun addTextView(column: ColumnModel){
         val tv = NormalTextView(context, column, parentWidth)
 

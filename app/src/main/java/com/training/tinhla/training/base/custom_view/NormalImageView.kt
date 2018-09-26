@@ -18,28 +18,30 @@ class NormalImageView : ImageView {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs : AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(context, attrs, defStyle)
+
     constructor(context: Context, data: ColumnModel, parentWidth:Int) : super(context, null){
         this.data = data
         this.parentWidth = parentWidth
 
-        maxWidth = (parentWidth * 0.8f).toInt()
+        maxWidth = (parentWidth * 0.9f).toInt()
+        minimumWidth = (parentWidth * 0.1f).toInt()
 
-        var widthLP = getLayoutParamWidth(data.percentWidth)
-        var lp = LinearLayout.LayoutParams(widthLP, getLayoutParamHeight(data.height))
+        val widthLP = getLayoutParamWidth(data.percentWidth)
+        val lp = LinearLayout.LayoutParams(widthLP, getLayoutParamHeight(data.height))
         if (widthLP == 0) {
             lp.weight = data.percentWidth / 100f
         }
 
         when (data.alignment) {
-            ALIGNMENT.LEFT.value -> {
+            ALIGNMENT.LEFT.value ->
                 scaleType = ImageView.ScaleType.FIT_START
-            }
 
-            ALIGNMENT.CENTER.value -> scaleType = ImageView.ScaleType.CENTER
+            ALIGNMENT.RIGHT.value ->
+                scaleType = ImageView.ScaleType.FIT_END
 
-            ALIGNMENT.RIGHT.value -> scaleType = ImageView.ScaleType.FIT_END
+            ALIGNMENT.CENTER.value ->
+                scaleType = ImageView.ScaleType.CENTER
         }
-        layoutParams = lp
 
         if (!Ulti.isEmptyStr(data.parameter?.url)) {
             Glide.with(this).load(data.parameter?.url).into(this)
@@ -50,21 +52,19 @@ class NormalImageView : ImageView {
 
     fun getLayoutParamWidth(percentWidth:Int): Int {
         when (percentWidth) {
-            100 -> {
-                return LinearLayout.LayoutParams.MATCH_PARENT
-            }
 
             0 -> {
                 return LinearLayout.LayoutParams.WRAP_CONTENT
             }
 
-            else -> return (percentWidth * parentWidth)
+            else -> return 0
         }
     }
 
     fun getLayoutParamHeight(height:Int): Int {
         when (height) {
             0 -> return LinearLayout.LayoutParams.WRAP_CONTENT
+
             else -> return ViewUlti.dpToPx(context, height)
         }
     }

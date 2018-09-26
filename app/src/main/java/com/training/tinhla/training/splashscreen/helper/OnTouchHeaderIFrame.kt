@@ -1,4 +1,4 @@
-package com.training.tinhla.training.splashscreen
+package com.training.tinhla.training.splashscreen.helper
 
 import android.graphics.Rect
 import android.support.v4.view.VelocityTrackerCompat
@@ -11,34 +11,22 @@ import android.view.View
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
 
 /**
- * Listener switch page of Background Images ViewPager when user swipe horizontally on HeaderIFrame ViewGroup
+ * Listen event switch page of Background Images ViewPager when user swipe horizontally on HeaderIFrame ViewGroup
+ * and event scroll up to expand panel
  */
 class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpPanelLayout) : View.OnTouchListener {
 
     var oldX = 0f
     var oldY = 0f
     var verticalSwipe:Boolean = false
-    var velocityTracker:VelocityTracker?=null
-    var check = false
     var needExpandPanelOnTouchUp = false
 
     override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-
-        val index = event?.actionIndex
 
         when (event?.action) {
             MotionEvent.ACTION_DOWN -> {
                 oldX = event.x
                 oldY = event.y
-
-                if(velocityTracker != null){
-                    velocityTracker!!.clear()
-                }else{
-                    velocityTracker = VelocityTracker.obtain()
-                }
-                velocityTracker!!.addMovement(event)
-
-                check = true
             }
 
             MotionEvent.ACTION_MOVE -> {
@@ -46,6 +34,7 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
             }
 
             MotionEvent.ACTION_UP -> {
+                // expand the panel if needed
                 if (needExpandPanelOnTouchUp) {
                     slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.EXPANDED
                     needExpandPanelOnTouchUp = false
@@ -56,6 +45,7 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
         return true
     }
 
+    // Check if swipe horizontally or vertically
     private fun onSwiping(event: MotionEvent) : Boolean {
         val deltaX = event.x.minus(oldX)
         val deltaY = event.y.minus(oldY)
@@ -64,22 +54,27 @@ class OnTouchHeaderIFrame(var viewPager:ViewPager, var slidingUpPanel:SlidingUpP
         val absDeltaX = Math.abs(deltaX)
         val absDeltaY = Math.abs(deltaY)
 
-        if (absDeltaX > absDeltaY) {
-            verticalSwipe = false
-            // swipe background images
-            swipeBgImages(deltaX)
-        } else {
-            if (deltaY.compareTo(0).equals(-1)) {
+        val absDelta = Math.max(absDeltaX, absDeltaY)
+        // only seem as swipe if the delta is enough big
+        if (absDelta > 10) {
+            if (absDeltaX > absDeltaY) {
+                verticalSwipe = false
+                // swipe background images
+                swipeBgImages(deltaX)
+            } else {
+                if (deltaY.compareTo(0).equals(-1)) {
 
-                slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
-                needExpandPanelOnTouchUp = true
-                return false
+                    slidingUpPanel.panelState = SlidingUpPanelLayout.PanelState.ANCHORED
+                    needExpandPanelOnTouchUp = true
+                    return false
+                }
             }
         }
+
         return true
     }
 
-    // swipe background images of header IFrame
+    // Swipe background images of header IFrame
     private fun swipeBgImages(deltaX: Float) {
         var pager:Int = viewPager.currentItem
 

@@ -29,6 +29,10 @@ class NormalTextView : TextView {
         setText(data.parameter?.text?:"")
         setTextColor(Color.parseColor(data.parameter?.fontColor?:"#ffffff"))
 
+        setAlign()
+    }
+
+    private fun setAlign() {
         var hAlign = Gravity.LEFT
         var vAlign = Gravity.CENTER_VERTICAL
 

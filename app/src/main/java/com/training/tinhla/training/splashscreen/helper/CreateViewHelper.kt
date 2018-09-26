@@ -1,4 +1,4 @@
-package com.training.tinhla.training.splashscreen
+package com.training.tinhla.training.splashscreen.helper
 
 import android.app.Activity
 import android.graphics.Color
@@ -13,10 +13,14 @@ import com.training.tinhla.training.base.custom_view.*
 import com.training.tinhla.training.base.model.json.ButtonModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
 
+/**
+ * This class help add views to the UI
+ */
 class CreateViewHelper {
     companion object {
         var panelWidth:Int = 0
 
+        // Measure width of panel in order to determine maxWidth and minWidth of child views
         private fun measurePanelWidth(activity: Activity, panel: LinearLayout): Int {
             val point = Point()
             val display = activity.windowManager.defaultDisplay
@@ -90,6 +94,23 @@ class CreateViewHelper {
             parent.addView(emptyLine)
         }
 
+        fun addTemplateButtons(parent:RelativeLayout, buttons: ArrayList<ButtonModel>) {
+            val count = buttons.size
+
+            when (count) {
+                1 -> {
+                    createOnTemplateButton(parent, buttons.get(0))
+                }
+
+                2 -> {
+                    createTwoTemplateButtons(parent, buttons)
+                }
+            }
+        }
+
+        /**
+         * call from method addTemplateButtons()
+         */
         private fun createOnTemplateButton(parent: RelativeLayout, data: ButtonModel) {
             val button = TemplateButton(parent.context, data)
 
@@ -101,6 +122,9 @@ class CreateViewHelper {
             parent.addView(button)
         }
 
+        /**
+         * call from method addTemplateButtons()
+         */
         private fun createTwoTemplateButtons(parent: RelativeLayout, buttons: ArrayList<ButtonModel>) {
             for (i in 0..1) {
                 val data = buttons.get(i)
@@ -123,18 +147,5 @@ class CreateViewHelper {
             }
         }
 
-        fun addTemplateButtons(parent:RelativeLayout, buttons: ArrayList<ButtonModel>) {
-            val count = buttons.size
-
-            when (count) {
-                1 -> {
-                    createOnTemplateButton(parent, buttons.get(0))
-                }
-
-                2 -> {
-                    createTwoTemplateButtons(parent, buttons)
-                }
-            }
-        }
     }
 }

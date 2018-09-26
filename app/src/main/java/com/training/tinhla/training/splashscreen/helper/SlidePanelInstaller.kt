@@ -1,21 +1,18 @@
-package com.training.tinhla.training.splashscreen.setup_sliding_up_panel
+package com.training.tinhla.training.splashscreen.helper
 
 import android.annotation.SuppressLint
 import android.support.v4.view.ViewPager
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import com.sothree.slidinguppanel.SlidingUpPanelLayout
-import com.training.tinhla.training.splashscreen.OnTouchHeaderIFrame
 
 
 /*
-* Functions of this class have not edited completely to readable
-* I commited and pushed to edit it at home
+* This class help installing action when slide the panel and the header
 * */
-class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFrame:LinearLayout, var mainViewSlidingPanelLayout:LinearLayout, var childScrollView:ScrollView) {
+class SlidePanelInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFrame:LinearLayout, var mainViewSlidingPanelLayout:LinearLayout, var childScrollView:ScrollView) {
 
     // y coordinate of touched position on child ScrollView
     var oldY = -1f
@@ -67,14 +64,14 @@ class ScrollInstaller(var slidingPanelLayout:SlidingUpPanelLayout, var headerIFr
                     childScrollView.setOnTouchListener({ _, event ->
                         when (event?.action) {
                             MotionEvent.ACTION_DOWN -> {
-                                oldY = event.y ?: -1f
+                                oldY = event.y
                                 isScrollingUp = false
                             }
 
                             MotionEvent.ACTION_MOVE -> {
                                 // check if direction of scrolling (up or not)
                                 // and collapsed SlidingUpPanel when it is scroll at top
-                                calculateScrollState(event.y ?: -1f)
+                                calculateScrollState(event.y)
                             }
                         }
 

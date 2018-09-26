@@ -14,10 +14,19 @@ import com.training.tinhla.training.base.Ulti
 import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.ViewIdGenerator
 import com.training.tinhla.training.base.model.json.ColumnModel
+import com.training.tinhla.training.base.model.json.ParameterModel
 
+/**
+ * A TitleView contains 1 icon at left side, 1 title at righ of the icon and the top side, 1 time view below the title
+ */
 class TitleView : ConstraintLayout {
     lateinit var data: ColumnModel
     var parentWidth = 0
+
+    val MATCH_CONSTRAINT = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
+    val WRAP_CONTENT = ConstraintLayout.LayoutParams.WRAP_CONTENT
+
+    val ICON_SIZE = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24f, resources.displayMetrics).toInt()
 
     lateinit var iconView:ImageView
     lateinit var titleView: TextView
@@ -32,96 +41,110 @@ class TitleView : ConstraintLayout {
         this.parentWidth = parentWidth
 
         maxWidth = (parentWidth * 0.9f).toInt()
+        minWidth = (parentWidth * 0.1f).toInt()
 
-        if(data.parameter?.backgroundColor != null){
-            setBackgroundColor(Color.parseColor(data.parameter?.backgroundColor))
-        }
+        val parameter = data.parameter
 
-        if (data.parameter != null) {
+        if (parameter != null) {
 
-            val parameter = data.parameter
-
-            val matchConstrain = ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
-            val wrapContent = ConstraintLayout.LayoutParams.WRAP_CONTENT
-
-            iconView = ImageView(context)
-            iconView.id = ViewIdGenerator.generate()
-
-            val iconSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 24f, resources.displayMetrics).toInt()
-
-            iconView.layoutParams =
-                    ConstraintLayout.LayoutParams(iconSize, iconSize)
-
-            addView(iconView)
-
-            if (parameter?.icon == null || parameter.icon.equals("")) {
-                Glide.with(this).load(R.drawable.ic_title_default).into(iconView)
-            }else{
-                Glide.with(this).load(parameter.icon).into(iconView)
+            if(parameter.backgroundColor != null){
+                setBackgroundColor(Color.parseColor(parameter.backgroundColor))
             }
 
-            if (parameter?.title != null) {
+            addIcon(parameter)
 
-                titleView = TextView(context)
-                titleView.id = ViewIdGenerator.generate()
+            addTitle(parameter)
 
-                titleView.layoutParams =
-                        ConstraintLayout.LayoutParams(matchConstrain, wrapContent)
+            addTimestamp(parameter)
 
-                titleView.setText(parameter.title)
-                titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
-
-                if (parameter.titleFontColor != null) {
-                    titleView.setTextColor(Color.parseColor(parameter.titleFontColor))
-                }
-
-                // TODO : set font (missing)
-
-                addView(titleView)
-
-                if (parameter.timeStamp != null) {
-
-                    timeStampView = TextView(context)
-                    timeStampView.id = ViewIdGenerator.generate()
-
-                    timeStampView.layoutParams =
-                            ConstraintLayout.LayoutParams(matchConstrain, wrapContent)
-
-                    val time = Ulti.timeStampToDate((parameter.timeStamp?:"0").toLong())
-                    timeStampView.setText(time)
-                    timeStampView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
-
-                    if (!Ulti.isEmptyStr(parameter.timeStampFontColor)) {
-                        timeStampView.setTextColor(Color.parseColor(parameter.timeStampFontColor))
-                    }
-
-                    // TODO : set font (missing)
-
-                    addView(timeStampView)
-                }
-            }
-
-            val set = ConstraintSet()
-            set.clone(this)
-
-            val parentID = ConstraintSet.PARENT_ID
-            val marginStart = ViewUlti.dpToPx(context, 8)
-
-            set.connect(iconView.id, ConstraintSet.START, parentID, ConstraintSet.START)
-            set.connect(iconView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)
-            set.connect(iconView.id, ConstraintSet.BOTTOM, parentID, ConstraintSet.BOTTOM)
-
-            set.connect(titleView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)
-            set.connect(titleView.id, ConstraintSet.START, iconView.id, ConstraintSet.END, marginStart)
-            set.connect(titleView.id, ConstraintSet.END, parentID, ConstraintSet.END)
-
-            set.connect(timeStampView.id, ConstraintSet.TOP, titleView.id, ConstraintSet.BOTTOM)
-            set.connect(timeStampView.id, ConstraintSet.START, titleView.id, ConstraintSet.START)
-            set.connect(timeStampView.id, ConstraintSet.END, titleView.id, ConstraintSet.END)
-
-            set.applyTo(this)
+            setConstraints()
         }
-
     }
 
+    private fun setConstraints() {
+        val set = ConstraintSet()
+        set.clone(this)
+
+        val parentID = ConstraintSet.PARENT_ID
+        val marginStart = ViewUlti.dpToPx(context, 8)
+
+        set.connect(iconView.id, ConstraintSet.START, parentID, ConstraintSet.START)
+        set.connect(iconView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)
+        set.connect(iconView.id, ConstraintSet.BOTTOM, parentID, ConstraintSet.BOTTOM)
+
+        set.connect(titleView.id, ConstraintSet.TOP, parentID, ConstraintSet.TOP)
+        set.connect(titleView.id, ConstraintSet.START, iconView.id, ConstraintSet.END, marginStart)
+        set.connect(titleView.id, ConstraintSet.END, parentID, ConstraintSet.END)
+
+        set.connect(timeStampView.id, ConstraintSet.TOP, titleView.id, ConstraintSet.BOTTOM)
+        set.connect(timeStampView.id, ConstraintSet.START, titleView.id, ConstraintSet.START)
+        set.connect(timeStampView.id, ConstraintSet.END, titleView.id, ConstraintSet.END)
+
+        set.applyTo(this)
+    }
+
+    private fun addIcon(parameter: ParameterModel) {
+        iconView = ImageView(context)
+
+        iconView.id = ViewIdGenerator.generate()
+
+        iconView.layoutParams =
+                ConstraintLayout.LayoutParams(ICON_SIZE, ICON_SIZE)
+
+        addView(iconView)
+
+        if (Ulti.isEmptyStr(parameter.icon)) {
+            // show default icon if the url is empty
+            Glide.with(this).load(R.drawable.ic_title_default).into(iconView)
+        }else{
+            Glide.with(this).load(parameter.icon).into(iconView)
+        }
+    }
+
+    private fun addTitle(parameter: ParameterModel) {
+        titleView = TextView(context)
+        titleView.id = ViewIdGenerator.generate()
+
+        titleView.layoutParams =
+                ConstraintLayout.LayoutParams(MATCH_CONSTRAINT, WRAP_CONTENT)
+
+        if (parameter.title != null) {
+            titleView.setText(parameter.title)
+            titleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
+
+            if (parameter.titleFontColor != null) {
+                titleView.setTextColor(Color.parseColor(parameter.titleFontColor))
+            }
+
+            // TODO : set font (missing)
+
+            addView(titleView)
+        }
+    }
+
+    private fun addTimestamp(parameter: ParameterModel) {
+
+        timeStampView = TextView(context)
+        timeStampView.id = ViewIdGenerator.generate()
+
+        timeStampView.layoutParams =
+                ConstraintLayout.LayoutParams(MATCH_CONSTRAINT, WRAP_CONTENT)
+
+        val timeStamp = parameter.timeStamp
+
+        if (timeStamp != null) {
+
+            val time = Ulti.timeStampToDate((timeStamp).toLong())
+            timeStampView.setText(time)
+            timeStampView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
+
+            if (!Ulti.isEmptyStr(parameter.timeStampFontColor)) {
+                timeStampView.setTextColor(Color.parseColor(parameter.timeStampFontColor))
+            }
+
+            // TODO : set font (missing)
+
+            addView(timeStampView)
+        }
+    }
 }

@@ -1,35 +1,36 @@
 package com.training.tinhla.training.splashscreen
 
-import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.training.tinhla.training.App
-import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.constant.LINE
+import com.training.tinhla.training.base.model.constant.NODE
 import com.training.tinhla.training.base.model.json.*
 import com.training.tinhla.training.splashscreen.header_images.BackgroundImageFragment
+import com.training.tinhla.training.splashscreen.header_images.FragmentsViewPager
+import com.training.tinhla.training.splashscreen.helper.JsonHelper
 import org.json.JSONObject
 import javax.inject.Inject
 
 class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, var jsonHelper: JsonHelper) : SplashInterface.Presenter{
 
+    val JSON_FILE = "template10.json"
+
     @Inject
-    lateinit var imagesSliderAdapter:FragmentsViewPager
+    lateinit var imagesSliderAdapter: FragmentsViewPager
 
     init {
 
     }
 
     override fun onCreate() {
-        val jsonStr = jsonHelper.readJSONFromAsset("template10.json")
+        val jsonStr = jsonHelper.readJSONFromAsset(JSON_FILE)
         val json = JSONObject(jsonStr)
 
-        if (json.has("templateBody")) {
+        // setup to all JSON file probably
+        if (json.has(NODE.TEMPLATE_BODY)) {
             processData(json)
-        }else if (json.has("data")){
-            val dataObject = json.getJSONObject("data")
-            if (dataObject.has("templateBody")) {
+        }else if (json.has(NODE.DATA)){
+            val dataObject = json.getJSONObject(NODE.DATA)
+            if (dataObject.has(NODE.TEMPLATE_BODY)) {
                 processData(dataObject)
             }
         }
@@ -40,23 +41,29 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
 
         if (data != null && data.templateBody != null) {
 
-            // read images for background header IFrame
-            processBackgroundImagesHeaderIFrame(data.templateBody)
+            val templateBody = data.templateBody
 
-            processForegroundHeaderIFrame(data.templateBody)
+            if (templateBody != null) {
 
-            val body = data.templateBody?.templateLines
-            processBody(body)
+                // read images for background header IFrame
+                processBackgroundImagesHeaderIFrame(templateBody)
+
+                processForegroundHeaderIFrame(templateBody)
+
+                val body = templateBody.templateLines
+                if(body != null)
+                    processBody(body)
+            }
         }
 
-        if (json.has("templateButton")) {
-            val templateButonJSON = json.get("templateButton") as JSONObject
+        if (json.has(NODE.TEMPLATE_BUTTON)) {
+            val templateButonJSON = json.get(NODE.TEMPLATE_BUTTON) as JSONObject
             processTemplateButtonsLine(templateButonJSON)
         }
     }
 
     // Read and show background images of header IFrame
-    private fun processBackgroundImagesHeaderIFrame(templateBody: TemplateBodyModel?) {
+    private fun processBackgroundImagesHeaderIFrame(templateBody: TemplateBodyModel) {
         val images = jsonHelper.readBackgroundImages(templateBody)
         val size = images.size
 
@@ -67,7 +74,8 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         view.setupBgHeaderViewPager(imagesSliderAdapter)
     }
 
-    private fun processForegroundHeaderIFrame(templateBody: TemplateBodyModel?) {
+    // Read and show views of header IFrame
+    private fun processForegroundHeaderIFrame(templateBody: TemplateBodyModel) {
         val lines = jsonHelper.readForegroundHeaderIFrame(templateBody)
         val count = lines.size
         for (i in 0..(count - 1)) {
@@ -76,28 +84,27 @@ class SplashPresenterImpl @Inject constructor (var view: SplashInterface.View, v
         }
     }
 
-    private fun processBody(body: ArrayList<TemplateLineModel>?) {
-        if (body != null) {
-            val count = body.size
-            for (i in 0..(count-1)) {
-                val line = body.get(i)
-                val lineType = line.lineType
-                when (lineType) {
-                    LINE.NORMAL.value -> {
-                        addBodyLine(line)
-                    }
+    // Read and show views of body
+    private fun processBody(body: ArrayList<TemplateLineModel>) {
+        val count = body.size
+        for (i in 0..(count-1)) {
+            val line = body.get(i)
+            val lineType = line.lineType
+            when (lineType) {
+                LINE.NORMAL.value -> {
+                    addBodyLine(line)
+                }
 
-                    LINE.DRAW_LINE.value -> {
-                        addBodyDrawLine()
-                    }
+                LINE.DRAW_LINE.value -> {
+                    addBodyDrawLine()
+                }
 
-                    LINE.EMPTY_LINE.value -> {
-                        addBodyEmptyLine()
-                    }
+                LINE.EMPTY_LINE.value -> {
+                    addBodyEmptyLine()
+                }
 
-                    else -> {
+                else -> {
 
-                    }
                 }
             }
         }

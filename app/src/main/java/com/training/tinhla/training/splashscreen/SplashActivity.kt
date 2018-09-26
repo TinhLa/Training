@@ -9,7 +9,9 @@ import com.training.tinhla.training.R
 import com.training.tinhla.training.base.model.json.ButtonModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
 import com.training.tinhla.training.basemodel.BaseActivity
-import com.training.tinhla.training.splashscreen.setup_sliding_up_panel.ScrollInstaller
+import com.training.tinhla.training.splashscreen.header_images.FragmentsViewPager
+import com.training.tinhla.training.splashscreen.helper.CreateViewHelper
+import com.training.tinhla.training.splashscreen.helper.SlidePanelInstaller
 import kotlinx.android.synthetic.main.content_splash.*
 import kotlinx.android.synthetic.main.layout_header_iframe.*
 import kotlinx.android.synthetic.main.layout_panel_body.*
@@ -28,7 +30,7 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
         presenter.onCreate()
 
         // setup processes of views for scroll action
-        ScrollInstaller(sliding_layout, gv_header_iframe, view_main_content, sv_main).installScrollProcess(vp_images)
+        SlidePanelInstaller(sliding_layout, gv_header_iframe, view_main_content, sv_main).installScrollProcess(vp_images)
     }
 
     override fun setupBgHeaderViewPager(adapter: FragmentsViewPager) {
