@@ -7,10 +7,12 @@ import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewPager
 import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.adapter.ViewPagerAdapter
-import com.training.tinhla.training.nkhoi_srcollview.presenter.JsonPresenterIframeImpl
-import com.training.tinhla.training.nkhoi_srcollview.presenter.JsonPresenterTemplateLinesImpl
-import com.training.tinhla.training.nkhoi_srcollview.presenter.SlidingInterface
-import com.training.tinhla.training.nkhoi_srcollview.presenter.SlidingPresenterImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenterImpl.JsonPresenterIframeImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenterImpl.JsonPresenterTemplateBtnImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenterImpl.JsonPresenterTemplateLinesImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenterInterface.SlidingInterface
+import com.training.tinhla.training.nkhoi_srcollview.presenterImpl.SlidingPresenterImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenterInterface.JsonInterfaceTemplateButton
 import kotlinx.android.synthetic.main.activity_main_sliding.*
 import kotlinx.android.synthetic.main.include_ifarme_property.*
 import kotlinx.android.synthetic.main.include_viewpager.*
@@ -20,17 +22,19 @@ class SlidingActivity : AppCompatActivity(), SlidingInterface.viewSliding {
     private lateinit var presenterSliding : SlidingPresenterImpl
     private lateinit var presenterIframe : JsonPresenterIframeImpl
     private lateinit var presenterTemplateLines: JsonPresenterTemplateLinesImpl
+    private lateinit var presenterTemplateButton: JsonPresenterTemplateBtnImpl
     var array2 : List<Int> = listOf(R.drawable.ntkh_image7,R.drawable.ntkn_image6,R.drawable.ntkn_image5 , R.drawable.ntkn_image4)
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_sliding)
         presenterSliding = SlidingPresenterImpl(this)
-
         presenterIframe = JsonPresenterIframeImpl(this)
         presenterTemplateLines = JsonPresenterTemplateLinesImpl(this, this)
         presenterIframe.getPropertyForColumnIframe(column_iframe)
         presenterTemplateLines.getPropertyForColumnTemplateLines(template_lines)
+        presenterTemplateButton = JsonPresenterTemplateBtnImpl(this)
+        presenterTemplateButton.getListButton(template_btn)
         presenterSliding.view.loadTextSuccess("")
     }
 
@@ -39,7 +43,6 @@ class SlidingActivity : AppCompatActivity(), SlidingInterface.viewSliding {
         viewpager_image.setAdapter(myadapter)
         presenterSliding.creatDotsOfViewPager(this,dots,listOf("1","2","3","4").size) // -> if(presenterIframe.getListImageViewPager()===null) 1 else presenterIframe.getListImageViewPager()!!.size
         viewpager_image.addOnPageChangeListener(onPageChangeListener)
-
     }
 
     override fun loadTextFail(text: String) {

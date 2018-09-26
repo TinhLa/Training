@@ -75,13 +75,12 @@
         </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
         <LinearLayout
+            android:id="@+id/template_btn"
             android:orientation="horizontal"
             android:layout_gravity="bottom"
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:background="#ffffff">
-            <include
-                layout="@layout/template_two_button"/>
         </LinearLayout>
 
     </FrameLayout>

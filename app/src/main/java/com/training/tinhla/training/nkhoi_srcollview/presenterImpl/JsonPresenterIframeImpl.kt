@@ -1,4 +1,4 @@
-package com.training.tinhla.training.nkhoi_srcollview.presenter
+package com.training.tinhla.training.nkhoi_srcollview.presenterImpl
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -17,6 +17,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.model.Data
 import com.training.tinhla.training.nkhoi_srcollview.model.ReadJson
+import com.training.tinhla.training.nkhoi_srcollview.presenterInterface.JsonInterfaceIframe
 
 open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.presenterJson {
 
@@ -32,7 +33,7 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
     override fun getListImageViewPager() : List<String>? {
         return dta.templateBody?.iframeProperty?.images
     }
-
+         // Iframe
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun getPropertyForColumnIframe(view: ViewGroup) {
         for (i in 0..(dta.templateBody?.iframeProperty?.templateLines?.size!! - 1) step 1) {
@@ -47,8 +48,6 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
             }
         }
     }
-
-    ///////////////////////////////////////////////////////////// public
 
     override fun getParameterIcon(viewGroup: ViewGroup, positionTemplateLine: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
         val linearLayout: LinearLayout = LinearLayout(context)
@@ -68,7 +67,6 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
         viewGroup.addView(linearLayout)
     }
 
-
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     override fun getParameterText(viewGroup: ViewGroup, positionTemplateLine: Int,positionColumn: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
         val linearLayout: LinearLayout = LinearLayout(context)
@@ -86,6 +84,9 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
         linearLayout.addView(text)
         viewGroup.addView(linearLayout)
     }
+
+
+    /////////////////////// public
 
    override fun setPercenwidth(percen: Int?) :Int {
        if (percen!!<10)percen ==10

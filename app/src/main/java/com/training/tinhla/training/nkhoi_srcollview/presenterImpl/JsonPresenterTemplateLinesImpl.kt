@@ -1,4 +1,4 @@
-package com.training.tinhla.training.nkhoi_srcollview.presenter
+package com.training.tinhla.training.nkhoi_srcollview.presenterImpl
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -15,6 +15,7 @@ import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.adapter.ViewPagerAdapter
 import com.training.tinhla.training.nkhoi_srcollview.model.Data
 import com.training.tinhla.training.nkhoi_srcollview.model.ReadJson
+import com.training.tinhla.training.nkhoi_srcollview.presenterInterface.SlidingInterface
 import java.util.*
 import java.text.SimpleDateFormat
 
@@ -62,7 +63,7 @@ class JsonPresenterTemplateLinesImpl(view : SlidingInterface.viewSliding, contex
         when(contentType){
               "text"-> getParameterText(view,position,0,percentWidth,height,alignment,verticalAlignment)
               "title"->getParameterTitle(view,position,percentWidth,height,alignment,verticalAlignment)
-              "image" -> getParameterImage(view,position,0,percentWidth,height,alignment,verticalAlignment)
+              "image" -> getParameterImageOneColumn(view,position,0,percentWidth,height,alignment,verticalAlignment)
               "imagelist" -> getParameterListImage(view,position,0,percentWidth,height,alignment,verticalAlignment)
               "qrcode"-> getParameterImage(view,position,0,percentWidth,height,alignment,verticalAlignment)
         }
@@ -188,6 +189,23 @@ class JsonPresenterTemplateLinesImpl(view : SlidingInterface.viewSliding, contex
         val image : ImageView = ImageView(context)
         val url = dta.templateBody?.templateLines?.get(positionTemplateLine)?.columns?.get(positionColumn)?.parameter?.url
         val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, setHeight(height))
+        image.layoutParams = param
+        val requestOptions = RequestOptions()
+        requestOptions.placeholder(R.drawable.ntkn_image4)
+        Glide.with(context).setDefaultRequestOptions(requestOptions).load(url).into(image);
+        linearLayout.addView(image)
+        viewGroup.addView(linearLayout)
+    }
+
+    override fun getParameterImageOneColumn(viewGroup: ViewGroup, positionTemplateLine: Int, positionColumn: Int, percentWidth: Int?, height: Int?, alignment: String?, verticalAlignment: String?) {
+        val linearLayout: LinearLayout = LinearLayout(context)
+        val paramlinear = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,setHeight(height))
+        linearLayout.layoutParams = paramlinear
+        linearLayout.orientation = LinearLayout.HORIZONTAL
+        setAlignment(linearLayout,alignment)
+        val image : ImageView = ImageView(context)
+        val url = dta.templateBody?.templateLines?.get(positionTemplateLine)?.columns?.get(positionColumn)?.parameter?.url
+        val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(setPercenwidth(percentWidth), setHeight(height))
         image.layoutParams = param
         val requestOptions = RequestOptions()
         requestOptions.placeholder(R.drawable.ntkn_image4)

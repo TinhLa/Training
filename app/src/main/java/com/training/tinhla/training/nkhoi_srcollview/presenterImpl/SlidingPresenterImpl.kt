@@ -1,4 +1,4 @@
-package com.training.tinhla.training.nkhoi_srcollview.presenter
+package com.training.tinhla.training.nkhoi_srcollview.presenterImpl
 
 
 import android.content.Context
@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.text.Html
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.training.tinhla.training.nkhoi_srcollview.presenterInterface.SlidingInterface
 
 class SlidingPresenterImpl(var view : SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
     private lateinit var linearLayout: LinearLayout

@@ -1,10 +1,7 @@
-package com.training.tinhla.training.nkhoi_srcollview.presenter
+package com.training.tinhla.training.nkhoi_srcollview.presenterInterface
 
 import android.content.Context
-import android.support.v4.view.ViewPager
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 
 open class SlidingInterface {
 

@@ -1,9 +1,6 @@
-package com.training.tinhla.training.nkhoi_srcollview.presenter
+package com.training.tinhla.training.nkhoi_srcollview.presenterInterface
 
-import android.content.Context
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -20,6 +17,8 @@ open  class JsonInterfaceIframe {
         fun setTypeLineTwoColum(view: ViewGroup,position: Int){}
         fun setTypeLineDrawLine(view: ViewGroup){}
         fun setTypeLineEmptyLine(view: ViewGroup){}
+        fun getParameterImageOneColumn(viewGroup: ViewGroup,positionTemplateLine: Int,positionColumn: Int,percentWidth : Int?,height : Int?,
+                              alignment : String?,verticalAlignment : String?){}
 
         // public
         fun getParameterIcon(viewGroup: ViewGroup,positionTemplateLine: Int,percentWidth : Int?,height : Int?,
