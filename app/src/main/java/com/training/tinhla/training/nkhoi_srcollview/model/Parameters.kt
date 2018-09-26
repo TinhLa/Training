@@ -8,8 +8,10 @@ class Parameters  {
      var fontName :String?=null
      var fontStyle :String?=null
      var fontColor :String?=null
+     var fontSize : String?=null
      var backgroundColor : String?=null
      var images : List<String>?=null
+
 
 //
 //    constructor(icon: String, url: String, text: String, fontName: String, fontStyle: String, fontColor: String, backgroundColor: String, images: ArrayList<String>) {

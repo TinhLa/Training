@@ -1,4 +1,4 @@
-package com.training.tinhla.training.nkhoi_srcollview
+package com.training.tinhla.training.nkhoi_srcollview.presenter
 
 
 import android.content.Context
@@ -7,7 +7,11 @@ import android.text.Html
 import android.widget.LinearLayout
 import android.widget.TextView
 
-class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
+class SlidingPresenterImpl(var view : SlidingInterface.viewSliding): SlidingInterface.presenterSliding {
+    private lateinit var linearLayout: LinearLayout
+    fun setLayout(linearLayout: LinearLayout){
+        this.linearLayout = linearLayout
+    }
     override fun creatDotsOfViewPager(context: Context, view: LinearLayout, number: Int) {
         for(i in 0..(number-1) step 1) {
             var txt: TextView = TextView(context)
@@ -20,6 +24,7 @@ class SlidingPresenterImpl(var view :SlidingInterface.viewSliding): SlidingInter
     }
 
     override fun onPageChangeViewPager(context: Context, numberDots: Int, position: Int, view: LinearLayout) {
+        if(view==null) view ==linearLayout
         view.removeAllViews()
         for(i in 0..(numberDots-1) step 1) {
             var txt: TextView = TextView(context)

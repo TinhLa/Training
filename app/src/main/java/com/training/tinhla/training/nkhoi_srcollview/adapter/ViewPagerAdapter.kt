@@ -36,7 +36,7 @@ class ViewPagerAdapter(var context: Context, arrayImage: List<String>?) : PagerA
         requestOptions.placeholder(R.drawable.bg_default)
         Glide.with(context)
                 .setDefaultRequestOptions(requestOptions)
-                .load(R.drawable.bg_default).into(img);
+                .load(array[position]).into(img);
         container.addView(view)
         return view
     }

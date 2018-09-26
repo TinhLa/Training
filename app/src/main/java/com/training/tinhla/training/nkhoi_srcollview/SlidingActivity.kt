@@ -5,16 +5,18 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.annotation.RequiresApi
 import android.support.v4.view.ViewPager
-import android.util.Log
 import com.training.tinhla.training.R
 import com.training.tinhla.training.nkhoi_srcollview.adapter.ViewPagerAdapter
-import com.training.tinhla.training.nkhoi_srcollview.model.TemplateButton
+import com.training.tinhla.training.nkhoi_srcollview.presenter.JsonPresenterIframeImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenter.JsonPresenterTemplateLinesImpl
+import com.training.tinhla.training.nkhoi_srcollview.presenter.SlidingInterface
+import com.training.tinhla.training.nkhoi_srcollview.presenter.SlidingPresenterImpl
 import kotlinx.android.synthetic.main.activity_main_sliding.*
 import kotlinx.android.synthetic.main.include_ifarme_property.*
 import kotlinx.android.synthetic.main.include_viewpager.*
 
 
-class SlidingActivity : AppCompatActivity(),SlidingInterface.viewSliding {
+class SlidingActivity : AppCompatActivity(), SlidingInterface.viewSliding {
     private lateinit var presenterSliding : SlidingPresenterImpl
     private lateinit var presenterIframe : JsonPresenterIframeImpl
     private lateinit var presenterTemplateLines: JsonPresenterTemplateLinesImpl
@@ -26,7 +28,7 @@ class SlidingActivity : AppCompatActivity(),SlidingInterface.viewSliding {
         presenterSliding = SlidingPresenterImpl(this)
 
         presenterIframe = JsonPresenterIframeImpl(this)
-        presenterTemplateLines = JsonPresenterTemplateLinesImpl(this)
+        presenterTemplateLines = JsonPresenterTemplateLinesImpl(this, this)
         presenterIframe.getPropertyForColumnIframe(column_iframe)
         presenterTemplateLines.getPropertyForColumnTemplateLines(template_lines)
         presenterSliding.view.loadTextSuccess("")

@@ -1,4 +1,4 @@
-package com.training.tinhla.training.nkhoi_srcollview
+package com.training.tinhla.training.nkhoi_srcollview.presenter
 
 import android.content.Context
 import android.support.v4.view.ViewPager
