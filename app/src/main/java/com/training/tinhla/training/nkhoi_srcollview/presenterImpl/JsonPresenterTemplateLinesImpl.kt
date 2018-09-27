@@ -190,6 +190,7 @@ class JsonPresenterTemplateLinesImpl(view : SlidingInterface.viewSliding, contex
         val url = dta.templateBody?.templateLines?.get(positionTemplateLine)?.columns?.get(positionColumn)?.parameter?.url
         val param : ViewGroup.LayoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, setHeight(height))
         image.layoutParams = param
+        image.scaleType = ImageView.ScaleType.FIT_CENTER
         val requestOptions = RequestOptions()
         requestOptions.placeholder(R.drawable.ntkn_image4)
         Glide.with(context).setDefaultRequestOptions(requestOptions).load(url).into(image);
@@ -223,7 +224,7 @@ class JsonPresenterTemplateLinesImpl(view : SlidingInterface.viewSliding, contex
         viewpager.adapter = myadapter
         val linearLayout : LinearLayout = LinearLayout(context)
         val paramDots : LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT,1f)
-        paramDots.setMargins(0, height!!-100,0,0)
+        paramDots.setMargins(0, 0,0,0) // add dots on top list image
         linearLayout.orientation = LinearLayout.HORIZONTAL
         linearLayout.layoutParams = paramDots
         linearLayout.gravity = Gravity.CENTER_HORIZONTAL

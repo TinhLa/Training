@@ -92,7 +92,7 @@ class JsonPresenterTemplateBtnImpl (var context: Context) : JsonInterfaceTemplat
     override fun setOneButton(viewGroup: ViewGroup, icon: String, textKey: String) {
         val linearLayout :LinearLayout = LinearLayout(context)
         val paramParent = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT,1f)
-        paramParent.setMargins(30,0,30,20)
+        paramParent.setMargins(30,0,30,0)
         linearLayout.layoutParams = paramParent
         linearLayout.gravity = Gravity.CENTER_HORIZONTAL
         linearLayout.orientation = LinearLayout.HORIZONTAL
@@ -129,13 +129,13 @@ class JsonPresenterTemplateBtnImpl (var context: Context) : JsonInterfaceTemplat
     override fun setTwoButton(viewGroup: ViewGroup, icon1: String, textKey1: String, icon2: String, textKey2: String) {
         val linearLayoutParent :LinearLayout = LinearLayout(context)
         val paramParent = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT,1.5f)
-        paramParent.setMargins(30,0,30,20)
         linearLayoutParent.layoutParams = paramParent
         linearLayoutParent.orientation = LinearLayout.HORIZONTAL
 
         val linearLayoutParent1 : LinearLayout = LinearLayout(context)
         linearLayoutParent1.layoutParams = paramParent
         linearLayoutParent1.orientation = LinearLayout.HORIZONTAL
+        linearLayoutParent1.gravity =Gravity.LEFT
 
         val linearLayoutParent2 : LinearLayout = LinearLayout(context)
         linearLayoutParent2.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.MATCH_PARENT,2f)
@@ -143,6 +143,7 @@ class JsonPresenterTemplateBtnImpl (var context: Context) : JsonInterfaceTemplat
         val linearLayoutParent3 : LinearLayout = LinearLayout(context)
         linearLayoutParent3.layoutParams = paramParent
         linearLayoutParent3.orientation = LinearLayout.HORIZONTAL
+        linearLayoutParent3.gravity =Gravity.RIGHT
 
         val parambt = LinearLayout.LayoutParams(150,150)
         val paramtext = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
@@ -188,6 +189,7 @@ class JsonPresenterTemplateBtnImpl (var context: Context) : JsonInterfaceTemplat
         linearLayoutParent1.addView(textView1)
         linearLayoutParent3.addView(textView2)
         linearLayoutParent3.addView(button2)
+
 
         linearLayoutParent.addView(linearLayoutParent1)
         linearLayoutParent.addView(linearLayoutParent2)

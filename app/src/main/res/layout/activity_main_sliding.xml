@@ -9,79 +9,143 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include
-            layout="@layout/include_viewpager"/>
-        <include
-            layout="@layout/include_ifarme_property"   />
-
-
-        <com.sothree.slidinguppanel.SlidingUpPanelLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginTop="50dp"
-            android:gravity="bottom"
-            app:umanoDragView="@id/svDrag"
-            app:umanoFadeColor="@android:color/transparent"
-            app:umanoOverlay="false"
-            app:umanoPanelHeight="400dp"
-            app:umanoParallaxOffset="50dp"
-            app:umanoScrollableView="@+id/scrollView"
-            app:umanoShadowHeight="0dp">
-
-            <android.support.constraint.ConstraintLayout
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent">
-            </android.support.constraint.ConstraintLayout>
+                android:layout_height="match_parent">
 
-            <FrameLayout
-                android:id="@+id/svDrag"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#00ffff00"
-                android:clickable="false"
-                android:focusable="true">
-
-                <ImageView
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_weight="1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="35dp"
-                    android:background="#ffffff"></ImageView>
-
-                <ScrollView
-                    android:id="@+id/scrollView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="0dp"
-                    android:background="#ffffff"
-                    app:layout_constraintTop_toTopOf="@id/svDrag">
-                    <LinearLayout
-                        android:orientation="vertical"
+                    android:layout_height="0dp">
+                    <FrameLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
+                        <include
+                            layout="@layout/include_viewpager"/>
                         <LinearLayout
-                            android:id="@+id/template_lines"
-                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp">
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="3"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp">
+                                <include
+                                    layout="@layout/include_ifarme_property"   />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_weight="1"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp">
+                                <LinearLayout
+                                    android:id="@+id/dots"
+                                    android:layout_gravity="top|center"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_horizontal">
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="2"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp">
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_weight="7"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <com.sothree.slidinguppanel.SlidingUpPanelLayout
+                    android:id="@+id/sliding_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="50dp"
+                    android:gravity="bottom"
+                    app:umanoDragView="@id/svDrag"
+                    app:umanoFadeColor="@android:color/transparent"
+                    app:umanoOverlay="false"
+                    app:umanoParallaxOffset="50dp"
+                    app:umanoScrollableView="@+id/scrollView"
+                    app:umanoShadowHeight="0dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent">
+                    </android.support.constraint.ConstraintLayout>
+
+                    <FrameLayout
+                        android:id="@+id/svDrag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#00ffff00"
+                        android:clickable="false"
+                        android:focusable="true">
+
+                        <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="vertical">
-                        </LinearLayout>
-                    </LinearLayout>
+                            android:layout_marginTop="10pt"
+                            android:background="#ffffff">
+                        </ImageView>
+                        <ScrollView
+                            android:id="@+id/scrollView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginTop="0dp"
+                            android:background="#ffffff"
+                            app:layout_constraintTop_toTopOf="@id/svDrag">
+                            <LinearLayout
+                                android:orientation="vertical"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+                                <LinearLayout
+                                    android:id="@+id/template_lines"
+                                    android:layout_weight="1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="vertical">
+                                </LinearLayout>
+                            </LinearLayout>
 
-                </ScrollView>
-            </FrameLayout>
-        </com.sothree.slidinguppanel.SlidingUpPanelLayout>
-
-        <LinearLayout
-            android:id="@+id/template_btn"
-            android:orientation="horizontal"
-            android:layout_gravity="bottom"
-            android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:background="#ffffff">
+                        </ScrollView>
+                    </FrameLayout>
+                </com.sothree.slidinguppanel.SlidingUpPanelLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:id="@+id/template_btn"
+                android:orientation="horizontal"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+            </LinearLayout>
         </LinearLayout>
-
     </FrameLayout>
 </android.support.constraint.ConstraintLayout>

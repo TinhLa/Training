@@ -94,7 +94,7 @@ open class JsonPresenterIframeImpl(var context: Context) : JsonInterfaceIframe.p
        val i: Int = when(percen){
             100 -> ViewGroup.LayoutParams.MATCH_PARENT
             0 ->ViewGroup.LayoutParams.WRAP_CONTENT
-           else ->  (Resources.getSystem().getDisplayMetrics().widthPixels -150)* percen /100 // except margin left right 50 , get size screen
+           else ->  (Resources.getSystem().getDisplayMetrics().widthPixels )* percen /100 // except margin left right 50 , get size screen
         }
         return i
     }

@@ -1,5 +1,6 @@
 package com.training.tinhla.training.nkhoi_srcollview
 
+import android.content.res.Resources
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -28,6 +29,7 @@ class SlidingActivity : AppCompatActivity(), SlidingInterface.viewSliding {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_sliding)
+        sliding_view.panelHeight =(Resources.getSystem().displayMetrics.heightPixels * 11 / 21 + 50)
         presenterSliding = SlidingPresenterImpl(this)
         presenterIframe = JsonPresenterIframeImpl(this)
         presenterTemplateLines = JsonPresenterTemplateLinesImpl(this, this)
