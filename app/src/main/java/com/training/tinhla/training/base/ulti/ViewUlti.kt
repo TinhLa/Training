@@ -1,11 +1,7 @@
-package com.training.tinhla.training.base
+package com.training.tinhla.training.base.ulti
 
-import android.app.Activity
 import android.content.Context
-import android.graphics.Point
 import android.widget.LinearLayout
-import java.text.ParseException
-import java.text.SimpleDateFormat
 
 class ViewUlti {
     companion object {
@@ -36,7 +32,7 @@ class ViewUlti {
         fun getLayoutParamHeight(context: Context, height:Int): Int {
             when (height) {
                 0 -> return LinearLayout.LayoutParams.WRAP_CONTENT
-                else -> return ViewUlti.dpToPx(context, height)
+                else -> return dpToPx(context, height)
             }
         }
 

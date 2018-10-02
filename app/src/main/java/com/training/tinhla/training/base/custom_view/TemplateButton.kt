@@ -10,7 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.training.tinhla.training.R
-import com.training.tinhla.training.base.ViewIdGenerator
+import com.training.tinhla.training.base.ulti.ViewIdGenerator
 import com.training.tinhla.training.base.model.json.ButtonModel
 
 class TemplateButton : ConstraintLayout {

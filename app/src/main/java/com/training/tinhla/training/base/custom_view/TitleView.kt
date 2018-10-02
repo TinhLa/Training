@@ -10,9 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.training.tinhla.training.R
-import com.training.tinhla.training.base.Ulti
-import com.training.tinhla.training.base.ViewUlti
-import com.training.tinhla.training.base.ViewIdGenerator
+import com.training.tinhla.training.base.ulti.Ulti
+import com.training.tinhla.training.base.ulti.ViewUlti
+import com.training.tinhla.training.base.ulti.ViewIdGenerator
 import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.ParameterModel
 

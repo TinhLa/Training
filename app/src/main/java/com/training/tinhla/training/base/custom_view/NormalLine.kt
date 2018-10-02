@@ -6,7 +6,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.LinearLayout
-import com.training.tinhla.training.base.ViewUlti
+import com.training.tinhla.training.base.ulti.ViewUlti
 import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel

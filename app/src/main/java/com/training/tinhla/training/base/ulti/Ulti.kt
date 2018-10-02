@@ -1,4 +1,4 @@
-package com.training.tinhla.training.base
+package com.training.tinhla.training.base.ulti
 
 import java.text.ParseException
 import java.text.SimpleDateFormat

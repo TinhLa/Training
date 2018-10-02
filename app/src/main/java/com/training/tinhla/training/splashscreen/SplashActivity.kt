@@ -2,9 +2,13 @@ package com.training.tinhla.training.splashscreen
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RelativeLayout
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.iid.InstanceIdResult
 import com.training.tinhla.training.R
 import com.training.tinhla.training.base.model.json.ButtonModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
@@ -31,6 +35,13 @@ class SplashActivity : BaseActivity(), SplashInterface.View {
 
         // setup processes of views for scroll action
         SlidePanelInstaller(sliding_layout, gv_header_iframe, view_main_content, sv_main).installScrollProcess(vp_images)
+
+        FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(this, object:OnSuccessListener<InstanceIdResult>{
+            override fun onSuccess(result: InstanceIdResult?) {
+                val token = result?.token
+                Log.d("LOG", "recent firebase token: " + token)
+            }
+        })
     }
 
     override fun setupBgHeaderViewPager(adapter: FragmentsViewPager) {

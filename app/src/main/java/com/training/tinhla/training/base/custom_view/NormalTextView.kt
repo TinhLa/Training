@@ -2,13 +2,9 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.graphics.Color
-import android.os.Build
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Gravity
-import android.widget.LinearLayout
 import android.widget.TextView
-import com.training.tinhla.training.base.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 
