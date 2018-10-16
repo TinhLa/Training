@@ -10,7 +10,7 @@ import com.training.tinhla.training.base.ulti.ViewUlti
 import com.training.tinhla.training.base.model.constant.CONTENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 import com.training.tinhla.training.base.model.json.TemplateLineModel
-import com.training.tinhla.training.splashscreen.helper.CreateViewHelper
+import com.training.tinhla.training.scrollscreen.helper.CreateViewHelper
 
 /**
  * An NormalLine can contain either 1 column or 2 columns

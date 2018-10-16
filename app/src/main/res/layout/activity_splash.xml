@@ -8,8 +8,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/content_splash"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="onOpenMainScreen"
+        android:text="@string/action_open_main_screen" />
 
 </RelativeLayout>

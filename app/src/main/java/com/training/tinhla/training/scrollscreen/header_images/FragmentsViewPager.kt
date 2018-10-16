@@ -1,4 +1,4 @@
-package com.training.tinhla.training.splashscreen.header_images
+package com.training.tinhla.training.scrollscreen.header_images
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager

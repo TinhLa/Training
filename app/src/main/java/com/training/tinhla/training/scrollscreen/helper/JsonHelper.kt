@@ -1,4 +1,4 @@
-package com.training.tinhla.training.splashscreen.helper
+package com.training.tinhla.training.scrollscreen.helper
 
 import android.content.Context
 import android.util.Log

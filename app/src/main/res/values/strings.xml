@@ -2,5 +2,7 @@
     <string name="app_name">Training</string>
 
     <string name="title_activity_splash">Training</string>
+    <string name="action_open_scroll_screen">OPEN SCROLL SCREEN</string>
+    <string name="action_open_main_screen">OPEN MAIN SCREEN</string>
 
 </resources>

@@ -4,6 +4,8 @@ import android.app.Application
 import com.google.gson.Gson
 import com.training.tinhla.training.App
 import com.training.tinhla.training.mainscreen.MainActivity
+import com.training.tinhla.training.scrollscreen.ScrollActivity
+import com.training.tinhla.training.scrollscreen.module.ScrollActivityModule
 import com.training.tinhla.training.splashscreen.SplashActivity
 import com.training.tinhla.training.splashscreen.module.SplashActivityModule
 import dagger.Binds
@@ -24,4 +26,8 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [SplashActivityModule::class])
     @PerActivity
     abstract fun bindSplashActivity(): SplashActivity
+
+    @ContributesAndroidInjector(modules = [ScrollActivityModule::class])
+    @PerActivity
+    abstract fun bindScrollActivity(): ScrollActivity
 }
