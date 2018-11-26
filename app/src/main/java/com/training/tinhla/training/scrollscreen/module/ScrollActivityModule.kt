@@ -1,7 +1,7 @@
 package com.training.tinhla.training.scrollscreen.module
 
 import android.app.Activity
-import com.training.tinhla.training.basemodule.PerActivity
+import com.training.tinhla.training.basemodule.scope.PerActivity
 import com.training.tinhla.training.scrollscreen.ScrollActivity
 import com.training.tinhla.training.scrollscreen.ScrollInterface
 import dagger.Binds

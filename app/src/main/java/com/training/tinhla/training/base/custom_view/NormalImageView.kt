@@ -1,6 +1,7 @@
 package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
+import android.support.v7.widget.AppCompatImageView
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -11,7 +12,7 @@ import com.training.tinhla.training.base.ulti.ViewUlti
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 
-class NormalImageView : ImageView {
+class NormalImageView : AppCompatImageView {
     lateinit var data: ColumnModel
     var parentWidth : Int = 0
 

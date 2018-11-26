@@ -120,7 +120,7 @@ class ScrollActivity : BaseActivity(), ScrollInterface.View {
         }
     }
 
-    override fun getContext(): Context {
+    override fun _getContext(): Context {
         return app
     }
 }

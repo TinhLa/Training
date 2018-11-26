@@ -1,6 +1,6 @@
 package com.training.tinhla.training.scrollscreen.module
 
-import com.training.tinhla.training.basemodule.PerActivity
+import com.training.tinhla.training.basemodule.scope.PerActivity
 import com.training.tinhla.training.scrollscreen.ScrollInterface
 import com.training.tinhla.training.scrollscreen.ScrollPresenterImpl
 import dagger.Binds

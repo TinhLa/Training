@@ -1,8 +1,8 @@
-package com.training.tinhla.training.basemodule
+package com.training.tinhla.training.basemodule.builder
 
 import android.app.Application
-import com.google.gson.Gson
 import com.training.tinhla.training.App
+import com.training.tinhla.training.basemodule.scope.PerActivity
 import com.training.tinhla.training.mainscreen.MainActivity
 import com.training.tinhla.training.scrollscreen.ScrollActivity
 import com.training.tinhla.training.scrollscreen.module.ScrollActivityModule

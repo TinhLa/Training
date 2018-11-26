@@ -1,13 +1,17 @@
 package com.training.tinhla.training.basemodule
 
 import com.training.tinhla.training.App
+import com.training.tinhla.training.basemodule.builder.ActivityBuilder
+import com.training.tinhla.training.basemodule.builder.FragmentBuilder
+import com.training.tinhla.training.basemodule.module.AppModule
+import com.training.tinhla.training.basemodule.module.BaseModule
 import dagger.BindsInstance
 import dagger.Component
-import dagger.android.AndroidInjectionModule
+import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [AppModule::class, AndroidInjectionModule::class, ActivityBuilder::class, BaseModule::class])
+@Component(modules = [AndroidSupportInjectionModule::class, AppModule::class, ActivityBuilder::class, FragmentBuilder::class, BaseModule::class])
 interface AppComponent {
     @Component.Builder
     interface Builder {

@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 
 import com.training.tinhla.training.R
-import kotlinx.android.synthetic.main.fragment_background_image.view.*
 
 /**
  * Fragment show background image

@@ -1,13 +1,17 @@
 package com.training.tinhla.training.basemodel
 
-import android.app.Fragment
-import android.os.Bundle
-import dagger.android.AndroidInjection
+import android.content.Context
+import android.support.v4.app.Fragment
+import com.training.tinhla.training.App
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
-class BaseFragment : Fragment() {
+open class BaseFragment : Fragment() {
+    @Inject
+    lateinit var app:App
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        AndroidInjection.inject(this)
+    override fun onAttach(context: Context?) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
     }
 }

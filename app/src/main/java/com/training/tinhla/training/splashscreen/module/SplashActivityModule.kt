@@ -1,10 +1,10 @@
 package com.training.tinhla.training.splashscreen.module
 
-import android.app.Activity
-import android.support.v4.app.FragmentManager
-import com.training.tinhla.training.basemodule.PerActivity
+import android.support.v7.app.AppCompatActivity
+import com.training.tinhla.training.basemodule.scope.PerActivity
 import com.training.tinhla.training.splashscreen.SplashActivity
 import com.training.tinhla.training.splashscreen.SplashInterface
+import com.training.tinhla.training.splashscreen.fragment.module.WelcomeFragmentModule
 import dagger.Binds
 import dagger.Module
 
@@ -13,7 +13,7 @@ abstract class SplashActivityModule {
 
     @Binds
     @PerActivity
-    abstract fun activity(activity: SplashActivity): Activity
+    abstract fun bindActivity(activity: SplashActivity) : AppCompatActivity
 
     @Binds
     @PerActivity

@@ -2,13 +2,13 @@ package com.training.tinhla.training.base.custom_view
 
 import android.content.Context
 import android.graphics.Color
+import android.support.v7.widget.AppCompatTextView
 import android.util.AttributeSet
 import android.view.Gravity
-import android.widget.TextView
 import com.training.tinhla.training.base.model.constant.ALIGNMENT
 import com.training.tinhla.training.base.model.json.ColumnModel
 
-class NormalTextView : TextView {
+class NormalTextView : AppCompatTextView {
     lateinit var data: ColumnModel
     var parentWidth : Int = 0
 

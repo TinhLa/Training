@@ -1,4 +1,4 @@
-package com.training.tinhla.training.basemodule
+package com.training.tinhla.training.basemodule.scope
 
 import javax.inject.Scope
 

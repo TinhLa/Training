@@ -1,4 +1,4 @@
-package com.training.tinhla.training.basemodule
+package com.training.tinhla.training.basemodule.module
 
 import dagger.Module
 

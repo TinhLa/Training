@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.training.tinhla.training.base.model.constant.ACTIVITY_ID
 import com.training.tinhla.training.base.model.constant.CONSTANT
+import com.training.tinhla.training.base.mvp.BaseView
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     @Inject
     lateinit var app: Context
+
+    override fun _getContext(): Context = app
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
